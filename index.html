@@ -20,7 +20,7 @@
       href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
-      href="https://fonts.googleapis.com"
+      href="https://fonts.gstatic.com"
       crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap"
@@ -2088,6 +2088,22 @@ section:not(.cover) {
 }
 
 
+.divider {
+
+    width:
+        70px;
+
+    height:
+        1px;
+
+    margin:
+        25px auto;
+
+    background:
+        rgba(135,61,32,.18);
+}
+
+
 /* =========================================================
    15 — EVENTS
 ========================================================= */
@@ -2583,13 +2599,6 @@ section:not(.cover) {
 }
 
 
-.cinematic-story .story-space {
-
-    margin-top:
-        18px;
-}
-
-
 .cinematic-story .story-line:nth-child(1) {
     transition-delay: .05s;
 }
@@ -2815,10 +2824,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   SACRED DECORATIVE CURVES
-========================================================= */
-
 .sacred-wrapper::before {
 
     content:
@@ -2890,7 +2895,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   SACRED PHOTO CONTAINER
+   SACRED PHOTO
 ========================================================= */
 
 .sacred-photo {
@@ -2917,31 +2922,23 @@ section:not(.cover) {
         1px solid
         rgba(212,176,93,.35);
 
-    /*
-       PHOTO MOVEMENT VARIABLES
-    */
+
+    /* PHOTO ANIMATION */
 
     --sacred-y:
         0px;
 
     --sacred-scale:
-        1;
+        0.82;
 
     --sacred-rotate:
         0deg;
 
-    /*
-       CAPTION ANIMATION VARIABLES
-    */
+
+    /* CAPTION ANIMATION */
 
     --sacred-text-opacity:
         0;
-
-    --sacred-text-y:
-        22px;
-
-    --sacred-text-scale:
-        .94;
 
     --sacred-text-blur:
         4px;
@@ -2975,6 +2972,11 @@ section:not(.cover) {
     border:
         4px solid
         #ffffff;
+
+    /*
+       IMPORTANT:
+       The image uses these variables.
+    */
 
     transform:
         translate3d(
@@ -3035,6 +3037,11 @@ section:not(.cover) {
             rgba(35,20,10,.48) 100%
         );
 
+    /*
+       EXACT SAME TRANSFORM
+       AS THE PHOTO
+    */
+
     transform:
         translate3d(
             0,
@@ -3063,7 +3070,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   SACRED CAPTION
+   SACRED CAPTION — ATTACHED TO PHOTO
 ========================================================= */
 
 .sacred-caption {
@@ -3103,7 +3110,15 @@ section:not(.cover) {
 
     text-shadow:
         0 3px 12px
-        rgba(0,0,0,.35);
+        rgba(0,0,0,.38);
+
+    /*
+       SAME TRANSFORM VALUES
+       AS THE PHOTO
+
+       This makes the text travel
+       WITH the photo.
+    */
 
     opacity:
         var(--sacred-text-opacity);
@@ -3111,23 +3126,23 @@ section:not(.cover) {
     transform:
         translate3d(
             0,
-            var(--sacred-text-y),
+            var(--sacred-y),
             0
         )
         scale(
-            var(--sacred-text-scale)
+            var(--sacred-scale)
         )
         rotate(
             var(--sacred-rotate)
         );
 
+    transform-origin:
+        center bottom;
+
     filter:
         blur(
             var(--sacred-text-blur)
         );
-
-    transform-origin:
-        center bottom;
 
     will-change:
         opacity,
@@ -3367,6 +3382,8 @@ section:not(.cover) {
     text-decoration:
         none;
 }
+
+
 /* =========================================================
    VENUE — CINEMATIC LOCATION REVEAL
 ========================================================= */
@@ -3376,15 +3393,18 @@ section:not(.cover) {
 }
 
 
-/* LOCATION ICON */
-
 .venue .location-icon {
-    opacity: 0;
+
+    opacity:
+        0;
+
     transform:
         translateY(18px)
         scale(.72);
+
     filter:
         blur(4px);
+
     transition:
         opacity .75s cubic-bezier(.22,.61,.36,1),
         transform .85s cubic-bezier(.16,1,.3,1),
@@ -3393,25 +3413,34 @@ section:not(.cover) {
 
 
 .venue.visible .location-icon {
-    opacity: 1;
+
+    opacity:
+        1;
+
     transform:
         translateY(0)
         scale(1);
+
     filter:
         blur(0);
-    transition-delay: .05s;
+
+    transition-delay:
+        .05s;
 }
 
 
-/* VENUE HEADING */
-
 .venue .section-heading {
-    opacity: 0;
+
+    opacity:
+        0;
+
     transform:
         translateY(18px)
         scale(.96);
+
     filter:
         blur(3px);
+
     transition:
         opacity .75s cubic-bezier(.22,.61,.36,1),
         transform .85s cubic-bezier(.16,1,.3,1),
@@ -3420,25 +3449,34 @@ section:not(.cover) {
 
 
 .venue.visible .section-heading {
-    opacity: 1;
+
+    opacity:
+        1;
+
     transform:
         translateY(0)
         scale(1);
+
     filter:
         blur(0);
-    transition-delay: .12s;
+
+    transition-delay:
+        .12s;
 }
 
 
-/* VENUE NAME */
-
 .venue .venue-name {
-    opacity: 0;
+
+    opacity:
+        0;
+
     transform:
         translateY(25px)
         scale(.96);
+
     filter:
         blur(5px);
+
     transition:
         opacity .9s cubic-bezier(.22,.61,.36,1),
         transform .95s cubic-bezier(.16,1,.3,1),
@@ -3447,24 +3485,33 @@ section:not(.cover) {
 
 
 .venue.visible .venue-name {
-    opacity: 1;
+
+    opacity:
+        1;
+
     transform:
         translateY(0)
         scale(1);
+
     filter:
         blur(0);
-    transition-delay: .28s;
+
+    transition-delay:
+        .28s;
 }
 
 
-/* ADDRESS */
-
 .venue .venue-address {
-    opacity: 0;
+
+    opacity:
+        0;
+
     transform:
         translateY(20px);
+
     filter:
         blur(4px);
+
     transition:
         opacity .85s cubic-bezier(.22,.61,.36,1),
         transform .85s cubic-bezier(.16,1,.3,1),
@@ -3473,24 +3520,33 @@ section:not(.cover) {
 
 
 .venue.visible .venue-address {
-    opacity: 1;
+
+    opacity:
+        1;
+
     transform:
         translateY(0);
+
     filter:
         blur(0);
-    transition-delay: .48s;
+
+    transition-delay:
+        .48s;
 }
 
 
-/* GOOGLE MAPS BUTTON */
-
 .venue .maps-btn {
-    opacity: 0;
+
+    opacity:
+        0;
+
     transform:
         translateY(18px)
         scale(.92);
+
     filter:
         blur(3px);
+
     transition:
         opacity .75s cubic-bezier(.22,.61,.36,1),
         transform .85s cubic-bezier(.16,1,.3,1),
@@ -3501,19 +3557,24 @@ section:not(.cover) {
 
 
 .venue.visible .maps-btn {
-    opacity: 1;
+
+    opacity:
+        1;
+
     transform:
         translateY(0)
         scale(1);
+
     filter:
         blur(0);
-    transition-delay: .68s;
+
+    transition-delay:
+        .68s;
 }
 
 
-/* BUTTON HOVER */
-
 .venue .maps-btn:hover {
+
     transform:
         translateY(-3px)
         scale(1.02);
@@ -3527,19 +3588,13 @@ section:not(.cover) {
 }
 
 
-/* BUTTON PRESS */
-
 .venue .maps-btn:active {
+
     transform:
         scale(.97);
 }
 
-/* =========================================================
-   21 — FINAL
-========================================================= */
-/* =========================================================
-   21 — FINAL
-========================================================= */
+
 /* =========================================================
    21 — FINAL
 ========================================================= */
@@ -3562,8 +3617,6 @@ section:not(.cover) {
         center;
 }
 
-
-/* FINAL NAMES */
 
 .final-names {
 
@@ -3591,8 +3644,6 @@ section:not(.cover) {
         cubic-bezier(.22,.61,.36,1);
 }
 
-
-/* FINAL MESSAGE */
 
 .final-message {
 
@@ -3623,8 +3674,6 @@ section:not(.cover) {
         .25s;
 }
 
-
-/* CREATOR CREDIT */
 
 .creator-credit {
 
@@ -3676,8 +3725,6 @@ section:not(.cover) {
 }
 
 
-/* FINAL REVEAL */
-
 .final .reveal.visible .final-names {
 
     opacity:
@@ -3706,7 +3753,6 @@ section:not(.cover) {
     transform:
         translateY(0);
 }
-
 
 
 /* =========================================================
@@ -3957,13 +4003,6 @@ section:not(.cover) {
     }
 
 
-    .cinematic-story .story-space {
-
-        margin-top:
-            15px;
-    }
-
-
     .couple-photo {
 
         min-height:
@@ -3971,9 +4010,7 @@ section:not(.cover) {
     }
 
 
-    /* =====================================================
-       SACRED MOMENT — MOBILE
-    ===================================================== */
+    /* SACRED MOBILE */
 
     .sacred-caption {
 
@@ -4848,9 +4885,7 @@ section:not(.cover) {
                 id="sacredPhoto">
 
                 <div class="sacred-caption">
-
                     Made for Each Other
-
                 </div>
 
             </div>
@@ -4948,9 +4983,7 @@ section:not(.cover) {
 
 
         <div class="venue-name">
-
             Shathashrunga Police Bhavana
-
         </div>
 
 
@@ -5005,14 +5038,22 @@ section:not(.cover) {
 
         </div>
 
+
         <div class="creator-credit">
+
             Crafted with ❤️ by
-            <a href="https://instagram.com/sai_kushal_1208"
-            target="_blank"
-            rel="noopener noreferrer" 
-            text-decoration="none">
-                <strong>@SAI KUSHAL</strong>
+
+            <a
+                href="https://instagram.com/sai_kushal_1208"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <strong>
+                    @SAI KUSHAL
+                </strong>
+
             </a>
+
         </div>
 
     </div>
@@ -5086,7 +5127,9 @@ const reveals =
 ========================================================= */
 
 const lagnaElements =
-    document.querySelectorAll(".lagna .lagna-pop");
+    document.querySelectorAll(
+        ".lagna .lagna-pop"
+    );
 
 
 /* =========================================================
@@ -5097,7 +5140,9 @@ const timeline =
     document.querySelector(".timeline");
 
 const timelineProgress =
-    document.getElementById("timelineProgress");
+    document.getElementById(
+        "timelineProgress"
+    );
 
 const eventItems =
     document.querySelectorAll(
@@ -5114,7 +5159,9 @@ const eventCards =
    06 — ENTER CELEBRATION
 ========================================================= */
 
-function enterCelebration(addHistory = true) {
+function enterCelebration(
+    addHistory = true
+) {
 
     if (celebrationEntered) {
         return;
@@ -5128,9 +5175,11 @@ function enterCelebration(addHistory = true) {
 
     celebrationEntered = true;
 
+
     if (
         addHistory &&
-        window.location.hash !== "#invitation"
+        window.location.hash !==
+        "#invitation"
     ) {
 
         history.pushState(
@@ -5143,17 +5192,23 @@ function enterCelebration(addHistory = true) {
 
     }
 
+
     window.scrollTo(0, 0);
 
     document.body.classList.remove(
         "invitation-locked"
     );
 
-    pageContent.classList.add("show");
+    pageContent.classList.add(
+        "show"
+    );
+
 
     requestAnimationFrame(function () {
 
-        cover.classList.add("fade-out");
+        cover.classList.add(
+            "fade-out"
+        );
 
     });
 
@@ -5192,9 +5247,13 @@ function enterCelebration(addHistory = true) {
 
     setTimeout(function () {
 
-        cover.style.display = "none";
+        cover.style.display =
+            "none";
 
-        window.scrollTo(0, 0);
+        window.scrollTo(
+            0,
+            0
+        );
 
         requestLagnaAnimation();
 
@@ -5277,9 +5336,9 @@ function resetInvitationAnimations() {
     }
 
 
-    /*
-       RESET SACRED PHOTO
-    */
+    /* =====================================================
+       RESET SACRED PHOTO + CAPTION
+    ===================================================== */
 
     if (sacredPhoto) {
 
@@ -5301,16 +5360,6 @@ function resetInvitationAnimations() {
         sacredPhoto.style.setProperty(
             "--sacred-text-opacity",
             "0"
-        );
-
-        sacredPhoto.style.setProperty(
-            "--sacred-text-y",
-            "22px"
-        );
-
-        sacredPhoto.style.setProperty(
-            "--sacred-text-scale",
-            ".94"
         );
 
         sacredPhoto.style.setProperty(
@@ -5391,6 +5440,7 @@ function returnToCover() {
 
     forceAnimationReset();
 
+
     document.body.classList.add(
         "invitation-locked"
     );
@@ -5399,10 +5449,12 @@ function returnToCover() {
         "show"
     );
 
+
     cover.style.display =
         "flex";
 
     void cover.offsetWidth;
+
 
     requestAnimationFrame(function () {
 
@@ -5433,7 +5485,8 @@ window.addEventListener(
             "#invitation"
         ) {
 
-            celebrationEntered = false;
+            celebrationEntered =
+                false;
 
             enterCelebration(false);
 
@@ -5463,7 +5516,8 @@ window.addEventListener(
 
             setTimeout(function () {
 
-                celebrationEntered = false;
+                celebrationEntered =
+                    false;
 
                 enterCelebration(false);
 
@@ -5499,7 +5553,8 @@ const revealObserver =
 
         },
         {
-            threshold: 0.14,
+            threshold:
+                0.14,
 
             rootMargin:
                 "0px 0px -50px 0px"
@@ -5575,9 +5630,11 @@ function updateLagnaAnimation() {
         return;
     }
 
+
     const triggerPoint =
         window.scrollY +
-        window.innerHeight * 0.75;
+        window.innerHeight *
+        0.75;
 
 
     lagnaElements.forEach(function (element) {
@@ -5592,8 +5649,10 @@ function updateLagnaAnimation() {
 
         }
 
+
         const elementTop =
             getDocumentTop(element);
+
 
         if (
             triggerPoint >=
@@ -5621,8 +5680,10 @@ function requestLagnaAnimation() {
         return;
     }
 
+
     lagnaAnimationFrame =
         true;
+
 
     requestAnimationFrame(function () {
 
@@ -5662,9 +5723,11 @@ function updateEventCards() {
         return;
     }
 
+
     const triggerPoint =
         window.scrollY +
-        window.innerHeight * 0.75;
+        window.innerHeight *
+        0.75;
 
 
     eventCards.forEach(
@@ -5736,21 +5799,30 @@ function updateTimelineProgress() {
 
     }
 
+
     const triggerY =
-        window.innerHeight * 0.75;
+        window.innerHeight *
+        0.75;
+
 
     const timelineRect =
         timeline.getBoundingClientRect();
 
+
     const timelineStart =
-        timelineRect.top + 10;
+        timelineRect.top +
+        10;
+
 
     let progress =
         triggerY -
         timelineStart;
 
+
     const timelineHeight =
-        timelineRect.height - 20;
+        timelineRect.height -
+        20;
+
 
     progress =
         Math.max(
@@ -5760,6 +5832,7 @@ function updateTimelineProgress() {
                 timelineHeight
             )
         );
+
 
     timelineProgress.style.height =
         progress + "px";
@@ -5777,8 +5850,10 @@ function requestEventsAnimation() {
         return;
     }
 
+
     eventAnimationFrame =
         true;
+
 
     requestAnimationFrame(function () {
 
@@ -5820,6 +5895,7 @@ function updateStoryAnimation() {
         return;
     }
 
+
     if (
         storyCard.classList.contains(
             "story-card-active"
@@ -5830,11 +5906,15 @@ function updateStoryAnimation() {
 
     }
 
+
     const storyTop =
         storyCard.getBoundingClientRect().top;
 
+
     const triggerPoint =
-        window.innerHeight * 0.75;
+        window.innerHeight *
+        0.75;
+
 
     if (
         storyTop <=
@@ -5860,8 +5940,10 @@ function requestStoryAnimation() {
         return;
     }
 
+
     storyAnimationFrame =
         true;
+
 
     requestAnimationFrame(function () {
 
@@ -5893,7 +5975,7 @@ window.addEventListener(
 
 /* =========================================================
    19 — SACRED MOMENT
-       PHOTO + CAPTION SCROLL ANIMATION
+       PHOTO + ATTACHED CAPTION
 =========================================================
 
    SCROLL DOWN
@@ -5904,8 +5986,14 @@ window.addEventListener(
           ↓
       80% → 20%
           ↓
-     PHOTO ZOOMS OUT
-     CAPTION APPEARS
+     PHOTO MOVES
+     PHOTO ZOOMS
+     PHOTO ROTATES
+          +
+     TEXT MOVES
+     TEXT ZOOMS
+     TEXT ROTATES
+     TOGETHER
           ↓
    PHOTO TOP AT 20%
           ↓
@@ -5914,18 +6002,7 @@ window.addEventListener(
 
    SCROLL UP
 
-   PHOTO TOP AT 20%
-          ↓
-       REVERSE
-          ↓
-      20% → 80%
-          ↓
-   PHOTO RETURNS
-   CAPTION DISAPPEARS
-          ↓
-   PHOTO TOP AT 80%
-          ↓
-       ORIGINAL
+   Everything reverses together.
 
 ========================================================= */
 
@@ -5949,7 +6026,7 @@ function updateSacredZoom() {
 
 
     /*
-       EXACT RANGE
+       ANIMATION RANGE
 
        START:
        PHOTO TOP = 80%
@@ -5959,16 +6036,19 @@ function updateSacredZoom() {
     */
 
     const startPoint =
-        viewportHeight * 0.80;
+        viewportHeight *
+        0.75;
+
 
     const endPoint =
-        viewportHeight * 0.20;
+        viewportHeight *
+        0.25;
 
 
     /*
-       0 = animation not started
+       0 = original position
 
-       1 = animation complete
+       1 = maximum animation
     */
 
     let progress =
@@ -5997,11 +6077,11 @@ function updateSacredZoom() {
     ===================================================== */
 
     /*
-       Slight upward physical movement.
+       Slight upward movement.
     */
 
     const translateY =
-        -45 *
+        -15 *
         progress;
 
 
@@ -6010,9 +6090,9 @@ function updateSacredZoom() {
     */
 
     const scale =
-        1 +
+        0.82 +
         (
-            0.055 *
+            0.235 *
             progress
         );
 
@@ -6047,46 +6127,21 @@ function updateSacredZoom() {
 
 
     /* =====================================================
-       CAPTION ANIMATION
+       TEXT — ATTACHED TO PHOTO
     ===================================================== */
 
     /*
-       Caption fades in exactly with the photo.
+       The text follows the exact same
+       transform as the photo.
+
+       Only opacity and blur are
+       independent so it can softly
+       appear/disappear.
     */
 
     const textOpacity =
         progress;
 
-
-    /*
-       Caption starts slightly lower
-       and rises into position.
-    */
-
-    const textY =
-        22 -
-        (
-            22 *
-            progress
-        );
-
-
-    /*
-       Caption starts slightly smaller.
-    */
-
-    const textScale =
-        0.94 +
-        (
-            0.06 *
-            progress
-        );
-
-
-    /*
-       Caption starts blurred
-       and becomes sharp.
-    */
 
     const textBlur =
         4 -
@@ -6099,19 +6154,6 @@ function updateSacredZoom() {
     sacredPhoto.style.setProperty(
         "--sacred-text-opacity",
         textOpacity.toFixed(4)
-    );
-
-
-    sacredPhoto.style.setProperty(
-        "--sacred-text-y",
-        textY.toFixed(2) +
-        "px"
-    );
-
-
-    sacredPhoto.style.setProperty(
-        "--sacred-text-scale",
-        textScale.toFixed(4)
     );
 
 
@@ -6196,6 +6238,7 @@ function createCelebrationSparkles() {
             ".wedding-particles"
         );
 
+
     if (!container) {
         return;
     }
@@ -6212,29 +6255,38 @@ function createCelebrationSparkles() {
                 "span"
             );
 
+
         sparkle.className =
             "petal";
+
 
         sparkle.style.left =
             (
                 45 +
-                Math.random() * 10
+                Math.random() *
+                10
             ) + "%";
+
 
         sparkle.style.top =
             (
                 45 +
-                Math.random() * 10
+                Math.random() *
+                10
             ) + "%";
+
 
         sparkle.style.animationDuration =
             (
                 1.5 +
-                Math.random() * 1.5
+                Math.random() *
+                1.5
             ) + "s";
+
 
         sparkle.style.background =
             "rgba(212,176,93,.75)";
+
 
         container.appendChild(
             sparkle
@@ -6268,34 +6320,48 @@ function createPetal() {
         return;
     }
 
+
     const petal =
         document.createElement(
             "span"
         );
 
+
     petal.className =
         "petal";
 
+
     petal.style.left =
-        Math.random() * 100 + "%";
+        Math.random() *
+        100 +
+        "%";
+
 
     petal.style.animationDuration =
         (
             9 +
-            Math.random() * 8
+            Math.random() *
+            8
         ) + "s";
 
+
     petal.style.animationDelay =
-        Math.random() * 2 + "s";
+        Math.random() *
+        2 +
+        "s";
+
 
     petal.style.transform =
         "rotate(" +
-        Math.random() * 180 +
+        Math.random() *
+        180 +
         "deg)";
+
 
     particleContainer.appendChild(
         petal
     );
+
 
     setTimeout(function () {
 
@@ -6352,6 +6418,7 @@ if (
             const rect =
                 cover.getBoundingClientRect();
 
+
             const x =
                 (
                     event.clientX -
@@ -6359,6 +6426,7 @@ if (
                 ) /
                 rect.width -
                 0.5;
+
 
             const y =
                 (
@@ -6368,6 +6436,7 @@ if (
                 rect.height -
                 0.5;
 
+
             coverPhoto.style.transform =
                 "scale(1.075) " +
                 "translate(" +
@@ -6375,6 +6444,7 @@ if (
                 "px," +
                 y * -6 +
                 "px)";
+
 
             coverContent.style.transform =
                 "translate(" +
@@ -6418,7 +6488,8 @@ const galleryImages = [
 ];
 
 
-let galleryIndex = 0;
+let galleryIndex =
+    0;
 
 
 const galleryImage =
@@ -6433,6 +6504,7 @@ function showGalleryImage() {
         return;
     }
 
+
     galleryImage.src =
         galleryImages[
             galleryIndex
@@ -6445,14 +6517,17 @@ function nextImage() {
 
     galleryIndex++;
 
+
     if (
         galleryIndex >=
         galleryImages.length
     ) {
 
-        galleryIndex = 0;
+        galleryIndex =
+            0;
 
     }
+
 
     showGalleryImage();
 
@@ -6463,14 +6538,17 @@ function previousImage() {
 
     galleryIndex--;
 
+
     if (
         galleryIndex < 0
     ) {
 
         galleryIndex =
-            galleryImages.length - 1;
+            galleryImages.length -
+            1;
 
     }
+
 
     showGalleryImage();
 
@@ -6494,6 +6572,7 @@ function resetGalleryTimer() {
         galleryTimer
     );
 
+
     galleryTimer =
         setInterval(
             nextImage,
@@ -6507,8 +6586,11 @@ function resetGalleryTimer() {
    26 — GALLERY SWIPE
 ========================================================= */
 
-let touchStartX = 0;
-let touchEndX = 0;
+let touchStartX =
+    0;
+
+let touchEndX =
+    0;
 
 
 if (galleryImage) {
@@ -6537,9 +6619,11 @@ if (galleryImage) {
                 event.changedTouches[0]
                     .screenX;
 
+
             const difference =
                 touchStartX -
                 touchEndX;
+
 
             if (
                 Math.abs(difference) <
@@ -6549,6 +6633,7 @@ if (galleryImage) {
                 return;
 
             }
+
 
             if (
                 difference > 0
@@ -6562,6 +6647,7 @@ if (galleryImage) {
                 previousImage();
 
             }
+
 
             resetGalleryTimer();
 
@@ -6591,7 +6677,10 @@ function addCalendar(
     const endDate =
         new Date(
             startDate.getTime() +
-            2 * 60 * 60 * 1000
+            2 *
+            60 *
+            60 *
+            1000
         );
 
 
@@ -6602,13 +6691,16 @@ function addCalendar(
         const year =
             date.getFullYear();
 
+
         const month =
             String(
-                date.getMonth() + 1
+                date.getMonth() +
+                1
             ).padStart(
                 2,
                 "0"
             );
+
 
         const day =
             String(
@@ -6618,6 +6710,7 @@ function addCalendar(
                 "0"
             );
 
+
         const hours =
             String(
                 date.getHours()
@@ -6625,6 +6718,7 @@ function addCalendar(
                 2,
                 "0"
             );
+
 
         const minutes =
             String(
@@ -6634,6 +6728,7 @@ function addCalendar(
                 "0"
             );
 
+
         const seconds =
             String(
                 date.getSeconds()
@@ -6641,6 +6736,7 @@ function addCalendar(
                 2,
                 "0"
             );
+
 
         return (
             year +
@@ -6770,7 +6866,9 @@ function playVideoForward() {
 
     if (!coupleVideo) return;
 
+
     stopVideoReverse();
+
 
     if (
         !coupleVideo.duration ||
@@ -6781,15 +6879,18 @@ function playVideoForward() {
 
     }
 
+
     if (
         coupleVideo.currentTime >=
-        coupleVideo.duration - 0.05
+        coupleVideo.duration -
+        0.05
     ) {
 
         coupleVideo.currentTime =
             0;
 
     }
+
 
     coupleVideo.play().catch(
         function(error) {
@@ -6805,9 +6906,12 @@ function playVideoForward() {
 }
 
 
-function reverseVideo(timestamp) {
+function reverseVideo(
+    timestamp
+) {
 
     if (!coupleVideo) return;
+
 
     if (
         videoReverseLastTime ===
@@ -6825,7 +6929,8 @@ function reverseVideo(timestamp) {
             timestamp -
             videoReverseLastTime,
             50
-        ) / 1000;
+        ) /
+        1000;
 
 
     videoReverseLastTime =
@@ -6877,6 +6982,7 @@ function reverseVideo(timestamp) {
 function playVideoReverse() {
 
     if (!coupleVideo) return;
+
 
     if (
         !coupleVideo.duration ||
@@ -6958,8 +7064,10 @@ function checkCoupleVideoScroll() {
 
     if (!coupleVideo) return;
 
+
     const rect =
         coupleVideo.getBoundingClientRect();
+
 
     const viewportHeight =
         window.innerHeight;
@@ -6971,7 +7079,8 @@ function checkCoupleVideoScroll() {
         videoDirection > 0 &&
         !videoForwardTriggered &&
         rect.top <=
-        viewportHeight * 0.60
+        viewportHeight *
+        0.60
     ) {
 
         videoForwardTriggered =
@@ -6993,7 +7102,8 @@ function checkCoupleVideoScroll() {
         videoDirection < 0 &&
         !videoReverseTriggered &&
         rect.bottom >=
-        viewportHeight * 0.65
+        viewportHeight *
+        0.65
     ) {
 
         videoReverseTriggered =
