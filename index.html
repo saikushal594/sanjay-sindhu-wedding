@@ -26,8 +26,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet">
 
-<!-- WhatsApp / Social Media Preview -->
-<meta property="og:title" content="Sanjay & Sindhu — Wedding Invitation">
+
+<!-- =====================================================
+     WHATSAPP / SOCIAL MEDIA PREVIEW
+====================================================== -->
+
+<meta property="og:title"
+      content="Sanjay & Sindhu — Wedding Invitation">
 
 <meta property="og:description"
       content="Join us as we celebrate the wedding of Sanjay & Sindhu on November 15 & 16, 2026.">
@@ -35,14 +40,17 @@
 <meta property="og:image"
       content="https://sanjay-sindhu-wedding.vercel.app/images/preview.jpg">
 
-<meta property="og:image:width" content="1200">
+<meta property="og:image:width"
+      content="1200">
 
-<meta property="og:image:height" content="630">
+<meta property="og:image:height"
+      content="630">
 
 <meta property="og:url"
       content="https://sanjay-sindhu-wedding.vercel.app/">
 
-<meta property="og:type" content="website">
+<meta property="og:type"
+      content="website">
 
 <meta property="og:site_name"
       content="Sanjay & Sindhu — Wedding Invitation">
@@ -61,7 +69,6 @@
 
     --cream: #f8f3e9;
     --cream-2: #f4eee3;
-
     --paper: #fffdfa;
 
     --brown: #873d20;
@@ -132,6 +139,13 @@ body {
 }
 
 
+body.invitation-locked {
+
+    overflow:
+        hidden;
+}
+
+
 button,
 a {
 
@@ -170,25 +184,78 @@ img {
         100vh;
 
     background:
-
-        radial-gradient(
-            circle at 15% 10%,
-            rgba(220,190,130,.12),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 85% 25%,
-            rgba(210,170,120,.10),
-            transparent 28%
-        ),
-
         var(--cream);
 }
 
 
 /* =========================================================
-   04 — PAGE LOADER
+   04 — PAGE CONTENT
+========================================================= */
+
+.page-content {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    min-height:
+        100vh;
+
+    background:
+        var(--cream);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transform:
+        translateY(18px);
+
+    transition:
+        opacity 1.35s
+        cubic-bezier(.22,.61,.36,1),
+
+        transform 1.35s
+        cubic-bezier(.22,.61,.36,1),
+
+        visibility 0s linear 1.35s;
+}
+
+
+.page-content.show {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+
+    transform:
+        translateY(0);
+
+    transition:
+        opacity 1.35s
+        cubic-bezier(.22,.61,.36,1),
+
+        transform 1.35s
+        cubic-bezier(.22,.61,.36,1),
+
+        visibility 0s linear 0s;
+}
+
+
+/* =========================================================
+   05 — PAGE LOADER
 ========================================================= */
 
 .page-loader {
@@ -368,7 +435,7 @@ img {
 
 
 /* =========================================================
-   05 — SUBTLE PETALS
+   06 — SUBTLE PETALS
 ========================================================= */
 
 .wedding-particles {
@@ -452,19 +519,25 @@ img {
 
 
 /* =========================================================
-   06 — COVER
+   07 — COVER
 ========================================================= */
 
 .cover {
 
     position:
-        relative;
+        fixed;
 
-    min-height:
-        100svh;
+    inset:
+        0;
 
     width:
         100%;
+
+    height:
+        100svh;
+
+    min-height:
+        100svh;
 
     display:
         flex;
@@ -483,6 +556,22 @@ img {
 
     background:
         #4c281b;
+
+    z-index:
+        50;
+
+    opacity:
+        1;
+
+    transform:
+        scale(1);
+
+    transition:
+        opacity 1.25s
+        cubic-bezier(.22,.61,.36,1),
+
+        transform 1.25s
+        cubic-bezier(.22,.61,.36,1);
 }
 
 
@@ -537,10 +626,6 @@ img {
 }
 
 
-/* =========================================================
-   COVER DARK CINEMATIC OVERLAY
-========================================================= */
-
 .cover-dark {
 
     position:
@@ -563,10 +648,6 @@ img {
         );
 }
 
-
-/* =========================================================
-   VIGNETTE
-========================================================= */
 
 .cover-vignette {
 
@@ -591,10 +672,6 @@ img {
         none;
 }
 
-
-/* =========================================================
-   COVER FRAME
-========================================================= */
 
 .cover-frame {
 
@@ -626,10 +703,6 @@ img {
         rgba(60,30,15,.08);
 }
 
-
-/* =========================================================
-   COVER CONTENT
-========================================================= */
 
 .cover-content {
 
@@ -667,10 +740,6 @@ img {
         center;
 }
 
-
-/* =========================================================
-   YOU'RE INVITED
-========================================================= */
 
 .cover-invited {
 
@@ -723,10 +792,6 @@ img {
         10px;
 }
 
-
-/* =========================================================
-   NAMES
-========================================================= */
 
 .cover-groom,
 .cover-bride {
@@ -825,11 +890,6 @@ img {
 }
 
 
-/* =========================================================
-   07 — COVER ACTIONS
-   COMPLETELY INDEPENDENT FROM NAMES/FACES
-========================================================= */
-
 .cover-actions {
 
     position:
@@ -861,13 +921,8 @@ img {
 
     z-index:
         20;
-
 }
 
-
-/* =========================================================
-   ENTER CELEBRATION
-========================================================= */
 
 .enter-button {
 
@@ -970,10 +1025,6 @@ img {
         #dfc87b;
 }
 
-
-/* =========================================================
-   DATE + LOCATION
-========================================================= */
 
 .cover-date,
 .cover-location {
@@ -1088,10 +1139,6 @@ img {
 }
 
 
-/* =========================================================
-   COVER ANIMATIONS
-========================================================= */
-
 @keyframes fadeUp {
 
     from {
@@ -1162,9 +1209,540 @@ img {
 }
 
 
+.cover.fade-out {
+
+    opacity:
+        0;
+
+    transform:
+        scale(1.015);
+
+    pointer-events:
+        none;
+}
+
 
 /* =========================================================
-   08 — SECTION BACKGROUND
+   08 — WELCOME INTRODUCTION
+   UNCHANGED
+========================================================= */
+
+.welcome-intro {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    padding:
+        55px 20px;
+
+    background:
+
+        linear-gradient(
+            rgba(248,243,233,.28),
+            rgba(248,243,233,.28)
+        ),
+
+        url("images/welcome-bg.jpg")
+        center center /
+        cover
+        no-repeat,
+
+        var(--cream);
+
+    overflow:
+        hidden;
+}
+
+
+.welcome-card {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    max-width:
+        650px;
+
+    margin:
+        0 auto;
+
+    padding:
+        55px 25px 70px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(135,61,32,.12);
+
+    border-radius:
+        32px;
+
+    background:
+        rgba(255,253,250,.93);
+
+    box-shadow:
+        var(--shadow);
+
+    overflow:
+        hidden;
+}
+
+
+.welcome-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        220px;
+
+    height:
+        220px;
+
+    top:
+        -100px;
+
+    left:
+        -80px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(212,176,93,.08);
+
+    filter:
+        blur(10px);
+
+    pointer-events:
+        none;
+}
+
+
+.welcome-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        240px;
+
+    height:
+        240px;
+
+    bottom:
+        -120px;
+
+    right:
+        -90px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(200,158,146,.08);
+
+    filter:
+        blur(10px);
+
+    pointer-events:
+        none;
+}
+
+
+.welcome-ornament {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        38px;
+
+    color:
+        var(--brown);
+
+    font-size:
+        20px;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(15px)
+        scale(.9);
+
+    transition:
+        opacity .9s ease,
+        transform .9s
+        cubic-bezier(.22,.61,.36,1);
+}
+
+
+.welcome-ornament::before,
+.welcome-ornament::after {
+
+    content:
+        "";
+
+    width:
+        55px;
+
+    height:
+        1px;
+
+    background:
+        rgba(135,61,32,.18);
+}
+
+
+.welcome-card.visible
+.welcome-ornament {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.welcome-groom,
+.welcome-bride {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    font-family:
+        var(--serif);
+
+    font-size:
+        clamp(
+            58px,
+            10vw,
+            88px
+        );
+
+    font-style:
+        italic;
+
+    font-weight:
+        500;
+
+    line-height:
+        .82;
+
+    color:
+        var(--brown);
+
+    text-shadow:
+        0 4px 15px
+        rgba(75,44,28,.08);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(30px)
+        scale(.96);
+
+    transition:
+        opacity 1.15s
+        cubic-bezier(.22,.61,.36,1),
+
+        transform 1.15s
+        cubic-bezier(.22,.61,.36,1);
+}
+
+
+.welcome-groom {
+
+    transition-delay:
+        .15s;
+}
+
+
+.welcome-bride {
+
+    margin-top:
+        20px;
+
+    transition-delay:
+        .45s;
+}
+
+
+.welcome-card.visible
+.welcome-groom,
+.welcome-card.visible
+.welcome-bride {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.welcome-weds {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin:
+        32px 0 0;
+
+    font-family:
+        var(--serif);
+
+    font-size:
+        22px;
+
+    font-style:
+        italic;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        7px;
+
+    color:
+        #c5a46b;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(18px);
+
+    transition:
+        opacity .9s ease .3s,
+        transform .9s ease .3s;
+}
+
+
+.welcome-card.visible
+.welcome-weds {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.welcome-quote {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        600px;
+
+    margin:
+        45px auto 0;
+
+    font-family:
+        var(--serif);
+
+    font-size:
+        clamp(
+            20px,
+            3vw,
+            26px
+        );
+
+    font-style:
+        italic;
+
+    line-height:
+        1.45;
+
+    color:
+        #b77d6c;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity 1s ease .65s,
+
+        transform 1s
+        cubic-bezier(.22,.61,.36,1) .65s;
+}
+
+
+.welcome-card.visible
+.welcome-quote {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.welcome-scroll {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    margin-top:
+        45px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    color:
+        #c79d8e;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        5px;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(10px);
+
+    transition:
+        opacity 1s ease 1s,
+
+        transform 1s
+        ease 1s;
+}
+
+
+.welcome-card.visible
+.welcome-scroll {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.welcome-scroll-arrow {
+
+    font-size:
+        23px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1;
+
+    animation:
+        welcomeArrow
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes welcomeArrow {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+        opacity:
+            .55;
+    }
+
+    50% {
+
+        transform:
+            translateY(7px);
+
+        opacity:
+            1;
+    }
+}
+
+
+/* =========================================================
+   09 — COMMON SECTION BACKGROUND
 ========================================================= */
 
 .section-bg {
@@ -1173,13 +1751,7 @@ img {
         relative;
 
     background:
-
-        linear-gradient(
-            transparent 0 96%,
-            rgba(196,175,143,.13)
-            96% 97%,
-            transparent 97%
-        );
+        var(--cream);
 }
 
 
@@ -1191,7 +1763,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   09 — SECTION CARD
+   10 — SECTION CARD
 ========================================================= */
 
 .section-card {
@@ -1206,7 +1778,7 @@ section:not(.cover) {
         rgba(255,255,255,.93);
 
     border-radius:
-        32px; 
+        32px;
 
     padding:
         48px 25px;
@@ -1217,27 +1789,95 @@ section:not(.cover) {
     border:
         1px solid
         rgba(180,150,120,.10);
-
-    transition:
-        transform .7s
-        cubic-bezier(.22,.61,.36,1),
-        box-shadow .7s ease;
-}
-
-
-.section-card:hover {
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 18px 45px
-        rgba(75,44,28,.10);
 }
 
 
 /* =========================================================
-   10 — SECTION HEADING
+   11 — TEXT ANIMATION SYSTEM
+========================================================= */
+
+.text-animate {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(16px);
+
+    filter:
+        blur(1.5px);
+
+    transition:
+
+        opacity .75s
+        cubic-bezier(.22,.61,.36,1),
+
+        transform .75s
+        cubic-bezier(.22,.61,.36,1),
+
+        filter .75s ease;
+
+    transition-delay:
+        var(--text-delay, 0s);
+}
+
+
+.reveal.visible:not(.lagna) .text-animate {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   TEXT DELAYS
+========================================================= */
+
+.text-delay-1 {
+    --text-delay: .05s;
+}
+
+.text-delay-2 {
+    --text-delay: .18s;
+}
+
+.text-delay-3 {
+    --text-delay: .31s;
+}
+
+.text-delay-4 {
+    --text-delay: .44s;
+}
+
+.text-delay-5 {
+    --text-delay: .57s;
+}
+
+.text-delay-6 {
+    --text-delay: .70s;
+}
+
+.text-delay-7 {
+    --text-delay: .83s;
+}
+
+.text-delay-8 {
+    --text-delay: .96s;
+}
+
+.text-delay-9 {
+    --text-delay: 1.09s;
+}
+
+
+/* =========================================================
+   12 — SECTION HEADING
 ========================================================= */
 
 .section-heading {
@@ -1250,26 +1890,6 @@ section:not(.cover) {
 
     margin-bottom:
         38px;
-
-    opacity:
-        0;
-
-    transform:
-        translateY(12px);
-
-    transition:
-        opacity .8s ease .15s,
-        transform .8s ease .15s;
-}
-
-
-.reveal.visible .section-heading {
-
-    opacity:
-        1;
-
-    transform:
-        translateY(0);
 }
 
 
@@ -1296,34 +1916,68 @@ section:not(.cover) {
 
 
 /* =========================================================
-   11 — REVEAL
+   13 — REVEAL
 ========================================================= */
 
 .reveal {
 
     opacity:
-        0;
+        1;
 
     transform:
-        translateY(45px)
-        scale(.985);
+        none;
 
     filter:
-        blur(2px);
-
-    transition:
-
-        opacity 1s
-        cubic-bezier(.22,.61,.36,1),
-
-        transform 1s
-        cubic-bezier(.22,.61,.36,1),
-
-        filter 1s ease;
+        none;
 }
 
 
-.reveal.visible {
+/* =========================================================
+   14 — LAGNA PATRIKA
+========================================================= */
+
+.lagna {
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   LAGNA PATRIKA — INDIVIDUAL POP
+   ONE-WAY ONLY
+========================================================= */
+
+.lagna .lagna-pop {
+
+    display:
+        block;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(35px)
+        scale(.88);
+
+    filter:
+        blur(5px);
+
+    transition:
+        opacity .55s cubic-bezier(.22,.61,.36,1),
+
+        transform .65s cubic-bezier(.16,1,.3,1),
+
+        filter .55s ease;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+}
+
+
+.lagna .lagna-pop.lagna-visible {
 
     opacity:
         1;
@@ -1338,15 +1992,8 @@ section:not(.cover) {
 
 
 /* =========================================================
-   12 — LAGNA PATRIKA
+   LAGNA TEXT
 ========================================================= */
-
-.lagna {
-
-    text-align:
-        center;
-}
-
 
 .lagna-symbol {
 
@@ -1358,35 +2005,6 @@ section:not(.cover) {
 
     color:
         var(--rose);
-
-    animation:
-        gentleSymbol
-        4s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes gentleSymbol {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0);
-
-        opacity:
-            .65;
-    }
-
-    50% {
-
-        transform:
-            translateY(-4px);
-
-        opacity:
-            .9;
-    }
 }
 
 
@@ -1409,6 +2027,13 @@ section:not(.cover) {
 
     margin-bottom:
         32px;
+}
+
+
+.lagna-intro-line {
+
+    display:
+        block;
 }
 
 
@@ -1453,19 +2078,10 @@ section:not(.cover) {
 }
 
 
-.divider {
+.family-name-line {
 
-    width:
-        30px;
-
-    height:
-        1px;
-
-    background:
-        var(--line);
-
-    margin:
-        30px auto;
+    display:
+        block;
 }
 
 
@@ -1486,7 +2102,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   13 — EVENTS
+   15 — EVENTS
 ========================================================= */
 
 .events {
@@ -1495,6 +2111,54 @@ section:not(.cover) {
         relative;
 }
 
+
+/* =========================================================
+   EVENTS HEADING — POP UP
+========================================================= */
+
+.events .section-heading {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(28px)
+        scale(.90);
+
+    filter:
+        blur(4px);
+
+    transition:
+        opacity .65s
+        cubic-bezier(.22,.61,.36,1),
+
+        transform .75s
+        cubic-bezier(.16,1,.3,1),
+
+        filter .65s ease;
+
+    transition-delay:
+        .05s;
+}
+
+
+.events.visible .section-heading {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
 
 .timeline {
 
@@ -1527,32 +2191,186 @@ section:not(.cover) {
         2px;
 
     background:
+        linear-gradient(
+            to bottom,
+            rgba(135,61,32,.10),
+            rgba(217,199,173,.55),
+            rgba(135,61,32,.10)
+        );
+}
 
+
+/* =========================================================
+   MOVING TIMELINE LINE
+========================================================= */
+
+.timeline-progress {
+
+    position:
+        absolute;
+
+    left:
+        9px;
+
+    top:
+        10px;
+
+    width:
+        2px;
+
+    height:
+        0;
+
+    background:
         linear-gradient(
             to bottom,
             var(--brown),
-            #d9c7ad,
-            transparent
+            var(--gold)
         );
 
-    transform:
-        scaleY(0);
-
     transform-origin:
-        top;
+        top center;
+
+    z-index:
+        2;
+
+    pointer-events:
+        none;
 
     transition:
-        transform 1.5s
-        cubic-bezier(.22,.61,.36,1);
+        height .08s linear;
 }
 
 
-.reveal.visible .timeline::before {
+/* =========================================================
+   EVENT ITEM
+   CIRCLE IS OUTSIDE THE MOVING CARD
+========================================================= */
+
+.event-item {
+
+    position:
+        relative;
+
+    margin-bottom:
+        32px;
+}
+
+
+/* =========================================================
+   EVENT CIRCLE
+   ALWAYS PRESENT
+   DOES NOT MOVE
+========================================================= */
+
+.event-dot {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    left: -37px;
+    top: 25px;
+
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--brown);
+
+    box-shadow:
+        inset 0 0 0 5px var(--cream);
+
+    z-index: 10;
+
+    transform: none !important;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+/* =========================================================
+   INNER DOT
+   HIDDEN UNTIL EVENT IS COMPLETE
+========================================================= */
+
+.event-dot::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    opacity:
+        0;
 
     transform:
-        scaleY(1);
+        translate(-50%, -50%)
+        scale(0);
+
+    transition:
+        opacity .25s ease,
+
+        transform .3s
+        cubic-bezier(.16,1,.3,1);
 }
 
+
+/* =========================================================
+   COMPLETED EVENT CIRCLE
+========================================================= */
+
+.event-item.event-active .event-dot {
+
+    background:
+        var(--gold);
+
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(212,176,93,.14),
+
+        inset 0 0 0 5px
+        var(--gold);
+}
+
+
+.event-item.event-active
+.event-dot::after {
+
+    opacity:
+        1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* =========================================================
+   EVENT CARD
+   EACH CARD SLIDES LEFT → RIGHT
+   ONE-WAY REVEAL
+========================================================= */
 
 .event {
 
@@ -1560,7 +2378,7 @@ section:not(.cover) {
         relative;
 
     margin-bottom:
-        32px;
+        0;
 
     background:
         #fcf7f4;
@@ -1583,20 +2401,29 @@ section:not(.cover) {
         0;
 
     transform:
-        translateX(35px);
+        translateX(-70px);
 
     transition:
-
-        opacity .8s ease,
-
-        transform .8s
+        opacity .65s
         cubic-bezier(.22,.61,.36,1),
 
-        box-shadow .35s ease;
+        transform .75s
+        cubic-bezier(.16,1,.3,1);
+
+    will-change:
+        opacity,
+        transform;
 }
 
 
-.reveal.visible .event {
+/*
+   CARD COMPLETED / REVEALED
+
+   JavaScript adds this once.
+   It is NEVER removed.
+*/
+
+.event.event-visible {
 
     opacity:
         1;
@@ -1606,84 +2433,9 @@ section:not(.cover) {
 }
 
 
-.reveal.visible .event:nth-child(1) {
-
-    transition-delay:
-        .2s;
-}
-
-
-.reveal.visible .event:nth-child(2) {
-
-    transition-delay:
-        .4s;
-}
-
-
-.reveal.visible .event:nth-child(3) {
-
-    transition-delay:
-        .6s;
-}
-
-
-.event:hover {
-
-    box-shadow:
-        0 15px 30px
-        rgba(80,45,25,.10);
-}
-
-
-.event::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        23px;
-
-    height:
-        23px;
-
-    left:
-        -39px;
-
-    top:
-        25px;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--paper);
-
-    border:
-        2px solid
-        var(--brown);
-
-    box-shadow:
-        inset 0 0 0 5px
-        var(--cream);
-
-    transform:
-        scale(0);
-
-    transition:
-        transform .6s
-        cubic-bezier(.34,1.56,.64,1);
-}
-
-
-.reveal.visible .event::before {
-
-    transform:
-        scale(1);
-}
-
+/* =========================================================
+   EVENT CONTENT
+========================================================= */
 
 .event-icon {
 
@@ -1794,34 +2546,18 @@ section:not(.cover) {
 
     cursor:
         pointer;
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-
-.calendar-btn:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 6px 16px
-        rgba(80,45,25,.10);
 }
 
 
 .calendar-btn:active {
 
     transform:
-        translateY(1px)
         scale(.97);
 }
 
 
 /* =========================================================
-   14 — STORY
+   16 — STORY
 ========================================================= */
 
 .story-text {
@@ -1846,31 +2582,11 @@ section:not(.cover) {
 
     color:
         #a36e60;
-
-    opacity:
-        0;
-
-    transform:
-        translateY(20px);
-
-    transition:
-        opacity 1.2s ease .25s,
-        transform 1.2s ease .25s;
-}
-
-
-.reveal.visible .story-text {
-
-    opacity:
-        1;
-
-    transform:
-        translateY(0);
 }
 
 
 /* =========================================================
-   15 — COUPLE
+   17 — COUPLE
 ========================================================= */
 
 .couple-frame {
@@ -1920,19 +2636,6 @@ section:not(.cover) {
         center/
         cover
         no-repeat;
-
-    transform:
-        scale(1.03);
-
-    transition:
-        transform 8s ease;
-}
-
-
-.reveal.visible .couple-photo {
-
-    transform:
-        scale(1);
 }
 
 
@@ -2029,26 +2732,11 @@ section:not(.cover) {
 
     color:
         var(--brown);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-
-.tag:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 8px 18px
-        rgba(50,30,20,.10);
 }
 
 
 /* =========================================================
-   16 — SACRED MOMENT
+   18 — SACRED MOMENT
 ========================================================= */
 
 .sacred-wrapper {
@@ -2068,18 +2756,6 @@ section:not(.cover) {
 
     transform:
         rotate(-1deg);
-
-    transition:
-        transform 1s
-        cubic-bezier(.22,.61,.36,1);
-}
-
-
-.sacred-wrapper:hover {
-
-    transform:
-        rotate(0deg)
-        translateY(-3px);
 }
 
 
@@ -2155,7 +2831,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   17 — GALLERY
+   19 — GALLERY
 ========================================================= */
 
 .gallery {
@@ -2203,15 +2879,7 @@ section:not(.cover) {
         1;
 
     transition:
-        opacity .35s ease,
-        transform 7s ease;
-}
-
-
-.gallery-frame:hover .gallery-image {
-
-    transform:
-        scale(1.025);
+        none;
 }
 
 
@@ -2274,25 +2942,11 @@ section:not(.cover) {
 
     pointer-events:
         auto;
-
-    transition:
-        transform .25s ease,
-        background .25s ease;
-}
-
-
-.gallery-arrow:hover {
-
-    transform:
-        scale(1.08);
-
-    background:
-        rgba(255,255,255,.96);
 }
 
 
 /* =========================================================
-   18 — VENUE
+   20 — VENUE
 ========================================================= */
 
 .venue {
@@ -2330,31 +2984,6 @@ section:not(.cover) {
 
     font-size:
         27px;
-
-    animation:
-        locationPulse
-        3s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes locationPulse {
-
-    0%,
-    100% {
-
-        box-shadow:
-            0 0 0 0
-            rgba(135,61,32,0);
-    }
-
-    50% {
-
-        box-shadow:
-            0 0 0 9px
-            rgba(135,61,32,.045);
-    }
 }
 
 
@@ -2422,26 +3051,11 @@ section:not(.cover) {
 
     text-decoration:
         none;
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-
-.maps-btn:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 7px 18px
-        rgba(70,40,20,.09);
 }
 
 
 /* =========================================================
-   19 — FINAL
+   21 — FINAL
 ========================================================= */
 
 .final {
@@ -2496,7 +3110,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   20 — MOBILE
+   22 — MOBILE
 ========================================================= */
 
 @media(max-width:580px) {
@@ -2572,11 +3186,6 @@ section:not(.cover) {
     }
 
 
-    /* ================================================
-       LOWER CONTROLS
-       PINNED TO BOTTOM
-    ================================================ */
-
     .cover-actions {
 
         position:
@@ -2645,6 +3254,92 @@ section:not(.cover) {
     }
 
 
+    .welcome-intro {
+
+        padding:
+            42px 17px;
+    }
+
+
+    .welcome-card {
+
+        padding:
+            48px 21px 55px;
+
+        border-radius:
+            28px;
+    }
+
+
+    .welcome-ornament {
+
+        margin-bottom:
+            35px;
+    }
+
+
+    .welcome-ornament::before,
+    .welcome-ornament::after {
+
+        width:
+            40px;
+    }
+
+
+    .welcome-groom,
+    .welcome-bride {
+
+        font-size:
+            61px;
+    }
+
+
+    .welcome-bride {
+
+        margin-top:
+            16px;
+    }
+
+
+    .welcome-weds {
+
+        margin-top:
+            28px;
+
+        font-size:
+            19px;
+
+        letter-spacing:
+            5px;
+    }
+
+
+    .welcome-quote {
+
+        margin-top:
+            40px;
+
+        font-size:
+            21px;
+
+        max-width:
+            330px;
+    }
+
+
+    .welcome-scroll {
+
+        margin-top:
+            40px;
+
+        font-size:
+            8px;
+
+        letter-spacing:
+            4px;
+    }
+
+
     .section-card {
 
         padding:
@@ -2699,7 +3394,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   21 — SHORT PHONES
+   23 — SHORT PHONES
 ========================================================= */
 
 @media(max-width:580px) and (max-height:700px) {
@@ -2741,7 +3436,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   22 — VERY SHORT PHONES
+   24 — VERY SHORT PHONES
 ========================================================= */
 
 @media(max-width:580px) and (max-height:600px) {
@@ -2815,7 +3510,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   23 — REDUCED MOTION
+   25 — REDUCED MOTION
 ========================================================= */
 
 @media(prefers-reduced-motion: reduce) {
@@ -2838,81 +3533,13 @@ section:not(.cover) {
     }
 
 }
-/* =========================================================
-   COVER → INVITATION SMOOTH FADE TRANSITION
-========================================================= */
-
-.page-content {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(12px);
-}
-
-.page-content.show {
-    visibility: visible;
-    pointer-events: auto;
-
-    animation:
-        invitationFadeIn
-        1.4s
-        cubic-bezier(.22,.61,.36,1)
-        forwards;
-}
-
-
-/* Cover fades out smoothly */
-
-.cover.fade-out {
-
-    animation:
-        coverFadeOut
-        1.2s
-        cubic-bezier(.22,.61,.36,1)
-        forwards;
-
-    pointer-events:
-        none;
-}
-
-
-/* Cover fade */
-
-@keyframes coverFadeOut {
-
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(1.015);
-    }
-}
-
-
-/* Invitation fade */
-
-@keyframes invitationFadeIn {
-
-    0% {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 </style>
 
 </head>
 
 
-<body>
+<body class="invitation-locked">
 
 
 <!-- =====================================================
@@ -2935,10 +3562,6 @@ section:not(.cover) {
 </div>
 
 
-<!-- =====================================================
-     SUBTLE PETALS
-====================================================== -->
-
 <div class="wedding-particles"
      aria-hidden="true">
 </div>
@@ -2955,32 +3578,17 @@ section:not(.cover) {
          id="cover">
 
 
-    <!-- BACKGROUND PHOTO -->
-
     <div class="cover-photo"></div>
-
-
-    <!-- DARK OVERLAY -->
 
     <div class="cover-dark"></div>
 
-
-    <!-- VIGNETTE -->
-
     <div class="cover-vignette"></div>
-
-
-    <!-- FRAME -->
 
     <div class="cover-frame"></div>
 
 
-    <!-- CONTENT -->
-
     <div class="cover-content">
 
-
-        <!-- INVITATION -->
 
         <div class="cover-invited">
 
@@ -2993,35 +3601,23 @@ section:not(.cover) {
         </div>
 
 
-        <!-- GROOM -->
-
         <div class="cover-groom">
             Sanjay B M
         </div>
 
-
-        <!-- WEDS -->
 
         <div class="cover-weds">
             WEDS
         </div>
 
 
-        <!-- BRIDE -->
-
         <div class="cover-bride">
             Sindhu H M
         </div>
 
 
-        <!-- =================================================
-             ACTIONS
-        ================================================== -->
-
         <div class="cover-actions">
 
-
-            <!-- ENTER CELEBRATION -->
 
             <button
                 class="enter-button"
@@ -3037,8 +3633,6 @@ section:not(.cover) {
             </button>
 
 
-            <!-- DATE -->
-
             <div class="cover-date">
 
                 <span>
@@ -3051,8 +3645,6 @@ section:not(.cover) {
 
             </div>
 
-
-            <!-- LOCATION -->
 
             <a
                 href="https://maps.app.goo.gl/R5r4QzN5Gu3CftrY6?g_st=ic"
@@ -3079,20 +3671,80 @@ section:not(.cover) {
 
 </section>
 
-<div class="page-content" id="pageContent">
 
+<div class="page-content"
+     id="pageContent">
 
 
 <!-- =====================================================
-     02 — LAGNA PATRIKA
+     02 — WELCOME INTRODUCTION
+====================================================== -->
+
+<section class="welcome-intro">
+
+    <div class="welcome-card"
+         id="welcomeCard">
+
+
+        <div class="welcome-ornament">
+
+            <span>✦</span>
+
+            <span>❖</span>
+
+            <span>✦</span>
+
+        </div>
+
+
+        <div class="welcome-groom">
+            Sanjay B M
+        </div>
+
+
+        <div class="welcome-weds">
+            WEDS
+        </div>
+
+
+        <div class="welcome-bride">
+            Sindhu H M
+        </div>
+
+
+        <div class="welcome-quote">
+
+            “Two souls, one beautiful journey,
+            a lifetime of love”
+
+        </div>
+
+
+        <div class="welcome-scroll">
+
+            <span>
+                SCROLL TO EXPLORE
+            </span>
+
+            <span class="welcome-scroll-arrow">
+                ↓
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     03 — LAGNA PATRIKA
 ====================================================== -->
 
 <section class="section-bg">
 
-
-    <div class="section-card
-                lagna
-                reveal">
+    <div class="section-card lagna">
 
 
         <div class="lagna-symbol">
@@ -3100,7 +3752,7 @@ section:not(.cover) {
         </div>
 
 
-        <div class="section-heading">
+        <div class="section-heading lagna-pop">
 
             <h2>
                 LAGNA PATRIKA
@@ -3111,64 +3763,101 @@ section:not(.cover) {
 
         <div class="lagna-intro">
 
-            WITH THE BLESSINGS OF THE DIVINE
-            AND THE LOVE OF OUR FAMILIES
+            <span class="lagna-pop">
+                WITH THE BLESSINGS OF THE DIVINE
+            </span>
+
+            <span class="lagna-pop">
+                AND THE LOVE OF OUR FAMILIES
+            </span>
 
         </div>
 
 
-        <div class="family-title">
+        <div class="family-title lagna-pop">
+
             BRIDE'S PARENTS:
+
         </div>
 
 
         <div class="family-name">
-            Smt. Ambuja <span style="font-family: 'Times New Roman', serif;">&</span><br>Sri. Moogappa
+
+            <span class="family-name-line lagna-pop">
+                Smt. Ambuja
+            </span>
+
+            <span class="family-name-line lagna-pop">
+                &
+            </span>
+
+            <span class="family-name-line lagna-pop">
+                Sri. Moogappa
+            </span>
+
         </div>
 
 
         <div class="divider"></div>
 
 
-        <div class="family-title">
+        <div class="family-title lagna-pop">
+
             GROOM'S PARENTS:
+
         </div>
 
 
         <div class="family-name">
-            Smt. N Gowramma <span style="font-family: 'Times New Roman', serif;">&</span><br>Sri. Late B M Mallesh
+
+            <span class="family-name-line lagna-pop">
+                Smt. N Gowramma
+            </span>
+
+            <span class="family-name-line lagna-pop">
+                &
+            </span>
+
+            <span class="family-name-line lagna-pop">
+                Sri. Late B M Mallesh
+            </span>
+
         </div>
 
 
         <div class="divider"></div>
 
 
-        <div class="family-title">
+        <div class="family-title lagna-pop">
+
             WITH LOVE & BLESSINGS
+
         </div>
 
 
         <div class="family-message">
 
-            We warmly invite you to celebrate
-            the wedding of Sanjay B M & Sindhu H M.
+            <span class="lagna-pop">
+                We warmly invite you to celebrate
+            </span>
+
+            <span class="lagna-pop">
+                the wedding of Sanjay B M & Sindhu H M.
+            </span>
 
         </div>
 
 
     </div>
 
-
 </section>
 
 
-
 <!-- =====================================================
-     03 — EVENTS
+     04 — EVENTS
 ====================================================== -->
 
 <section class="section-bg">
-
 
     <div class="section-card
                 events
@@ -3186,154 +3875,229 @@ section:not(.cover) {
 
         <div class="timeline">
 
+            <div
+                class="timeline-progress"
+                id="timelineProgress">
+            </div>
 
-            <div class="event">
 
-                <div class="event-icon">
-                    🌼
+            <!-- =========================================
+                 EVENT 01
+            ========================================== -->
+
+            <div class="event-item">
+
+                <!-- FIXED TIMELINE CIRCLE -->
+
+                <div
+                    class="event-dot"
+                    aria-hidden="true">
                 </div>
 
-                <h3>
-                    Haldi & Mehendi Ceremony
-                </h3>
 
-                <div class="event-date">
-                    12 November 2026
-                </div>
+                <!-- MOVING CARD -->
 
-                <div class="event-description">
+                <div class="event">
 
-                    A joyful celebration filled with
-                    family, blessings and traditional
-                    wedding festivities.
+                    <div class="event-icon">
+                        🌼
+                    </div>
 
-                    <br><br>
 
-                    <strong>Dress Code: Yellow</strong>
+                    <h3>
+                        Haldi & Mehendi Ceremony
+                    </h3>
 
-                    <br><br>
 
-                    <em>Time & Venue to be announced</em>
+                    <div class="event-date">
+                        12 November 2026
+                    </div>
+
+
+                    <div class="event-description">
+
+                        A joyful celebration filled with
+                        family, blessings and traditional
+                        wedding festivities.
+
+                        <br><br>
+
+                        <strong>
+                            Dress Code: Yellow
+                        </strong>
+
+                        <br><br>
+
+                        <em>
+                            Time & Venue to be announced
+                        </em>
+
+                    </div>
 
                 </div>
 
             </div>
 
-            <div class="event">
 
-                <div class="event-icon">
-                    ✨
+            <!-- =========================================
+                 EVENT 02
+            ========================================== -->
+
+            <div class="event-item">
+
+                <!-- FIXED TIMELINE CIRCLE -->
+
+                <div
+                    class="event-dot"
+                    aria-hidden="true">
                 </div>
 
-                <h3>
-                    Reception
-                </h3>
 
-                <div class="event-date">
-                    15 November 2026 · 6:00 PM
+                <!-- MOVING CARD -->
+
+                <div class="event">
+
+                    <div class="event-icon">
+                        ✨
+                    </div>
+
+
+                    <h3>
+                        Reception
+                    </h3>
+
+
+                    <div class="event-date">
+                        15 November 2026 · 6:00 PM
+                    </div>
+
+
+                    <div class="event-description">
+
+                        An evening of celebration,
+                        togetherness and cherished memories.
+
+                        <br><br>
+
+                        <strong>
+                            SHATHASHRUNGA POLICE BHAVANA
+                        </strong>
+
+                        <br>
+
+                        Gulpet, Gowripete, Kolar,
+                        Karnataka – 563101
+
+                    </div>
+
+
+                    <button
+                        class="calendar-btn"
+                        type="button"
+                        onclick="addCalendar(
+                            'Reception',
+                            '2026-11-15T18:00:00+05:30'
+                        )">
+
+                        📅 ADD TO CALENDAR
+
+                    </button>
+
                 </div>
-
-                <div class="event-description">
-
-                    An evening of celebration,
-                    togetherness and cherished memories.
-
-                    <br><br>
-
-                    <strong>
-                        SHATHASHRUNGA POLICE BHAVANA
-                    </strong>
-
-                    <br>
-
-                    Gulpet, Gowripete, Kolar,
-                    Karnataka – 563101
-
-                </div>
-
-                <button
-                    class="calendar-btn"
-                    type="button"
-                    onclick="addCalendar(
-                        'Reception',
-                        '2026-11-15T18:00:00+05:30'
-                    )">
-
-                    📅 ADD TO CALENDAR
-
-                </button>
 
             </div>
 
-            <div class="event">
 
-                <div class="event-icon">
-                    🌿
+            <!-- =========================================
+                 EVENT 03
+            ========================================== -->
+
+            <div class="event-item">
+
+                <!-- FIXED TIMELINE CIRCLE -->
+
+                <div
+                    class="event-dot"
+                    aria-hidden="true">
                 </div>
 
-                <h3>
-                    Wedding Ceremony
-                </h3>
 
-                <div class="event-date">
-                    16 November 2026 · 9:30 AM
+                <!-- MOVING CARD -->
+
+                <div class="event">
+
+                    <div class="event-icon">
+                        🌿
+                    </div>
+
+
+                    <h3>
+                        Wedding Ceremony
+                    </h3>
+
+
+                    <div class="event-date">
+                        16 November 2026 · 9:30 AM
+                    </div>
+
+
+                    <div class="event-description">
+
+                        A sacred Karnataka wedding ceremony
+                        surrounded by family, traditions
+                        and blessings.
+
+                        <br><br>
+
+                        <strong>
+                            SHATHASHRUNGA POLICE BHAVANA
+                        </strong>
+
+                        <br>
+
+                        Gulpet, Gowripete, Kolar,
+                        Karnataka – 563101
+
+                    </div>
+
+
+                    <button
+                        class="calendar-btn"
+                        type="button"
+                        onclick="addCalendar(
+                            'Wedding Ceremony',
+                            '2026-11-16T09:30:00+05:30'
+                        )">
+
+                        📅 ADD TO CALENDAR
+
+                    </button>
+
                 </div>
-
-                <div class="event-description">
-
-                    A sacred Karnataka wedding ceremony
-                    surrounded by family, traditions
-                    and blessings.
-
-                    <br><br>
-
-                    <strong>
-                        SHATHASHRUNGA POLICE BHAVANA
-                    </strong>
-
-                    <br>
-
-                    Gulpet, Gowripete, Kolar,
-                    Karnataka – 563101
-
-                </div>
-
-                <button
-                    class="calendar-btn"
-                    type="button"
-                    onclick="addCalendar(
-                        'Wedding Ceremony',
-                        '2026-11-16T09:30:00+05:30'
-                    )">
-
-                    📅 ADD TO CALENDAR
-
-                </button>
 
             </div>
+
 
         </div>
 
-
     </div>
-
 
 </section>
 
 
-
 <!-- =====================================================
-     04 — STORY
+     05 — STORY
 ====================================================== -->
 
 <section class="section-bg">
-
 
     <div class="section-card
                 reveal">
 
 
-        <div class="section-heading">
+        <div class="section-heading
+                    text-animate
+                    text-delay-1">
 
             <h2>
                 OUR STORY
@@ -3342,7 +4106,9 @@ section:not(.cover) {
         </div>
 
 
-        <p class="story-text">
+        <p class="story-text
+                  text-animate
+                  text-delay-2">
 
             “Their story began at Cambridge Institute of Technology.
             Over four beautiful years, friendship grew
@@ -3359,23 +4125,22 @@ section:not(.cover) {
 
     </div>
 
-
 </section>
 
 
-
 <!-- =====================================================
-     05 — MEET THE COUPLE
+     06 — MEET THE COUPLE
 ====================================================== -->
 
 <section class="section-bg">
-
 
     <div class="section-card
                 reveal">
 
 
-        <div class="section-heading">
+        <div class="section-heading
+                    text-animate
+                    text-delay-1">
 
             <h2>
                 MEET THE COUPLE
@@ -3386,66 +4151,79 @@ section:not(.cover) {
 
         <div class="couple-frame">
 
-
             <div class="couple-photo">
 
+                <div class="couple-caption
+                            text-animate
+                            text-delay-2">
 
-                <div class="couple-caption">
                     Sanjay & Sindhu
+
                 </div>
 
-
             </div>
-
 
         </div>
 
 
         <div class="couple-tags">
 
+            <span class="tag
+                         text-animate
+                         text-delay-3">
 
-            <span class="tag">
                 TOGETHER
+
             </span>
 
 
-            <span class="tag">
+            <span class="tag
+                         text-animate
+                         text-delay-4">
+
                 SOULMATES
+
             </span>
 
 
-            <span class="tag">
+            <span class="tag
+                         text-animate
+                         text-delay-5">
+
                 BEST FRIENDS
+
             </span>
 
 
-            <span class="tag">
+            <span class="tag
+                         text-animate
+                         text-delay-6">
+
                 FOREVER & ALWAYS
-            </span>
 
+            </span>
 
         </div>
 
 
     </div>
 
-
 </section>
 
 
-
 <!-- =====================================================
-     06 — SACRED MOMENT
+     07 — SACRED MOMENT
 ====================================================== -->
 
 <section class="section-bg">
-
 
     <div class="section-card
                 reveal">
 
 
-        <div class="section-heading">
+        <div class="section-heading
+                    text-animate
+                    text-delay-1">
 
             <h2>
                 OUR SACRED MOMENT
@@ -3456,41 +4234,40 @@ section:not(.cover) {
 
         <div class="sacred-wrapper">
 
-
             <div class="sacred-photo">
 
+                <div class="sacred-caption
+                            text-animate
+                            text-delay-2">
 
-                <div class="sacred-caption">
                     Made for Each Other
+
                 </div>
 
-
             </div>
-
 
         </div>
 
 
     </div>
 
-
 </section>
 
 
-
 <!-- =====================================================
-     07 — GALLERY
+     08 — GALLERY
 ====================================================== -->
 
 <section class="section-bg">
-
 
     <div class="section-card
                 gallery
                 reveal">
 
 
-        <div class="section-heading">
+        <div class="section-heading
+                    text-animate
+                    text-delay-1">
 
             <h2>
                 OUR GALLERY
@@ -3501,7 +4278,6 @@ section:not(.cover) {
 
         <div class="gallery-frame">
 
-
             <img
                 id="galleryImage"
                 class="gallery-image"
@@ -3511,12 +4287,10 @@ section:not(.cover) {
                 decoding="async"
                 draggable="false">
 
-
         </div>
 
 
         <div class="gallery-controls">
-
 
             <button
                 class="gallery-arrow"
@@ -3539,30 +4313,28 @@ section:not(.cover) {
 
             </button>
 
-
         </div>
 
 
     </div>
 
-
 </section>
 
 
-
 <!-- =====================================================
-     08 — VENUE
+     09 — VENUE
 ====================================================== -->
 
 <section class="section-bg">
-
 
     <div class="section-card
                 venue
                 reveal">
 
 
-        <div class="section-heading">
+        <div class="section-heading
+                    text-animate
+                    text-delay-1">
 
             <h2>
                 VENUE
@@ -3576,12 +4348,18 @@ section:not(.cover) {
         </div>
 
 
-        <div class="venue-name">
+        <div class="venue-name
+                    text-animate
+                    text-delay-2">
+
             Shathashrunga Police Bhavana
+
         </div>
 
 
-        <div class="venue-address">
+        <div class="venue-address
+                    text-animate
+                    text-delay-3">
 
             Gulpet, Gowripete, Kolar
 
@@ -3593,7 +4371,9 @@ section:not(.cover) {
 
 
         <a
-            class="maps-btn"
+            class="maps-btn
+                   text-animate
+                   text-delay-4"
             href="https://maps.app.goo.gl/R5r4QzN5Gu3CftrY6?g_st=ic"
             target="_blank"
             rel="noopener noreferrer">
@@ -3605,40 +4385,42 @@ section:not(.cover) {
 
     </div>
 
-
 </section>
 
 
-
 <!-- =====================================================
-     09 — FINAL
+     10 — FINAL
 ====================================================== -->
 
 <section class="final section-bg">
 
-
     <div class="reveal">
 
+        <div class="final-names
+                    text-animate
+                    text-delay-1">
 
-        <div class="final-names">
             SANJAY & SINDHU
+
         </div>
 
 
-        <div class="final-message">
+        <div class="final-message
+                    text-animate
+                    text-delay-2">
+
             WITH LOVE & BLESSINGS 🙏
-        </div>
 
+        </div>
 
     </div>
-
 
 </section>
 
 
 </div>
-</div>
 
+</div>
 
 
 <script>
@@ -3655,7 +4437,6 @@ window.addEventListener(
             document.getElementById(
                 "pageLoader"
             );
-
 
         setTimeout(
             function() {
@@ -3676,42 +4457,108 @@ window.addEventListener(
    02 — ENTER CELEBRATION
 ========================================================= */
 
+let celebrationEntered =
+    false;
+
+
 function enterCelebration() {
 
-    const target =
-        document.querySelector(
-            ".lagna"
-        );
-
-
-    if (!target) {
-
-        window.scrollTo({
-
-            top:
-                window.innerHeight,
-
-            behavior:
-                "smooth"
-
-        });
-
+    if (celebrationEntered) {
         return;
     }
 
 
-    target.scrollIntoView({
-
-        behavior:
-            "smooth",
-
-        block:
-            "start"
-
-    });
+    const cover =
+        document.getElementById(
+            "cover"
+        );
 
 
-    createCelebrationSparkles();
+    const pageContent =
+        document.getElementById(
+            "pageContent"
+        );
+
+
+    if (
+        !cover ||
+        !pageContent
+    ) {
+        return;
+    }
+
+
+    celebrationEntered =
+        true;
+
+
+    window.scrollTo(
+        0,
+        0
+    );
+
+
+    document.body.classList.remove(
+        "invitation-locked"
+    );
+
+
+    pageContent.classList.add(
+        "show"
+    );
+
+
+    requestAnimationFrame(
+        function() {
+
+            cover.classList.add(
+                "fade-out"
+            );
+
+        }
+    );
+
+
+    setTimeout(
+        function() {
+
+            const welcomeCard =
+                document.getElementById(
+                    "welcomeCard"
+                );
+
+
+            if (welcomeCard) {
+
+                welcomeCard.classList.add(
+                    "visible"
+                );
+
+            }
+
+
+            createCelebrationSparkles();
+
+        },
+        250
+    );
+
+
+    setTimeout(
+        function() {
+
+            cover.style.display =
+                "none";
+
+
+            window.scrollTo(
+                0,
+                0
+            );
+
+        },
+        1400
+    );
 
 }
 
@@ -3783,7 +4630,7 @@ function createCelebrationSparkles() {
 
 
 /* =========================================================
-   04 — SCROLL REVEAL
+   04 — GENERAL SCROLL REVEAL
 ========================================================= */
 
 const reveals =
@@ -3821,13 +4668,11 @@ const revealObserver =
         },
 
         {
-
             threshold:
-                .14,
+                0.14,
 
             rootMargin:
                 "0px 0px -50px 0px"
-
         }
 
     );
@@ -3845,7 +4690,405 @@ reveals.forEach(
 
 
 /* =========================================================
-   05 — FLOATING PETALS
+   05 — LAGNA PATRIKA
+       75% SCREEN TRIGGER
+       ONE-WAY POP ONLY
+========================================================= */
+
+const lagnaElements =
+    document.querySelectorAll(
+        ".lagna .lagna-pop"
+    );
+
+
+function getDocumentTop(element) {
+
+    let top =
+        0;
+
+    let current =
+        element;
+
+
+    while (current) {
+
+        top +=
+            current.offsetTop;
+
+        current =
+            current.offsetParent;
+
+    }
+
+
+    return top;
+}
+
+
+function updateLagnaAnimation() {
+
+    if (
+        !lagnaElements.length
+    ) {
+        return;
+    }
+
+
+    const triggerY =
+        window.scrollY +
+        (
+            window.innerHeight *
+            0.75
+        );
+
+
+    lagnaElements.forEach(
+        function(element) {
+
+            if (
+                element.classList.contains(
+                    "lagna-visible"
+                )
+            ) {
+                return;
+            }
+
+
+            const elementTop =
+                getDocumentTop(
+                    element
+                );
+
+
+            if (
+                triggerY >=
+                elementTop
+            ) {
+
+                element.classList.add(
+                    "lagna-visible"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+let lagnaAnimationFrame =
+    false;
+
+
+function requestLagnaAnimation() {
+
+    if (
+        lagnaAnimationFrame
+    ) {
+        return;
+    }
+
+
+    lagnaAnimationFrame =
+        true;
+
+
+    requestAnimationFrame(
+        function() {
+
+            updateLagnaAnimation();
+
+            lagnaAnimationFrame =
+                false;
+
+        }
+    );
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    requestLagnaAnimation,
+    {
+        passive:
+            true
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    requestLagnaAnimation
+);
+
+
+window.addEventListener(
+    "load",
+    updateLagnaAnimation
+);
+
+
+setTimeout(
+    updateLagnaAnimation,
+    300
+);
+
+/* =========================================================
+   06 — EVENTS TIMELINE
+       75% SCREEN TRIGGER
+       CARD = ONE-WAY
+       CIRCLE = TWO-WAY
+========================================================= */
+
+const timeline =
+    document.querySelector(
+        ".timeline"
+    );
+
+
+const timelineProgress =
+    document.getElementById(
+        "timelineProgress"
+    );
+
+
+const eventItems =
+    document.querySelectorAll(
+        ".events .event-item"
+    );
+
+
+const eventCards =
+    document.querySelectorAll(
+        ".events .event"
+    );
+
+
+/* =========================================================
+   GET ORIGINAL DOCUMENT POSITION
+========================================================= */
+
+function getEventDocumentTop(element) {
+
+    let top = 0;
+
+    let current = element;
+
+
+    while (current) {
+
+        top += current.offsetTop;
+
+        current = current.offsetParent;
+
+    }
+
+
+    return top;
+}
+
+
+/* =========================================================
+   TIMELINE LINE
+========================================================= */
+
+function updateTimelineProgress() {
+
+    if (
+        !timeline ||
+        !timelineProgress
+    ) {
+        return;
+    }
+
+
+    const triggerY =
+        window.innerHeight * 0.75;
+
+
+    const timelineRect =
+        timeline.getBoundingClientRect();
+
+
+    const timelineStart =
+        timelineRect.top + 10;
+
+
+    let progress =
+        triggerY - timelineStart;
+
+
+    const timelineHeight =
+        timelineRect.height - 20;
+
+
+    progress =
+        Math.max(
+            0,
+            Math.min(
+                progress,
+                timelineHeight
+            )
+        );
+
+
+    timelineProgress.style.height =
+        progress + "px";
+}
+
+
+/* =========================================================
+   EVENT CARDS + CIRCLES
+========================================================= */
+
+function updateEventCards() {
+
+    if (!eventCards.length) {
+        return;
+    }
+
+
+    const triggerPoint =
+        window.scrollY +
+        (window.innerHeight * 0.75);
+
+
+    eventCards.forEach(
+        function(eventCard, index) {
+
+            const eventTop =
+                getEventDocumentTop(
+                    eventCard
+                );
+
+
+            /*
+             * CARD ANIMATION
+             *
+             * Once visible, it stays visible.
+             */
+
+            if (
+                triggerPoint >= eventTop
+            ) {
+
+                eventCard.classList.add(
+                    "event-visible"
+                );
+
+            }
+
+
+            /*
+             * CIRCLE STATE
+             *
+             * Above trigger:
+             * → hollow
+             *
+             * Reaches trigger:
+             * → gold + inner dot
+             *
+             * Scroll back:
+             * → hollow again
+             */
+
+            if (
+                eventItems[index]
+            ) {
+
+                if (
+                    triggerPoint >= eventTop
+                ) {
+
+                    eventItems[index].classList.add(
+                        "event-active"
+                    );
+
+                }
+
+                else {
+
+                    eventItems[index].classList.remove(
+                        "event-active"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+}
+
+
+/* =========================================================
+   PERFORMANCE
+========================================================= */
+
+let eventAnimationFrame =
+    false;
+
+
+function requestEventsAnimation() {
+
+    if (
+        eventAnimationFrame
+    ) {
+        return;
+    }
+
+
+    eventAnimationFrame =
+        true;
+
+
+    requestAnimationFrame(
+        function() {
+
+            updateTimelineProgress();
+
+            updateEventCards();
+
+            eventAnimationFrame =
+                false;
+
+        }
+    );
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    requestEventsAnimation,
+    {
+        passive: true
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    requestEventsAnimation
+);
+
+
+window.addEventListener(
+    "load",
+    requestEventsAnimation
+);
+
+
+setTimeout(
+    requestEventsAnimation,
+    300
+);
+
+
+/* =========================================================
+   07 — FLOATING PETALS
 ========================================================= */
 
 const particleContainer =
@@ -3867,26 +5110,31 @@ function createPetal() {
 
 
     petal.style.left =
-        Math.random() * 100
-        + "%";
+        Math.random() *
+        100 +
+        "%";
 
 
     petal.style.animationDuration =
         (
             9 +
-            Math.random() * 8
+            Math.random() *
+            8
         )
-        + "s";
+        +
+        "s";
 
 
     petal.style.animationDelay =
-        Math.random() * 2
-        + "s";
+        Math.random() *
+        2 +
+        "s";
 
 
     petal.style.transform =
         "rotate(" +
-        Math.random() * 180 +
+        Math.random() *
+        180 +
         "deg)";
 
 
@@ -3925,7 +5173,7 @@ setInterval(
 
 
 /* =========================================================
-   06 — COVER PARALLAX
+   08 — COVER PARALLAX
 ========================================================= */
 
 const cover =
@@ -4019,7 +5267,7 @@ if (
 
 
 /* =========================================================
-   07 — GALLERY
+   09 — GALLERY
 ========================================================= */
 
 const galleryImages = [
@@ -4049,25 +5297,10 @@ const galleryImage =
 
 function showGalleryImage() {
 
-    galleryImage.style.opacity =
-        "0";
-
-
-    setTimeout(
-        function() {
-
-            galleryImage.src =
-                galleryImages[
-                    galleryIndex
-                ];
-
-
-            galleryImage.style.opacity =
-                "1";
-
-        },
-        220
-    );
+    galleryImage.src =
+        galleryImages[
+            galleryIndex
+        ];
 
 }
 
@@ -4103,7 +5336,8 @@ function previousImage() {
     ) {
 
         galleryIndex =
-            galleryImages.length - 1;
+            galleryImages.length -
+            1;
 
     }
 
@@ -4114,7 +5348,7 @@ function previousImage() {
 
 
 /* =========================================================
-   08 — GALLERY AUTOPLAY
+   10 — GALLERY AUTOPLAY
 ========================================================= */
 
 let galleryTimer =
@@ -4141,7 +5375,7 @@ function resetGalleryTimer() {
 
 
 /* =========================================================
-   09 — GALLERY SWIPE
+   11 — GALLERY SWIPE
 ========================================================= */
 
 let touchStartX =
@@ -4218,7 +5452,7 @@ galleryImage.addEventListener(
 
 
 /* =========================================================
-   10 — CALENDAR
+   12 — CALENDAR
 ========================================================= */
 
 function addCalendar(
@@ -4350,7 +5584,7 @@ function addCalendar(
 
 
 /* =========================================================
-   11 — PREVENT IMAGE DRAG
+   13 — PREVENT IMAGE DRAG
 ========================================================= */
 
 document
@@ -4372,7 +5606,7 @@ document
 
 
 /* =========================================================
-   12 — VISIBILITY
+   14 — VISIBILITY
 ========================================================= */
 
 document.addEventListener(
@@ -4398,64 +5632,6 @@ document.addEventListener(
 
     }
 );
-
-function enterCelebration() {
-
-    const cover =
-        document.getElementById("cover");
-
-    const pageContent =
-        document.getElementById("pageContent");
-
-
-    if (!cover || !pageContent) {
-        return;
-    }
-
-
-    /* Prevent multiple clicks */
-    if (cover.classList.contains("fade-out")) {
-        return;
-    }
-
-
-    /* Start cover fade-out */
-    cover.classList.add("fade-out");
-
-
-    /*
-       Begin invitation fade-in slightly before
-       the cover completely disappears.
-       This creates a smooth cross-fade.
-    */
-
-    setTimeout(function() {
-
-        pageContent.classList.add("show");
-
-    }, 450);
-
-
-    /*
-       After cover animation finishes,
-       remove it from the layout completely.
-    */
-
-    setTimeout(function() {
-
-        cover.style.display = "none";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
-
-
-        createCelebrationSparkles();
-
-    }, 1250);
-
-}
 
 </script>
 
