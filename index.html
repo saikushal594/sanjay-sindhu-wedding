@@ -3244,39 +3244,81 @@ section:not(.cover) {
         none;
 }
 
-
 /* =========================================================
    19 — GALLERY
 ========================================================= */
 
 .gallery {
-
-    position:
-        relative;
+    position: relative;
 }
 
+
+/* =========================================================
+   GALLERY FRAME
+========================================================= */
 
 .gallery-frame {
 
-    padding:
-        11px;
+    position: relative;
 
-    background:
-        white;
+    width: 100%;
 
-    border-radius:
-        30px;
+    padding: 11px;
 
-    border:
-        1px solid
-        #ddc083;
+    background: #ffffff;
 
-    overflow:
-        hidden;
+    border-radius: 30px;
+
+    border: 1px solid #ddc083;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px
+        rgba(80,45,25,.08);
 }
 
 
-.gallery-image {
+/* =========================================================
+   GALLERY TRACK
+========================================================= */
+
+.gallery-track {
+
+    display: flex;
+
+    width: 100%;
+
+    transform: translate3d(0,0,0);
+
+    will-change: transform;
+
+    cursor: grab;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: pan-y;
+}
+
+
+.gallery-track.dragging {
+
+    cursor: grabbing;
+
+    transition: none !important;
+}
+
+
+/* =========================================================
+   EACH PHOTO
+========================================================= */
+
+.gallery-slide {
+
+    flex:
+        0 0 100%;
 
     width:
         100%;
@@ -3284,19 +3326,105 @@ section:not(.cover) {
     aspect-ratio:
         4 / 5;
 
-    object-fit:
-        cover;
+    position:
+        relative;
+
+    overflow:
+        hidden;
 
     border-radius:
         22px;
+}
 
-    opacity:
-        1;
 
-    transition:
+.gallery-slide img {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+
+    -webkit-user-drag:
+        none;
+
+    pointer-events:
         none;
 }
 
+
+/* =========================================================
+   COUNTER
+========================================================= */
+
+.gallery-counter {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        24px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:
+        10;
+
+    padding:
+        7px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.55);
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(35,22,16,.42);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    color:
+        white;
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        3px;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   ARROWS
+========================================================= */
 
 .gallery-controls {
 
@@ -3324,6 +3452,9 @@ section:not(.cover) {
     transform:
         translateY(-50%);
 
+    z-index:
+        10;
+
     pointer-events:
         none;
 }
@@ -3332,33 +3463,138 @@ section:not(.cover) {
 .gallery-arrow {
 
     width:
-        45px;
+        46px;
 
     height:
-        45px;
+        46px;
 
     border-radius:
         50%;
 
     border:
-        0;
+        1px solid
+        rgba(255,255,255,.7);
 
     background:
-        rgba(255,255,255,.82);
+        rgba(255,255,255,.72);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
 
     color:
         var(--brown);
 
+    font-family:
+        Arial,
+        sans-serif;
+
     font-size:
-        23px;
+        27px;
+
+    line-height:
+        1;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     cursor:
         pointer;
 
     pointer-events:
         auto;
+
+    box-shadow:
+        0 6px 18px
+        rgba(50,30,20,.12);
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
 }
 
+
+.gallery-arrow:hover {
+
+    transform:
+        scale(1.08);
+
+    background:
+        rgba(255,255,255,.92);
+}
+
+
+.gallery-arrow:active {
+
+    transform:
+        scale(.92);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:580px) {
+
+    .gallery-frame {
+
+        padding:
+            9px;
+
+        border-radius:
+            27px;
+    }
+
+
+    .gallery-slide {
+
+        border-radius:
+            20px;
+    }
+
+
+    .gallery-controls {
+
+        padding:
+            0 10px;
+    }
+
+
+    .gallery-arrow {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        font-size:
+            22px;
+    }
+
+
+    .gallery-counter {
+
+        bottom:
+            19px;
+
+        font-size:
+            9px;
+
+        padding:
+            6px 12px;
+    }
+
+}
 
 /* =========================================================
    20 — VENUE
@@ -4981,7 +5217,6 @@ section:not(.cover) {
 
 </section>
 
-
 <!-- =====================================================
      08 — GALLERY
 ====================================================== -->
@@ -5001,102 +5236,89 @@ section:not(.cover) {
         </div>
 
 
-        <div class="gallery-frame">
+        <div class="gallery-frame"
+             id="galleryFrame">
 
-            <img
-                id="galleryImage"
-                class="gallery-image"
-                src="images/gallery1.jpg"
-                alt="Sanjay and Sindhu"
-                loading="lazy"
-                decoding="async"
-                draggable="false">
+            <div class="gallery-track"
+                 id="galleryTrack">
 
-        </div>
+                <div class="gallery-slide">
+                    <img
+                        src="images/gallery1.jpg"
+                        alt="Sanjay and Sindhu"
+                        draggable="false">
+                </div>
+
+                <div class="gallery-slide">
+                    <img
+                        src="images/gallery2.jpg"
+                        alt="Sanjay and Sindhu"
+                        draggable="false">
+                </div>
+
+                <div class="gallery-slide">
+                    <img
+                        src="images/gallery3.jpg"
+                        alt="Sanjay and Sindhu"
+                        draggable="false">
+                </div>
+
+                <div class="gallery-slide">
+                    <img
+                        src="images/gallery4.jpg"
+                        alt="Sanjay and Sindhu"
+                        draggable="false">
+                </div>
+
+                <div class="gallery-slide">
+                    <img
+                        src="images/gallery5.jpg"
+                        alt="Sanjay and Sindhu"
+                        draggable="false">
+                </div>
+
+            </div>
 
 
-        <div class="gallery-controls">
+            <div
+                class="gallery-counter"
+                id="galleryCounter">
 
-            <button
-                class="gallery-arrow"
-                type="button"
-                onclick="previousImage()"
-                aria-label="Previous image">
+                01 / 05
 
-                ‹
-
-            </button>
+            </div>
 
 
-            <button
-                class="gallery-arrow"
-                type="button"
-                onclick="nextImage()"
-                aria-label="Next image">
+            <div class="gallery-controls">
 
-                ›
+                <button
+                    class="gallery-arrow"
+                    type="button"
+                    onclick="previousImage()"
+                    aria-label="Previous image">
 
-            </button>
+                    ‹
+
+                </button>
+
+
+                <button
+                    class="gallery-arrow"
+                    type="button"
+                    onclick="nextImage()"
+                    aria-label="Next image">
+
+                    ›
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
 </section>
-
-
-<!-- =====================================================
-     09 — VENUE
-====================================================== -->
-
-<section class="section-bg">
-
-    <div class="section-card venue reveal">
-
-        <div class="section-heading">
-
-            <h2>
-                VENUE
-            </h2>
-
-        </div>
-
-
-        <div class="location-icon">
-            📍
-        </div>
-
-
-        <div class="venue-name">
-            Shathashrunga Police Bhavana
-        </div>
-
-
-        <div class="venue-address">
-
-            Gulpet, Gowripete, Kolar
-
-            <br>
-
-            Karnataka – 563101
-
-        </div>
-
-
-        <a
-            class="maps-btn"
-            href="https://maps.app.goo.gl/R5r4QzN5Gu3CftrY6?g_st=ic"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            📍 OPEN IN GOOGLE MAPS
-
-        </a>
-
-    </div>
-
-</section>
-
 
 <!-- =====================================================
      10 — FINAL
@@ -6557,9 +6779,9 @@ if (
 
 }
 
-
 /* =========================================================
    24 — GALLERY
+       INSTAGRAM-STYLE CAROUSEL
 ========================================================= */
 
 const galleryImages = [
@@ -6573,83 +6795,739 @@ const galleryImages = [
 ];
 
 
+const galleryFrame =
+    document.getElementById(
+        "galleryFrame"
+    );
+
+
+const galleryTrack =
+    document.getElementById(
+        "galleryTrack"
+    );
+
+
+const galleryCounter =
+    document.getElementById(
+        "galleryCounter"
+    );
+
+
+const gallerySlides =
+    document.querySelectorAll(
+        ".gallery-slide"
+    );
+
+
 let galleryIndex =
     0;
 
 
-const galleryImage =
-    document.getElementById(
-        "galleryImage"
-    );
+let galleryStartX =
+    0;
 
 
-function showGalleryImage() {
+let galleryCurrentX =
+    0;
 
-    if (!galleryImage) {
+
+let galleryStartTime =
+    0;
+
+
+let galleryDragging =
+    false;
+
+
+let galleryAnimating =
+    false;
+
+
+let galleryTimer =
+    null;
+
+
+/* =========================================================
+   UPDATE COUNTER
+========================================================= */
+
+function updateGalleryCounter() {
+
+    if (!galleryCounter) {
         return;
     }
 
 
-    galleryImage.src =
-        galleryImages[
-            galleryIndex
-        ];
-
-}
-
-
-function nextImage() {
-
-    galleryIndex++;
+    const current =
+        String(
+            galleryIndex + 1
+        ).padStart(
+            2,
+            "0"
+        );
 
 
-    if (
-        galleryIndex >=
-        galleryImages.length
-    ) {
-
-        galleryIndex =
-            0;
-
-    }
+    const total =
+        String(
+            gallerySlides.length
+        ).padStart(
+            2,
+            "0"
+        );
 
 
-    showGalleryImage();
-
-}
-
-
-function previousImage() {
-
-    galleryIndex--;
-
-
-    if (
-        galleryIndex < 0
-    ) {
-
-        galleryIndex =
-            galleryImages.length -
-            1;
-
-    }
-
-
-    showGalleryImage();
+    galleryCounter.textContent =
+        current +
+        " / " +
+        total;
 
 }
 
 
 /* =========================================================
-   25 — GALLERY AUTOPLAY
+   GET SLIDE WIDTH
 ========================================================= */
 
-let galleryTimer =
-    setInterval(
-        nextImage,
-        6000
+function getGalleryWidth() {
+
+    if (!galleryFrame) {
+        return 0;
+    }
+
+
+    return galleryFrame.clientWidth -
+           (
+               galleryFrame.offsetWidth -
+               galleryFrame.clientWidth
+           );
+
+}
+
+
+/* =========================================================
+   MOVE TRACK
+========================================================= */
+
+function setGalleryPosition(
+    position,
+    animate = true
+) {
+
+    if (!galleryTrack) {
+        return;
+    }
+
+
+    galleryTrack.style.transition =
+        animate
+            ? "transform .48s cubic-bezier(.22,.61,.36,1)"
+            : "none";
+
+
+    galleryTrack.style.transform =
+        "translate3d(" +
+        position +
+        "px,0,0)";
+
+}
+
+
+/* =========================================================
+   GO TO SLIDE
+========================================================= */
+
+function goToGallerySlide(
+    index,
+    animate = true
+) {
+
+    if (!galleryTrack) {
+        return;
+    }
+
+
+    galleryIndex =
+        Math.max(
+            0,
+            Math.min(
+                index,
+                gallerySlides.length - 1
+            )
+        );
+
+
+    const width =
+        galleryFrame.clientWidth;
+
+
+    const position =
+        -galleryIndex *
+        width;
+
+
+    setGalleryPosition(
+        position,
+        animate
     );
 
+
+    updateGalleryCounter();
+
+}
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+function nextImage() {
+
+    if (galleryDragging) {
+        return;
+    }
+
+
+    if (
+        galleryIndex >=
+        gallerySlides.length - 1
+    ) {
+
+        /*
+           Smoothly return to first.
+        */
+
+        goToGallerySlide(
+            0,
+            true
+        );
+
+    }
+    else {
+
+        goToGallerySlide(
+            galleryIndex + 1,
+            true
+        );
+
+    }
+
+
+    resetGalleryTimer();
+
+}
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+function previousImage() {
+
+    if (galleryDragging) {
+        return;
+    }
+
+
+    if (
+        galleryIndex <= 0
+    ) {
+
+        /*
+           Smoothly go to last photo.
+        */
+
+        goToGallerySlide(
+            gallerySlides.length - 1,
+            true
+        );
+
+    }
+    else {
+
+        goToGallerySlide(
+            galleryIndex - 1,
+            true
+        );
+
+    }
+
+
+    resetGalleryTimer();
+
+}
+
+
+/* =========================================================
+   TOUCH START
+========================================================= */
+
+function galleryTouchStart(
+    event
+) {
+
+    if (!galleryFrame) {
+        return;
+    }
+
+
+    const touch =
+        event.touches[0];
+
+
+    galleryStartX =
+        touch.clientX;
+
+
+    galleryCurrentX =
+        touch.clientX;
+
+
+    galleryStartTime =
+        Date.now();
+
+
+    galleryDragging =
+        true;
+
+
+    galleryAnimating =
+        false;
+
+
+    galleryTrack.classList.add(
+        "dragging"
+    );
+
+
+    galleryTrack.style.transition =
+        "none";
+
+
+    resetGalleryTimer();
+
+}
+
+
+/* =========================================================
+   TOUCH MOVE
+========================================================= */
+
+function galleryTouchMove(
+    event
+) {
+
+    if (
+        !galleryDragging
+    ) {
+
+        return;
+
+    }
+
+
+    const touch =
+        event.touches[0];
+
+
+    galleryCurrentX =
+        touch.clientX;
+
+
+    const delta =
+        galleryCurrentX -
+        galleryStartX;
+
+
+    const width =
+        galleryFrame.clientWidth;
+
+
+    /*
+       Current slide position.
+    */
+
+    let position =
+        -galleryIndex *
+        width;
+
+
+    /*
+       Add finger movement.
+    */
+
+    position +=
+        delta;
+
+
+    /*
+       Small resistance at edges.
+       This gives a natural Instagram-like
+       rubber-band feeling.
+    */
+
+    if (
+        galleryIndex === 0 &&
+        delta > 0
+    ) {
+
+        position =
+            -galleryIndex *
+            width +
+            delta *
+            0.35;
+
+    }
+
+
+    if (
+        galleryIndex ===
+        gallerySlides.length - 1 &&
+        delta < 0
+    ) {
+
+        position =
+            -galleryIndex *
+            width +
+            delta *
+            0.35;
+
+    }
+
+
+    galleryTrack.style.transform =
+        "translate3d(" +
+        position +
+        "px,0,0)";
+
+}
+
+
+/* =========================================================
+   TOUCH END
+========================================================= */
+
+function galleryTouchEnd() {
+
+    if (
+        !galleryDragging
+    ) {
+
+        return;
+
+    }
+
+
+    galleryDragging =
+        false;
+
+
+    galleryTrack.classList.remove(
+        "dragging"
+    );
+
+
+    const delta =
+        galleryCurrentX -
+        galleryStartX;
+
+
+    const elapsed =
+        Date.now() -
+        galleryStartTime;
+
+
+    const width =
+        galleryFrame.clientWidth;
+
+
+    /*
+       Swipe velocity.
+    */
+
+    const velocity =
+        Math.abs(delta) /
+        Math.max(
+            elapsed,
+            1
+        );
+
+
+    /*
+       Distance needed to change slide.
+       Fast swipes need less distance.
+    */
+
+    const threshold =
+        Math.min(
+            width * 0.25,
+            80
+        );
+
+
+    let newIndex =
+        galleryIndex;
+
+
+    if (
+        delta <
+        -threshold ||
+        (
+            delta < -35 &&
+            velocity > 0.45
+        )
+    ) {
+
+        newIndex =
+            galleryIndex + 1;
+
+    }
+    else if (
+        delta >
+        threshold ||
+        (
+            delta > 35 &&
+            velocity > 0.45
+        )
+    ) {
+
+        newIndex =
+            galleryIndex - 1;
+
+    }
+
+
+    /*
+       Loop around.
+    */
+
+    if (
+        newIndex < 0
+    ) {
+
+        newIndex =
+            gallerySlides.length - 1;
+
+    }
+
+
+    if (
+        newIndex >=
+        gallerySlides.length
+    ) {
+
+        newIndex =
+            0;
+
+    }
+
+
+    goToGallerySlide(
+        newIndex,
+        true
+    );
+
+
+    resetGalleryTimer();
+
+}
+
+
+/* =========================================================
+   MOUSE DRAG — DESKTOP
+========================================================= */
+
+function galleryMouseDown(
+    event
+) {
+
+    if (
+        event.button !== 0
+    ) {
+
+        return;
+
+    }
+
+
+    galleryStartX =
+        event.clientX;
+
+
+    galleryCurrentX =
+        event.clientX;
+
+
+    galleryStartTime =
+        Date.now();
+
+
+    galleryDragging =
+        true;
+
+
+    galleryTrack.classList.add(
+        "dragging"
+    );
+
+
+    galleryTrack.style.transition =
+        "none";
+
+
+    resetGalleryTimer();
+
+}
+
+
+function galleryMouseMove(
+    event
+) {
+
+    if (
+        !galleryDragging
+    ) {
+
+        return;
+
+    }
+
+
+    galleryCurrentX =
+        event.clientX;
+
+
+    const delta =
+        galleryCurrentX -
+        galleryStartX;
+
+
+    const width =
+        galleryFrame.clientWidth;
+
+
+    let position =
+        -galleryIndex *
+        width;
+
+
+    position +=
+        delta;
+
+
+    if (
+        galleryIndex === 0 &&
+        delta > 0
+    ) {
+
+        position =
+            delta *
+            0.35;
+
+    }
+
+
+    if (
+        galleryIndex ===
+        gallerySlides.length - 1 &&
+        delta < 0
+    ) {
+
+        position =
+            -galleryIndex *
+            width +
+            delta *
+            0.35;
+
+    }
+
+
+    galleryTrack.style.transform =
+        "translate3d(" +
+        position +
+        "px,0,0)";
+
+}
+
+
+function galleryMouseUp() {
+
+    if (
+        !galleryDragging
+    ) {
+
+        return;
+
+    }
+
+
+    galleryTouchEnd();
+
+}
+
+
+/* =========================================================
+   TOUCH EVENTS
+========================================================= */
+
+if (
+    galleryFrame &&
+    galleryTrack
+) {
+
+    galleryFrame.addEventListener(
+        "touchstart",
+        galleryTouchStart,
+        {
+            passive: true
+        }
+    );
+
+
+    galleryFrame.addEventListener(
+        "touchmove",
+        galleryTouchMove,
+        {
+            passive: true
+        }
+    );
+
+
+    galleryFrame.addEventListener(
+        "touchend",
+        galleryTouchEnd,
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+       Desktop drag.
+    */
+
+    galleryFrame.addEventListener(
+        "mousedown",
+        galleryMouseDown
+    );
+
+
+    window.addEventListener(
+        "mousemove",
+        galleryMouseMove
+    );
+
+
+    window.addEventListener(
+        "mouseup",
+        galleryMouseUp
+    );
+
+}
+
+
+/* =========================================================
+   25 — AUTO CHANGE EVERY 4 SECONDS
+========================================================= */
 
 function resetGalleryTimer() {
 
@@ -6660,91 +7538,62 @@ function resetGalleryTimer() {
 
     galleryTimer =
         setInterval(
-            nextImage,
-            6000
+            function () {
+
+                nextImage();
+
+            },
+            4000
         );
 
 }
 
 
 /* =========================================================
-   26 — GALLERY SWIPE
+   INITIALISE
 ========================================================= */
 
-let touchStartX =
-    0;
+window.addEventListener(
+    "load",
+    function () {
 
-let touchEndX =
-    0;
+        setTimeout(
+            function () {
 
-
-if (galleryImage) {
-
-    galleryImage.addEventListener(
-        "touchstart",
-        function (event) {
-
-            touchStartX =
-                event.changedTouches[0]
-                    .screenX;
-
-        },
-        {
-            passive:
-                true
-        }
-    );
+                goToGallerySlide(
+                    0,
+                    false
+                );
 
 
-    galleryImage.addEventListener(
-        "touchend",
-        function (event) {
-
-            touchEndX =
-                event.changedTouches[0]
-                    .screenX;
+                updateGalleryCounter();
 
 
-            const difference =
-                touchStartX -
-                touchEndX;
+                resetGalleryTimer();
+
+            },
+            100
+        );
+
+    }
+);
 
 
-            if (
-                Math.abs(difference) <
-                40
-            ) {
+/* =========================================================
+   RESIZE
+========================================================= */
 
-                return;
+window.addEventListener(
+    "resize",
+    function () {
 
-            }
+        goToGallerySlide(
+            galleryIndex,
+            false
+        );
 
-
-            if (
-                difference > 0
-            ) {
-
-                nextImage();
-
-            }
-            else {
-
-                previousImage();
-
-            }
-
-
-            resetGalleryTimer();
-
-        },
-        {
-            passive:
-                true
-        }
-    );
-
-}
-
+    }
+);
 
 /* =========================================================
    27 — CALENDAR
