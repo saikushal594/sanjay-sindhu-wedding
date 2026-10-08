@@ -20,7 +20,7 @@
       href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
-      href="https://fonts.gstatic.com"
+      href="https://fonts.googleapis.com"
       crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap"
@@ -574,10 +574,6 @@ img {
         cubic-bezier(.22,.61,.36,1);
 }
 
-
-/* =========================================================
-   COVER PHOTO
-========================================================= */
 
 .cover-photo {
 
@@ -1224,7 +1220,6 @@ img {
 
 /* =========================================================
    08 — WELCOME INTRODUCTION
-   UNCHANGED
 ========================================================= */
 
 .welcome-intro {
@@ -1738,6 +1733,7 @@ img {
         opacity:
             1;
     }
+
 }
 
 
@@ -1943,11 +1939,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   LAGNA PATRIKA — INDIVIDUAL POP
-   ONE-WAY ONLY
-========================================================= */
-
 .lagna .lagna-pop {
 
     display:
@@ -1990,10 +1981,6 @@ section:not(.cover) {
         blur(0);
 }
 
-
-/* =========================================================
-   LAGNA TEXT
-========================================================= */
 
 .lagna-symbol {
 
@@ -2112,10 +2099,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   EVENTS HEADING — POP UP
-========================================================= */
-
 .events .section-heading {
 
     opacity:
@@ -2155,10 +2138,6 @@ section:not(.cover) {
         blur(0);
 }
 
-
-/* =========================================================
-   TIMELINE
-========================================================= */
 
 .timeline {
 
@@ -2238,10 +2217,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   EVENT ITEM
-========================================================= */
-
 .event-item {
 
     position:
@@ -2251,10 +2226,6 @@ section:not(.cover) {
         32px;
 }
 
-
-/* =========================================================
-   EVENT CIRCLE
-========================================================= */
 
 .event-dot {
 
@@ -2372,12 +2343,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   EVENT CARD
-   RIGHT → LEFT
-   ONE-WAY REVEAL
-========================================================= */
-
 .event {
 
     position:
@@ -2431,10 +2396,6 @@ section:not(.cover) {
         translateX(0);
 }
 
-
-/* =========================================================
-   EVENT CONTENT
-========================================================= */
 
 .event-icon {
 
@@ -2584,10 +2545,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   STORY — CINEMATIC LINE-BY-LINE REVEAL
-========================================================= */
-
 .cinematic-story {
 
     overflow:
@@ -2634,43 +2591,17 @@ section:not(.cover) {
 
 
 .cinematic-story .story-line:nth-child(1) {
-
-    transition-delay:
-        .05s;
+    transition-delay: .05s;
 }
-
 
 .cinematic-story .story-line:nth-child(2) {
-
-    transition-delay:
-        .22s;
+    transition-delay: .22s;
 }
-
 
 .cinematic-story .story-line:nth-child(3) {
-
-    transition-delay:
-        .39s;
+    transition-delay: .39s;
 }
 
-
-.cinematic-story .story-line:nth-child(4) {
-
-    transition-delay:
-        .56s;
-}
-
-
-.cinematic-story .story-line:nth-child(5) {
-
-    transition-delay:
-        .73s;
-}
-
-
-/* =========================================================
-   STORY — ACTIVE STATE
-========================================================= */
 
 .story-card.story-card-active
 .cinematic-story .story-line {
@@ -2685,10 +2616,6 @@ section:not(.cover) {
         blur(0);
 }
 
-
-/* =========================================================
-   STORY HEADING
-========================================================= */
 
 .story-card.story-card-active
 .section-heading {
@@ -2705,10 +2632,7 @@ section:not(.cover) {
 
 
 /* =========================================================
-   COUPLE VIDEO
-========================================================= */
-/* =========================================================
-   COUPLE VIDEO
+   17 — COUPLE VIDEO
 ========================================================= */
 
 .couple-video-frame {
@@ -2790,37 +2714,81 @@ section:not(.cover) {
         var(--brown);
 }
 
+
 .couple-tags {
-    margin-top: 25px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    width: 100%;
+
+    margin-top:
+        25px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        12px;
+
+    width:
+        100%;
 }
+
 
 .tag {
-    width: 100%;
-    box-sizing: border-box;
-    background: white;
-    border-radius: 25px;
-    padding: 10px 12px;
-    box-shadow: 0 5px 14px rgba(50,30,20,.08);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--brown);
-    text-align: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 42px;
+    width:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    background:
+        white;
+
+    border-radius:
+        25px;
+
+    padding:
+        10px 12px;
+
+    box-shadow:
+        0 5px 14px
+        rgba(50,30,20,.08);
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    color:
+        var(--brown);
+
+    text-align:
+        center;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        42px;
 }
+
 
 /* =========================================================
    18 — SACRED MOMENT
 ========================================================= */
 
 .sacred-wrapper {
+
+    position:
+        relative;
 
     padding:
         12px;
@@ -2837,8 +2805,93 @@ section:not(.cover) {
 
     transform:
         rotate(-1deg);
+
+    overflow:
+        visible;
+
+    box-shadow:
+        0 12px 28px
+        rgba(80,45,25,.07);
 }
 
+
+/* =========================================================
+   SACRED DECORATIVE CURVES
+========================================================= */
+
+.sacred-wrapper::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        -55px;
+
+    right:
+        -55px;
+
+    top:
+        48px;
+
+    height:
+        95px;
+
+    border-top:
+        7px solid
+        #d88300;
+
+    border-radius:
+        50%;
+
+    z-index:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+.sacred-wrapper::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        -35px;
+
+    right:
+        -35px;
+
+    top:
+        58px;
+
+    height:
+        78px;
+
+    border-top:
+        1px solid
+        rgba(212,176,93,.65);
+
+    border-radius:
+        50%;
+
+    z-index:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   SACRED PHOTO CONTAINER
+========================================================= */
 
 .sacred-photo {
 
@@ -2848,22 +2901,58 @@ section:not(.cover) {
     border-radius:
         23px;
 
-    overflow:
-        hidden;
-
     aspect-ratio:
         4 / 5;
 
     background:
+        #eee3d6;
 
-        url("images/sacred.jpg")
-        center/
-        cover
-        no-repeat;
+    overflow:
+        visible;
+
+    z-index:
+        2;
+
+    border:
+        1px solid
+        rgba(212,176,93,.35);
+
+    /*
+       PHOTO MOVEMENT VARIABLES
+    */
+
+    --sacred-y:
+        0px;
+
+    --sacred-scale:
+        1;
+
+    --sacred-rotate:
+        0deg;
+
+    /*
+       CAPTION ANIMATION VARIABLES
+    */
+
+    --sacred-text-opacity:
+        0;
+
+    --sacred-text-y:
+        22px;
+
+    --sacred-text-scale:
+        .94;
+
+    --sacred-text-blur:
+        4px;
 }
 
 
-.sacred-photo::after {
+/* =========================================================
+   SACRED PHOTO — ACTUAL IMAGE
+========================================================= */
+
+.sacred-photo::before {
 
     content:
         "";
@@ -2875,27 +2964,127 @@ section:not(.cover) {
         0;
 
     background:
+        url("images/sacred.jpg")
+        center center /
+        cover
+        no-repeat;
 
-        linear-gradient(
-            transparent 65%,
-            rgba(35,20,10,.40)
+    border-radius:
+        23px;
+
+    border:
+        4px solid
+        #ffffff;
+
+    transform:
+        translate3d(
+            0,
+            var(--sacred-y),
+            0
+        )
+        scale(
+            var(--sacred-scale)
+        )
+        rotate(
+            var(--sacred-rotate)
         );
+
+    transform-origin:
+        center bottom;
+
+    will-change:
+        transform;
+
+    pointer-events:
+        none;
+
+    z-index:
+        2;
+
+    box-shadow:
+
+        0 7px 15px
+        rgba(60,35,20,.10),
+
+        0 20px 32px
+        rgba(60,35,20,.15);
 }
 
+
+/* =========================================================
+   SACRED PHOTO — GRADIENT
+========================================================= */
+
+.sacred-photo::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        4px;
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            transparent 60%,
+            rgba(35,20,10,.48) 100%
+        );
+
+    transform:
+        translate3d(
+            0,
+            var(--sacred-y),
+            0
+        )
+        scale(
+            var(--sacred-scale)
+        )
+        rotate(
+            var(--sacred-rotate)
+        );
+
+    transform-origin:
+        center bottom;
+
+    will-change:
+        transform;
+
+    z-index:
+        3;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   SACRED CAPTION
+========================================================= */
 
 .sacred-caption {
 
     position:
         absolute;
 
-    z-index:
-        2;
+    left:
+        0;
+
+    right:
+        0;
 
     bottom:
         25px;
 
     width:
         100%;
+
+    padding:
+        0 20px;
 
     text-align:
         center;
@@ -2906,8 +3095,53 @@ section:not(.cover) {
     font-size:
         28px;
 
+    font-style:
+        italic;
+
     color:
         white;
+
+    text-shadow:
+        0 3px 12px
+        rgba(0,0,0,.35);
+
+    opacity:
+        var(--sacred-text-opacity);
+
+    transform:
+        translate3d(
+            0,
+            var(--sacred-text-y),
+            0
+        )
+        scale(
+            var(--sacred-text-scale)
+        )
+        rotate(
+            var(--sacred-rotate)
+        );
+
+    filter:
+        blur(
+            var(--sacred-text-blur)
+        );
+
+    transform-origin:
+        center bottom;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+
+    z-index:
+        4;
+
+    pointer-events:
+        none;
+
+    transition:
+        none;
 }
 
 
@@ -3133,8 +3367,179 @@ section:not(.cover) {
     text-decoration:
         none;
 }
+/* =========================================================
+   VENUE — CINEMATIC LOCATION REVEAL
+========================================================= */
+
+.venue {
+    text-align: center;
+}
 
 
+/* LOCATION ICON */
+
+.venue .location-icon {
+    opacity: 0;
+    transform:
+        translateY(18px)
+        scale(.72);
+    filter:
+        blur(4px);
+    transition:
+        opacity .75s cubic-bezier(.22,.61,.36,1),
+        transform .85s cubic-bezier(.16,1,.3,1),
+        filter .75s ease;
+}
+
+
+.venue.visible .location-icon {
+    opacity: 1;
+    transform:
+        translateY(0)
+        scale(1);
+    filter:
+        blur(0);
+    transition-delay: .05s;
+}
+
+
+/* VENUE HEADING */
+
+.venue .section-heading {
+    opacity: 0;
+    transform:
+        translateY(18px)
+        scale(.96);
+    filter:
+        blur(3px);
+    transition:
+        opacity .75s cubic-bezier(.22,.61,.36,1),
+        transform .85s cubic-bezier(.16,1,.3,1),
+        filter .75s ease;
+}
+
+
+.venue.visible .section-heading {
+    opacity: 1;
+    transform:
+        translateY(0)
+        scale(1);
+    filter:
+        blur(0);
+    transition-delay: .12s;
+}
+
+
+/* VENUE NAME */
+
+.venue .venue-name {
+    opacity: 0;
+    transform:
+        translateY(25px)
+        scale(.96);
+    filter:
+        blur(5px);
+    transition:
+        opacity .9s cubic-bezier(.22,.61,.36,1),
+        transform .95s cubic-bezier(.16,1,.3,1),
+        filter .9s ease;
+}
+
+
+.venue.visible .venue-name {
+    opacity: 1;
+    transform:
+        translateY(0)
+        scale(1);
+    filter:
+        blur(0);
+    transition-delay: .28s;
+}
+
+
+/* ADDRESS */
+
+.venue .venue-address {
+    opacity: 0;
+    transform:
+        translateY(20px);
+    filter:
+        blur(4px);
+    transition:
+        opacity .85s cubic-bezier(.22,.61,.36,1),
+        transform .85s cubic-bezier(.16,1,.3,1),
+        filter .85s ease;
+}
+
+
+.venue.visible .venue-address {
+    opacity: 1;
+    transform:
+        translateY(0);
+    filter:
+        blur(0);
+    transition-delay: .48s;
+}
+
+
+/* GOOGLE MAPS BUTTON */
+
+.venue .maps-btn {
+    opacity: 0;
+    transform:
+        translateY(18px)
+        scale(.92);
+    filter:
+        blur(3px);
+    transition:
+        opacity .75s cubic-bezier(.22,.61,.36,1),
+        transform .85s cubic-bezier(.16,1,.3,1),
+        filter .75s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+
+.venue.visible .maps-btn {
+    opacity: 1;
+    transform:
+        translateY(0)
+        scale(1);
+    filter:
+        blur(0);
+    transition-delay: .68s;
+}
+
+
+/* BUTTON HOVER */
+
+.venue .maps-btn:hover {
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    background:
+        #fff7ec;
+
+    box-shadow:
+        0 10px 24px
+        rgba(135,61,32,.12);
+}
+
+
+/* BUTTON PRESS */
+
+.venue .maps-btn:active {
+    transform:
+        scale(.97);
+}
+
+/* =========================================================
+   21 — FINAL
+========================================================= */
+/* =========================================================
+   21 — FINAL
+========================================================= */
 /* =========================================================
    21 — FINAL
 ========================================================= */
@@ -3142,7 +3547,7 @@ section:not(.cover) {
 .final {
 
     min-height:
-        55vh;
+        33vh;
 
     display:
         flex;
@@ -3158,6 +3563,8 @@ section:not(.cover) {
 }
 
 
+/* FINAL NAMES */
+
 .final-names {
 
     font-family:
@@ -3171,8 +3578,21 @@ section:not(.cover) {
 
     color:
         var(--brown);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(18px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s
+        cubic-bezier(.22,.61,.36,1);
 }
 
+
+/* FINAL MESSAGE */
 
 .final-message {
 
@@ -3187,7 +3607,106 @@ section:not(.cover) {
 
     color:
         #c3aaa2;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(12px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s
+        cubic-bezier(.22,.61,.36,1);
+
+    transition-delay:
+        .25s;
 }
+
+
+/* CREATOR CREDIT */
+
+.creator-credit {
+
+    margin-top:
+        25px;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        1.8px;
+
+    line-height:
+        1.7;
+
+    color:
+        #c8aaa0;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(10px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s
+        cubic-bezier(.22,.61,.36,1);
+
+    transition-delay:
+        .45s;
+}
+
+
+.creator-credit a {
+
+    color:
+        var(--brown);
+
+    text-decoration:
+        none;
+}
+
+
+.creator-credit strong {
+
+    font-weight:
+        600;
+}
+
+
+/* FINAL REVEAL */
+
+.final .reveal.visible .final-names {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.final .reveal.visible .final-message {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+.final .reveal.visible .creator-credit {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
 
 
 /* =========================================================
@@ -3452,6 +3971,56 @@ section:not(.cover) {
     }
 
 
+    /* =====================================================
+       SACRED MOMENT — MOBILE
+    ===================================================== */
+
+    .sacred-caption {
+
+        bottom:
+            22px;
+
+        padding:
+            0 15px;
+
+        font-size:
+            25px;
+    }
+
+
+    .sacred-photo::before {
+
+        border-width:
+            3px;
+    }
+
+
+    .sacred-wrapper::before {
+
+        left:
+            -42px;
+
+        right:
+            -42px;
+
+        top:
+            42px;
+    }
+
+
+    .sacred-wrapper::after {
+
+        left:
+            -28px;
+
+        right:
+            -28px;
+
+        top:
+            51px;
+    }
+
+
     .final-names {
 
         font-size:
@@ -3665,7 +4234,6 @@ section:not(.cover) {
 <section class="cover"
          id="cover">
 
-
     <div class="cover-photo"></div>
 
     <div class="cover-dark"></div>
@@ -3676,7 +4244,6 @@ section:not(.cover) {
 
 
     <div class="cover-content">
-
 
         <div class="cover-invited">
 
@@ -3705,7 +4272,6 @@ section:not(.cover) {
 
 
         <div class="cover-actions">
-
 
             <button
                 class="enter-button"
@@ -3750,12 +4316,9 @@ section:not(.cover) {
 
             </a>
 
-
         </div>
 
-
     </div>
-
 
 </section>
 
@@ -3773,13 +4336,10 @@ section:not(.cover) {
     <div class="welcome-card"
          id="welcomeCard">
 
-
         <div class="welcome-ornament">
 
             <span>✦</span>
-
             <span>❖</span>
-
             <span>✦</span>
 
         </div>
@@ -3820,7 +4380,6 @@ section:not(.cover) {
 
         </div>
 
-
     </div>
 
 </section>
@@ -3833,7 +4392,6 @@ section:not(.cover) {
 <section class="section-bg">
 
     <div class="section-card lagna">
-
 
         <div class="lagna-symbol">
             ॐ
@@ -3863,16 +4421,17 @@ section:not(.cover) {
 
 
         <div class="family-title lagna-pop">
-
             BRIDE'S PARENTS:
-
         </div>
 
 
         <div class="family-name">
 
             <span class="family-name-line lagna-pop">
-                Smt. Ambuja <span style="font-family: 'Times new roman', sans-serif;">&</span>
+                Smt. Ambuja
+                <span style="font-family:'Times New Roman',serif;">
+                    &
+                </span>
             </span>
 
             <span class="family-name-line lagna-pop">
@@ -3893,7 +4452,10 @@ section:not(.cover) {
         <div class="family-name">
 
             <span class="family-name-line lagna-pop">
-                Smt. N Gowramma <span style="font-family: 'Times new roman', sans-serif;">&</span>
+                Smt. N Gowramma
+                <span style="font-family:'Times New Roman',serif;">
+                    &
+                </span>
             </span>
 
             <span class="family-name-line lagna-pop">
@@ -3907,9 +4469,7 @@ section:not(.cover) {
 
 
         <div class="family-title lagna-pop">
-
             GREETINGS & BLESSINGS:
-
         </div>
 
 
@@ -3925,7 +4485,6 @@ section:not(.cover) {
 
         </div>
 
-
     </div>
 
 </section>
@@ -3937,10 +4496,7 @@ section:not(.cover) {
 
 <section class="section-bg">
 
-    <div class="section-card
-                events
-                reveal">
-
+    <div class="section-card events reveal">
 
         <div class="section-heading">
 
@@ -3958,8 +4514,6 @@ section:not(.cover) {
                 id="timelineProgress">
             </div>
 
-
-            <!-- EVENT 01 -->
 
             <div class="event-item">
 
@@ -4010,8 +4564,6 @@ section:not(.cover) {
 
             </div>
 
-
-            <!-- EVENT 02 -->
 
             <div class="event-item">
 
@@ -4074,8 +4626,6 @@ section:not(.cover) {
             </div>
 
 
-            <!-- EVENT 03 -->
-
             <div class="event-item">
 
                 <div
@@ -4137,7 +4687,6 @@ section:not(.cover) {
 
             </div>
 
-
         </div>
 
     </div>
@@ -4151,10 +4700,7 @@ section:not(.cover) {
 
 <section class="section-bg">
 
-    <div class="section-card
-                reveal
-                story-card">
-
+    <div class="section-card reveal story-card">
 
         <div class="section-heading">
 
@@ -4165,22 +4711,38 @@ section:not(.cover) {
         </div>
 
 
-        <p class="story-text
-                  cinematic-story" style="text-align: justify;">
+        <p class="story-text cinematic-story"
+           style="text-align:justify;">
 
             <span class="story-line">
-                Sanjay and Sindhu’s journey is a beautiful coming together of two lives and two families. Over time, a special bond grew between them, filled with understanding, care and countless cherished moments.
+
+                Sanjay and Sindhu’s journey is a beautiful
+                coming together of two lives and two families.
+                Over time, a special bond grew between them,
+                filled with understanding, care and countless
+                cherished moments.
+
             </span>
 
-            <span class="story-line">
-                    With the love and blessings of their families, their journey now takes a beautiful new turn as they come together to begin their life as one.
-            </span>
 
             <span class="story-line">
-                    And so, with hearts full of happiness, <strong>Sanjay &amp; Sindhu</strong> begin their forever❤️
+
+                With the love and blessings of their families,
+                their journey now takes a beautiful new turn
+                as they come together to begin their life as one.
+
             </span>
+
+
+            <span class="story-line">
+
+                And so, with hearts full of happiness,
+                <strong>Sanjay &amp; Sindhu</strong>
+                begin their forever❤️
+
+            </span>
+
         </p>
-
 
     </div>
 
@@ -4190,11 +4752,10 @@ section:not(.cover) {
 <!-- =====================================================
      06 — MEET THE COUPLE
 ====================================================== -->
+
 <section class="section-bg">
 
-    <div class="section-card
-                reveal">
-
+    <div class="section-card reveal">
 
         <div class="section-heading
                     text-animate
@@ -4212,7 +4773,6 @@ section:not(.cover) {
             <video
                 id="coupleVideo"
                 class="couple-video"
-                autoplay="false"
                 playsinline
                 muted
                 preload="auto"
@@ -4239,47 +4799,28 @@ section:not(.cover) {
 
         <div class="couple-tags">
 
-            <span class="tag
-                         text-animate
-                         text-delay-3">
-
+            <span class="tag text-animate text-delay-3">
                 TOGETHER
-
             </span>
 
-
-            <span class="tag
-                         text-animate
-                         text-delay-4">
-
+            <span class="tag text-animate text-delay-4">
                 SOULMATES
-
             </span>
 
-
-            <span class="tag
-                         text-animate
-                         text-delay-5">
-
+            <span class="tag text-animate text-delay-5">
                 BEST FRIENDS
-
             </span>
 
-
-            <span class="tag
-                         text-animate
-                         text-delay-6">
-
+            <span class="tag text-animate text-delay-6">
                 FOREVER &amp; ALWAYS
-
             </span>
 
         </div>
 
-
     </div>
 
 </section>
+
 
 <!-- =====================================================
      07 — SACRED MOMENT
@@ -4287,9 +4828,7 @@ section:not(.cover) {
 
 <section class="section-bg">
 
-    <div class="section-card
-                reveal">
-
+    <div class="section-card reveal">
 
         <div class="section-heading
                     text-animate
@@ -4304,11 +4843,11 @@ section:not(.cover) {
 
         <div class="sacred-wrapper">
 
-            <div class="sacred-photo">
+            <div
+                class="sacred-photo"
+                id="sacredPhoto">
 
-                <div class="sacred-caption
-                            text-animate
-                            text-delay-2">
+                <div class="sacred-caption">
 
                     Made for Each Other
 
@@ -4317,7 +4856,6 @@ section:not(.cover) {
             </div>
 
         </div>
-
 
     </div>
 
@@ -4330,10 +4868,7 @@ section:not(.cover) {
 
 <section class="section-bg">
 
-    <div class="section-card
-                gallery
-                reveal">
-
+    <div class="section-card gallery reveal">
 
         <div class="section-heading
                     text-animate
@@ -4385,7 +4920,6 @@ section:not(.cover) {
 
         </div>
 
-
     </div>
 
 </section>
@@ -4397,14 +4931,9 @@ section:not(.cover) {
 
 <section class="section-bg">
 
-    <div class="section-card
-                venue
-                reveal">
+    <div class="section-card venue reveal">
 
-
-        <div class="section-heading
-                    text-animate
-                    text-delay-1">
+        <div class="section-heading">
 
             <h2>
                 VENUE
@@ -4418,18 +4947,14 @@ section:not(.cover) {
         </div>
 
 
-        <div class="venue-name
-                    text-animate
-                    text-delay-2">
+        <div class="venue-name">
 
             Shathashrunga Police Bhavana
 
         </div>
 
 
-        <div class="venue-address
-                    text-animate
-                    text-delay-3">
+        <div class="venue-address">
 
             Gulpet, Gowripete, Kolar
 
@@ -4441,9 +4966,7 @@ section:not(.cover) {
 
 
         <a
-            class="maps-btn
-                   text-animate
-                   text-delay-4"
+            class="maps-btn"
             href="https://maps.app.goo.gl/R5r4QzN5Gu3CftrY6?g_st=ic"
             target="_blank"
             rel="noopener noreferrer">
@@ -4451,7 +4974,6 @@ section:not(.cover) {
             📍 OPEN IN GOOGLE MAPS
 
         </a>
-
 
     </div>
 
@@ -4481,6 +5003,16 @@ section:not(.cover) {
 
             WITH LOVE & BLESSINGS 🙏
 
+        </div>
+
+        <div class="creator-credit">
+            Crafted with ❤️ by
+            <a href="https://instagram.com/sai_kushal_1208"
+            target="_blank"
+            rel="noopener noreferrer" 
+            text-decoration="none">
+                <strong>@SAI KUSHAL</strong>
+            </a>
         </div>
 
     </div>
@@ -4533,6 +5065,10 @@ const storyCard =
         ".section-card.story-card"
     );
 
+const sacredPhoto =
+    document.getElementById(
+        "sacredPhoto"
+    );
 
 let celebrationEntered = false;
 
@@ -4588,20 +5124,9 @@ function enterCelebration(addHistory = true) {
         return;
     }
 
-
-    /* -----------------------------------------------------
-       START FRESH SESSION
-    ----------------------------------------------------- */
-
     resetInvitationAnimations();
 
-
     celebrationEntered = true;
-
-
-    /* -----------------------------------------------------
-       HISTORY
-    ----------------------------------------------------- */
 
     if (
         addHistory &&
@@ -4618,33 +5143,13 @@ function enterCelebration(addHistory = true) {
 
     }
 
-
-    /* -----------------------------------------------------
-       TOP OF PAGE
-    ----------------------------------------------------- */
-
     window.scrollTo(0, 0);
-
-
-    /* -----------------------------------------------------
-       UNLOCK
-    ----------------------------------------------------- */
 
     document.body.classList.remove(
         "invitation-locked"
     );
 
-
-    /* -----------------------------------------------------
-       SHOW CONTENT
-    ----------------------------------------------------- */
-
     pageContent.classList.add("show");
-
-
-    /* -----------------------------------------------------
-       COVER FADE
-    ----------------------------------------------------- */
 
     requestAnimationFrame(function () {
 
@@ -4652,11 +5157,6 @@ function enterCelebration(addHistory = true) {
 
     });
 
-
-    /* -----------------------------------------------------
-       WELCOME
-       UNCHANGED
-    ----------------------------------------------------- */
 
     setTimeout(function () {
 
@@ -4673,10 +5173,6 @@ function enterCelebration(addHistory = true) {
     }, 250);
 
 
-    /* -----------------------------------------------------
-       RESTART SCROLL ANIMATIONS
-    ----------------------------------------------------- */
-
     setTimeout(function () {
 
         forceAnimationReset();
@@ -4689,12 +5185,10 @@ function enterCelebration(addHistory = true) {
 
         requestStoryAnimation();
 
+        requestSacredZoom();
+
     }, 1450);
 
-
-    /* -----------------------------------------------------
-       HIDE COVER
-    ----------------------------------------------------- */
 
     setTimeout(function () {
 
@@ -4708,6 +5202,8 @@ function enterCelebration(addHistory = true) {
 
         requestStoryAnimation();
 
+        requestSacredZoom();
+
     }, 1500);
 
 }
@@ -4719,11 +5215,6 @@ function enterCelebration(addHistory = true) {
 
 function resetInvitationAnimations() {
 
-
-    /* -----------------------------------------------------
-       WELCOME
-    ----------------------------------------------------- */
-
     if (welcomeCard) {
 
         welcomeCard.classList.remove(
@@ -4732,10 +5223,6 @@ function resetInvitationAnimations() {
 
     }
 
-
-    /* -----------------------------------------------------
-       GENERAL REVEALS
-    ----------------------------------------------------- */
 
     reveals.forEach(function (element) {
 
@@ -4746,10 +5233,6 @@ function resetInvitationAnimations() {
     });
 
 
-    /* -----------------------------------------------------
-       LAGNA
-    ----------------------------------------------------- */
-
     lagnaElements.forEach(function (element) {
 
         element.classList.remove(
@@ -4758,10 +5241,6 @@ function resetInvitationAnimations() {
 
     });
 
-
-    /* -----------------------------------------------------
-       EVENTS
-    ----------------------------------------------------- */
 
     eventCards.forEach(function (card) {
 
@@ -4781,10 +5260,6 @@ function resetInvitationAnimations() {
     });
 
 
-    /* -----------------------------------------------------
-       STORY
-    ----------------------------------------------------- */
-
     if (storyCard) {
 
         storyCard.classList.remove(
@@ -4794,14 +5269,54 @@ function resetInvitationAnimations() {
     }
 
 
-    /* -----------------------------------------------------
-       TIMELINE
-    ----------------------------------------------------- */
-
     if (timelineProgress) {
 
         timelineProgress.style.height =
             "0px";
+
+    }
+
+
+    /*
+       RESET SACRED PHOTO
+    */
+
+    if (sacredPhoto) {
+
+        sacredPhoto.style.setProperty(
+            "--sacred-y",
+            "0px"
+        );
+
+        sacredPhoto.style.setProperty(
+            "--sacred-scale",
+            "1"
+        );
+
+        sacredPhoto.style.setProperty(
+            "--sacred-rotate",
+            "0deg"
+        );
+
+        sacredPhoto.style.setProperty(
+            "--sacred-text-opacity",
+            "0"
+        );
+
+        sacredPhoto.style.setProperty(
+            "--sacred-text-y",
+            "22px"
+        );
+
+        sacredPhoto.style.setProperty(
+            "--sacred-text-scale",
+            ".94"
+        );
+
+        sacredPhoto.style.setProperty(
+            "--sacred-text-blur",
+            "4px"
+        );
 
     }
 
@@ -4814,11 +5329,6 @@ function resetInvitationAnimations() {
 
 function forceAnimationReset() {
 
-
-    /* -----------------------------------------------------
-       EVENTS
-    ----------------------------------------------------- */
-
     eventCards.forEach(function (card) {
 
         card.classList.remove(
@@ -4829,10 +5339,6 @@ function forceAnimationReset() {
 
     });
 
-
-    /* -----------------------------------------------------
-       LAGNA
-    ----------------------------------------------------- */
 
     lagnaElements.forEach(function (element) {
 
@@ -4845,10 +5351,6 @@ function forceAnimationReset() {
     });
 
 
-    /* -----------------------------------------------------
-       GENERAL REVEALS
-    ----------------------------------------------------- */
-
     reveals.forEach(function (element) {
 
         element.classList.remove(
@@ -4859,10 +5361,6 @@ function forceAnimationReset() {
 
     });
 
-
-    /* -----------------------------------------------------
-       STORY
-    ----------------------------------------------------- */
 
     if (storyCard) {
 
@@ -4887,47 +5385,24 @@ function returnToCover() {
         return;
     }
 
-
     celebrationEntered = false;
-
-
-    /* -----------------------------------------------------
-       RESET EVERYTHING
-    ----------------------------------------------------- */
 
     resetInvitationAnimations();
 
     forceAnimationReset();
 
-
-    /* -----------------------------------------------------
-       LOCK PAGE
-    ----------------------------------------------------- */
-
     document.body.classList.add(
         "invitation-locked"
     );
-
-
-    /* -----------------------------------------------------
-       HIDE CONTENT
-    ----------------------------------------------------- */
 
     pageContent.classList.remove(
         "show"
     );
 
-
-    /* -----------------------------------------------------
-       SHOW COVER
-    ----------------------------------------------------- */
-
     cover.style.display =
         "flex";
 
-
     void cover.offsetWidth;
-
 
     requestAnimationFrame(function () {
 
@@ -5050,20 +5525,12 @@ function refreshGeneralReveals() {
         const rect =
             element.getBoundingClientRect();
 
-
         if (
             rect.top <
             window.innerHeight &&
             rect.bottom >
             0
         ) {
-
-            /*
-             * Do not reveal the Story card
-             * through the generic system.
-             *
-             * Story has its own animation.
-             */
 
             if (
                 element === storyCard
@@ -5072,7 +5539,6 @@ function refreshGeneralReveals() {
                 return;
 
             }
-
 
             element.classList.add(
                 "visible"
@@ -5101,8 +5567,6 @@ function getDocumentTop(element) {
 
 /* =========================================================
    15 — LAGNA PATRIKA
-   75% TRIGGER
-   ONE-WAY
 ========================================================= */
 
 function updateLagnaAnimation() {
@@ -5110,7 +5574,6 @@ function updateLagnaAnimation() {
     if (!lagnaElements.length) {
         return;
     }
-
 
     const triggerPoint =
         window.scrollY +
@@ -5129,10 +5592,8 @@ function updateLagnaAnimation() {
 
         }
 
-
         const elementTop =
             getDocumentTop(element);
-
 
         if (
             triggerPoint >=
@@ -5160,10 +5621,8 @@ function requestLagnaAnimation() {
         return;
     }
 
-
     lagnaAnimationFrame =
         true;
-
 
     requestAnimationFrame(function () {
 
@@ -5195,10 +5654,6 @@ window.addEventListener(
 
 /* =========================================================
    16 — EVENTS
-   CARD: RIGHT → LEFT
-   TRIGGER: 75%
-   CARD: ONE-WAY
-   CIRCLE: TWO-WAY
 ========================================================= */
 
 function updateEventCards() {
@@ -5206,7 +5661,6 @@ function updateEventCards() {
     if (!eventCards.length) {
         return;
     }
-
 
     const triggerPoint =
         window.scrollY +
@@ -5219,18 +5673,11 @@ function updateEventCards() {
             index
         ) {
 
-
             const eventTop =
                 getDocumentTop(
                     eventCard
                 );
 
-
-            /* -------------------------------------------------
-               CARD
-               RIGHT → LEFT
-               ONCE ONLY
-            ------------------------------------------------- */
 
             if (
                 triggerPoint >=
@@ -5243,11 +5690,6 @@ function updateEventCards() {
 
             }
 
-
-            /* -------------------------------------------------
-               CIRCLE
-               TWO-WAY
-            ------------------------------------------------- */
 
             if (
                 eventItems[index]
@@ -5294,27 +5736,21 @@ function updateTimelineProgress() {
 
     }
 
-
     const triggerY =
         window.innerHeight * 0.75;
-
 
     const timelineRect =
         timeline.getBoundingClientRect();
 
-
     const timelineStart =
         timelineRect.top + 10;
-
 
     let progress =
         triggerY -
         timelineStart;
 
-
     const timelineHeight =
         timelineRect.height - 20;
-
 
     progress =
         Math.max(
@@ -5325,16 +5761,11 @@ function updateTimelineProgress() {
             )
         );
 
-
     timelineProgress.style.height =
         progress + "px";
 
 }
 
-
-/* =========================================================
-   18 — EVENTS FRAME
-========================================================= */
 
 let eventAnimationFrame =
     false;
@@ -5346,10 +5777,8 @@ function requestEventsAnimation() {
         return;
     }
 
-
     eventAnimationFrame =
         true;
-
 
     requestAnimationFrame(function () {
 
@@ -5382,10 +5811,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   19 — STORY
-   CINEMATIC LINE-BY-LINE
-   75% TRIGGER
-   ONE-WAY
+   18 — STORY
 ========================================================= */
 
 function updateStoryAnimation() {
@@ -5393,13 +5819,6 @@ function updateStoryAnimation() {
     if (!storyCard) {
         return;
     }
-
-
-    /*
-     * Once the Story starts,
-     * it stays visible during this
-     * invitation session.
-     */
 
     if (
         storyCard.classList.contains(
@@ -5411,14 +5830,11 @@ function updateStoryAnimation() {
 
     }
 
-
     const storyTop =
         storyCard.getBoundingClientRect().top;
 
-
     const triggerPoint =
         window.innerHeight * 0.75;
-
 
     if (
         storyTop <=
@@ -5444,10 +5860,8 @@ function requestStoryAnimation() {
         return;
     }
 
-
     storyAnimationFrame =
         true;
-
 
     requestAnimationFrame(function () {
 
@@ -5478,6 +5892,278 @@ window.addEventListener(
 
 
 /* =========================================================
+   19 — SACRED MOMENT
+       PHOTO + CAPTION SCROLL ANIMATION
+=========================================================
+
+   SCROLL DOWN
+
+   PHOTO TOP AT 80%
+          ↓
+       START
+          ↓
+      80% → 20%
+          ↓
+     PHOTO ZOOMS OUT
+     CAPTION APPEARS
+          ↓
+   PHOTO TOP AT 20%
+          ↓
+        MAX
+
+
+   SCROLL UP
+
+   PHOTO TOP AT 20%
+          ↓
+       REVERSE
+          ↓
+      20% → 80%
+          ↓
+   PHOTO RETURNS
+   CAPTION DISAPPEARS
+          ↓
+   PHOTO TOP AT 80%
+          ↓
+       ORIGINAL
+
+========================================================= */
+
+let sacredZoomFrame =
+    false;
+
+
+function updateSacredZoom() {
+
+    if (!sacredPhoto) {
+        return;
+    }
+
+
+    const rect =
+        sacredPhoto.getBoundingClientRect();
+
+
+    const viewportHeight =
+        window.innerHeight;
+
+
+    /*
+       EXACT RANGE
+
+       START:
+       PHOTO TOP = 80%
+
+       END:
+       PHOTO TOP = 20%
+    */
+
+    const startPoint =
+        viewportHeight * 0.80;
+
+    const endPoint =
+        viewportHeight * 0.20;
+
+
+    /*
+       0 = animation not started
+
+       1 = animation complete
+    */
+
+    let progress =
+        (
+            startPoint -
+            rect.top
+        ) /
+        (
+            startPoint -
+            endPoint
+        );
+
+
+    progress =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                progress
+            )
+        );
+
+
+    /* =====================================================
+       PHOTO MOVEMENT
+    ===================================================== */
+
+    /*
+       Slight upward physical movement.
+    */
+
+    const translateY =
+        -45 *
+        progress;
+
+
+    /*
+       Subtle zoom.
+    */
+
+    const scale =
+        1 +
+        (
+            0.055 *
+            progress
+        );
+
+
+    /*
+       Very subtle rotation.
+    */
+
+    const rotate =
+        -0.35 *
+        progress;
+
+
+    sacredPhoto.style.setProperty(
+        "--sacred-y",
+        translateY.toFixed(2) +
+        "px"
+    );
+
+
+    sacredPhoto.style.setProperty(
+        "--sacred-scale",
+        scale.toFixed(4)
+    );
+
+
+    sacredPhoto.style.setProperty(
+        "--sacred-rotate",
+        rotate.toFixed(3) +
+        "deg"
+    );
+
+
+    /* =====================================================
+       CAPTION ANIMATION
+    ===================================================== */
+
+    /*
+       Caption fades in exactly with the photo.
+    */
+
+    const textOpacity =
+        progress;
+
+
+    /*
+       Caption starts slightly lower
+       and rises into position.
+    */
+
+    const textY =
+        22 -
+        (
+            22 *
+            progress
+        );
+
+
+    /*
+       Caption starts slightly smaller.
+    */
+
+    const textScale =
+        0.94 +
+        (
+            0.06 *
+            progress
+        );
+
+
+    /*
+       Caption starts blurred
+       and becomes sharp.
+    */
+
+    const textBlur =
+        4 -
+        (
+            4 *
+            progress
+        );
+
+
+    sacredPhoto.style.setProperty(
+        "--sacred-text-opacity",
+        textOpacity.toFixed(4)
+    );
+
+
+    sacredPhoto.style.setProperty(
+        "--sacred-text-y",
+        textY.toFixed(2) +
+        "px"
+    );
+
+
+    sacredPhoto.style.setProperty(
+        "--sacred-text-scale",
+        textScale.toFixed(4)
+    );
+
+
+    sacredPhoto.style.setProperty(
+        "--sacred-text-blur",
+        textBlur.toFixed(2) +
+        "px"
+    );
+
+}
+
+
+function requestSacredZoom() {
+
+    if (sacredZoomFrame) {
+        return;
+    }
+
+
+    sacredZoomFrame =
+        true;
+
+
+    requestAnimationFrame(function () {
+
+        updateSacredZoom();
+
+        sacredZoomFrame =
+            false;
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    requestSacredZoom,
+    {
+        passive:
+            true
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    requestSacredZoom
+);
+
+
+/* =========================================================
    20 — INITIAL EVENTS CALCULATION
 ========================================================= */
 
@@ -5490,6 +6176,8 @@ window.addEventListener(
             requestEventsAnimation();
 
             requestStoryAnimation();
+
+            requestSacredZoom();
 
         }, 300);
 
@@ -5508,7 +6196,6 @@ function createCelebrationSparkles() {
             ".wedding-particles"
         );
 
-
     if (!container) {
         return;
     }
@@ -5525,10 +6212,8 @@ function createCelebrationSparkles() {
                 "span"
             );
 
-
         sparkle.className =
             "petal";
-
 
         sparkle.style.left =
             (
@@ -5536,13 +6221,11 @@ function createCelebrationSparkles() {
                 Math.random() * 10
             ) + "%";
 
-
         sparkle.style.top =
             (
                 45 +
                 Math.random() * 10
             ) + "%";
-
 
         sparkle.style.animationDuration =
             (
@@ -5550,10 +6233,8 @@ function createCelebrationSparkles() {
                 Math.random() * 1.5
             ) + "s";
 
-
         sparkle.style.background =
             "rgba(212,176,93,.75)";
-
 
         container.appendChild(
             sparkle
@@ -5587,20 +6268,16 @@ function createPetal() {
         return;
     }
 
-
     const petal =
         document.createElement(
             "span"
         );
 
-
     petal.className =
         "petal";
 
-
     petal.style.left =
         Math.random() * 100 + "%";
-
 
     petal.style.animationDuration =
         (
@@ -5608,21 +6285,17 @@ function createPetal() {
             Math.random() * 8
         ) + "s";
 
-
     petal.style.animationDelay =
         Math.random() * 2 + "s";
-
 
     petal.style.transform =
         "rotate(" +
         Math.random() * 180 +
         "deg)";
 
-
     particleContainer.appendChild(
         petal
     );
-
 
     setTimeout(function () {
 
@@ -5679,7 +6352,6 @@ if (
             const rect =
                 cover.getBoundingClientRect();
 
-
             const x =
                 (
                     event.clientX -
@@ -5687,7 +6359,6 @@ if (
                 ) /
                 rect.width -
                 0.5;
-
 
             const y =
                 (
@@ -5697,7 +6368,6 @@ if (
                 rect.height -
                 0.5;
 
-
             coverPhoto.style.transform =
                 "scale(1.075) " +
                 "translate(" +
@@ -5705,7 +6375,6 @@ if (
                 "px," +
                 y * -6 +
                 "px)";
-
 
             coverContent.style.transform =
                 "translate(" +
@@ -5764,7 +6433,6 @@ function showGalleryImage() {
         return;
     }
 
-
     galleryImage.src =
         galleryImages[
             galleryIndex
@@ -5777,7 +6445,6 @@ function nextImage() {
 
     galleryIndex++;
 
-
     if (
         galleryIndex >=
         galleryImages.length
@@ -5786,7 +6453,6 @@ function nextImage() {
         galleryIndex = 0;
 
     }
-
 
     showGalleryImage();
 
@@ -5797,7 +6463,6 @@ function previousImage() {
 
     galleryIndex--;
 
-
     if (
         galleryIndex < 0
     ) {
@@ -5806,7 +6471,6 @@ function previousImage() {
             galleryImages.length - 1;
 
     }
-
 
     showGalleryImage();
 
@@ -5829,7 +6493,6 @@ function resetGalleryTimer() {
     clearInterval(
         galleryTimer
     );
-
 
     galleryTimer =
         setInterval(
@@ -5874,11 +6537,9 @@ if (galleryImage) {
                 event.changedTouches[0]
                     .screenX;
 
-
             const difference =
                 touchStartX -
                 touchEndX;
-
 
             if (
                 Math.abs(difference) <
@@ -5888,7 +6549,6 @@ if (galleryImage) {
                 return;
 
             }
-
 
             if (
                 difference > 0
@@ -5902,7 +6562,6 @@ if (galleryImage) {
                 previousImage();
 
             }
-
 
             resetGalleryTimer();
 
@@ -5943,7 +6602,6 @@ function addCalendar(
         const year =
             date.getFullYear();
 
-
         const month =
             String(
                 date.getMonth() + 1
@@ -5951,7 +6609,6 @@ function addCalendar(
                 2,
                 "0"
             );
-
 
         const day =
             String(
@@ -5961,7 +6618,6 @@ function addCalendar(
                 "0"
             );
 
-
         const hours =
             String(
                 date.getHours()
@@ -5969,7 +6625,6 @@ function addCalendar(
                 2,
                 "0"
             );
-
 
         const minutes =
             String(
@@ -5979,7 +6634,6 @@ function addCalendar(
                 "0"
             );
 
-
         const seconds =
             String(
                 date.getSeconds()
@@ -5987,7 +6641,6 @@ function addCalendar(
                 2,
                 "0"
             );
-
 
         return (
             year +
@@ -6075,30 +6728,43 @@ document.addEventListener(
 
             requestStoryAnimation();
 
+            requestSacredZoom();
+
         }
 
     }
 );
 
-/* =========================================================
-   COUPLE VIDEO — REPEATABLE FORWARD / REVERSE
-   ========================================================= */
-
-const coupleVideo = document.getElementById("coupleVideo");
-
-let videoLastScrollY = window.scrollY;
-let videoDirection = 0;
-
-let videoReverseRAF = null;
-let videoReverseLastTime = null;
-
-let videoForwardTriggered = false;
-let videoReverseTriggered = false;
-
 
 /* =========================================================
-   FORWARD
-   ========================================================= */
+   30 — COUPLE VIDEO
+       REPEATABLE FORWARD / REVERSE
+========================================================= */
+
+const coupleVideo =
+    document.getElementById(
+        "coupleVideo"
+    );
+
+
+let videoLastScrollY =
+    window.scrollY;
+
+let videoDirection =
+    0;
+
+let videoReverseRAF =
+    null;
+
+let videoReverseLastTime =
+    null;
+
+let videoForwardTriggered =
+    false;
+
+let videoReverseTriggered =
+    false;
+
 
 function playVideoForward() {
 
@@ -6110,72 +6776,103 @@ function playVideoForward() {
         !coupleVideo.duration ||
         !isFinite(coupleVideo.duration)
     ) {
+
         return;
+
     }
 
-    /*
-       If we are at the end, go back to the beginning
-       before playing forward again.
-    */
     if (
         coupleVideo.currentTime >=
         coupleVideo.duration - 0.05
     ) {
-        coupleVideo.currentTime = 0;
+
+        coupleVideo.currentTime =
+            0;
+
     }
 
-    coupleVideo.play().catch(function(error) {
-        console.log("Video play:", error);
-    });
+    coupleVideo.play().catch(
+        function(error) {
+
+            console.log(
+                "Video play:",
+                error
+            );
+
+        }
+    );
+
 }
 
-
-/* =========================================================
-   REVERSE
-   ========================================================= */
 
 function reverseVideo(timestamp) {
 
     if (!coupleVideo) return;
 
-    if (videoReverseLastTime === null) {
-        videoReverseLastTime = timestamp;
+    if (
+        videoReverseLastTime ===
+        null
+    ) {
+
+        videoReverseLastTime =
+            timestamp;
+
     }
+
 
     const delta =
         Math.min(
-            timestamp - videoReverseLastTime,
+            timestamp -
+            videoReverseLastTime,
             50
         ) / 1000;
 
-    videoReverseLastTime = timestamp;
 
-    const reverseSpeed = 1.0;
+    videoReverseLastTime =
+        timestamp;
+
+
+    const reverseSpeed =
+        1.0;
+
 
     const newTime =
         coupleVideo.currentTime -
-        (delta * reverseSpeed);
+        (
+            delta *
+            reverseSpeed
+        );
 
-    if (newTime <= 0) {
 
-        coupleVideo.currentTime = 0;
+    if (
+        newTime <= 0
+    ) {
 
-        videoReverseRAF = null;
-        videoReverseLastTime = null;
+        coupleVideo.currentTime =
+            0;
+
+        videoReverseRAF =
+            null;
+
+        videoReverseLastTime =
+            null;
 
         return;
+
     }
 
-    coupleVideo.currentTime = newTime;
+
+    coupleVideo.currentTime =
+        newTime;
+
 
     videoReverseRAF =
-        requestAnimationFrame(reverseVideo);
+        requestAnimationFrame(
+            reverseVideo
+        );
+
 }
 
-
-/* =========================================================
-   START REVERSE
-   ========================================================= */
 
 function playVideoReverse() {
 
@@ -6185,61 +6882,77 @@ function playVideoReverse() {
         !coupleVideo.duration ||
         !isFinite(coupleVideo.duration)
     ) {
+
         return;
+
     }
 
-    /*
-       Stop any forward playback.
-    */
+
     coupleVideo.pause();
 
-    /*
-       If already at beginning, nothing to reverse.
-    */
-    if (coupleVideo.currentTime <= 0.001) {
 
-        coupleVideo.currentTime = 0;
+    if (
+        coupleVideo.currentTime <=
+        0.001
+    ) {
+
+        coupleVideo.currentTime =
+            0;
 
         return;
+
     }
 
-    /*
-       Cancel previous reverse animation.
-    */
-    if (videoReverseRAF !== null) {
 
-        cancelAnimationFrame(videoReverseRAF);
+    if (
+        videoReverseRAF !==
+        null
+    ) {
 
-        videoReverseRAF = null;
+        cancelAnimationFrame(
+            videoReverseRAF
+        );
+
+        videoReverseRAF =
+            null;
+
     }
 
-    videoReverseLastTime = null;
+
+    videoReverseLastTime =
+        null;
+
 
     videoReverseRAF =
-        requestAnimationFrame(reverseVideo);
+        requestAnimationFrame(
+            reverseVideo
+        );
+
 }
 
-
-/* =========================================================
-   STOP REVERSE
-   ========================================================= */
 
 function stopVideoReverse() {
 
-    if (videoReverseRAF !== null) {
+    if (
+        videoReverseRAF !==
+        null
+    ) {
 
-        cancelAnimationFrame(videoReverseRAF);
+        cancelAnimationFrame(
+            videoReverseRAF
+        );
 
-        videoReverseRAF = null;
+        videoReverseRAF =
+            null;
+
     }
 
-    videoReverseLastTime = null;
+
+    videoReverseLastTime =
+        null;
+
 }
 
-
-/* =========================================================
-   CHECK POSITION
-   ========================================================= */
 
 function checkCoupleVideoScroll() {
 
@@ -6252,85 +6965,88 @@ function checkCoupleVideoScroll() {
         window.innerHeight;
 
 
-    /* =====================================================
-       SCROLLING DOWN
-
-       VIDEO TOP → 60%
-       ===================================================== */
+    /* SCROLL DOWN — TOP 60% */
 
     if (
         videoDirection > 0 &&
         !videoForwardTriggered &&
-        rect.top <= viewportHeight * 0.60
+        rect.top <=
+        viewportHeight * 0.60
     ) {
 
-        videoForwardTriggered = true;
+        videoForwardTriggered =
+            true;
 
-        /*
-           Reset reverse trigger so it can trigger
-           on the next upward crossing.
-        */
-        videoReverseTriggered = false;
+        videoReverseTriggered =
+            false;
 
         playVideoForward();
 
         return;
+
     }
 
 
-    /* =====================================================
-       SCROLLING UP
-
-       VIDEO BOTTOM → 75%
-       ===================================================== */
+    /* SCROLL UP — BOTTOM 65% */
 
     if (
         videoDirection < 0 &&
         !videoReverseTriggered &&
-        rect.bottom >= viewportHeight * 0.65
+        rect.bottom >=
+        viewportHeight * 0.65
     ) {
 
-        videoReverseTriggered = true;
+        videoReverseTriggered =
+            true;
 
-        /*
-           Reset forward trigger so it can trigger
-           on the next downward crossing.
-        */
-        videoForwardTriggered = false;
+        videoForwardTriggered =
+            false;
 
         playVideoReverse();
 
         return;
+
     }
+
 }
 
-
-/* =========================================================
-   SCROLL HANDLER
-   ========================================================= */
 
 window.addEventListener(
     "scroll",
     function() {
 
-        const currentY = window.scrollY;
+        const currentY =
+            window.scrollY;
 
 
-        if (currentY > videoLastScrollY) {
+        if (
+            currentY >
+            videoLastScrollY
+        ) {
 
-            videoDirection = 1;
+            videoDirection =
+                1;
 
-        } else if (currentY < videoLastScrollY) {
+        }
+        else if (
+            currentY <
+            videoLastScrollY
+        ) {
 
-            videoDirection = -1;
+            videoDirection =
+                -1;
 
-        } else {
+        }
+        else {
 
-            videoDirection = 0;
+            videoDirection =
+                0;
+
         }
 
 
-        videoLastScrollY = currentY;
+        videoLastScrollY =
+            currentY;
 
 
         requestAnimationFrame(
@@ -6338,18 +7054,20 @@ window.addEventListener(
         );
 
     },
-    { passive: true }
+    {
+        passive:
+            true
+    }
 );
 
 
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
-
 if (coupleVideo) {
 
-    coupleVideo.muted = true;
-    coupleVideo.playsInline = true;
+    coupleVideo.muted =
+        true;
+
+    coupleVideo.playsInline =
+        true;
 
 
     coupleVideo.addEventListener(
@@ -6358,21 +7076,22 @@ if (coupleVideo) {
 
             coupleVideo.pause();
 
-            coupleVideo.currentTime = 0;
+            coupleVideo.currentTime =
+                0;
 
-            videoForwardTriggered = false;
-            videoReverseTriggered = false;
+            videoForwardTriggered =
+                false;
+
+            videoReverseTriggered =
+                false;
 
             videoLastScrollY =
                 window.scrollY;
+
         }
     );
 
 
-    /*
-       Forward playback finishes.
-       Stay at END.
-    */
     coupleVideo.addEventListener(
         "ended",
         function() {
@@ -6381,10 +7100,11 @@ if (coupleVideo) {
 
             coupleVideo.currentTime =
                 coupleVideo.duration;
+
         }
     );
-}
 
+}
 
 </script>
 
