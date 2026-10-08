@@ -1250,7 +1250,9 @@ img {
     overflow:
         hidden;
 }
-
+/* =========================================================
+   WELCOME CARD — APPLE GLASS / FROSTED GLASS
+========================================================= */
 
 .welcome-card {
 
@@ -1284,24 +1286,53 @@ img {
     text-align:
         center;
 
+    /* GLASS BORDER */
+
     border:
         1px solid
-        rgba(135,61,32,.12);
+        rgba(255,255,255,.55);
 
     border-radius:
         32px;
 
-    background:
-        rgba(255,253,250,.93);
+    /* TRANSPARENT GLASS */
+background: rgba(255,255,255,.06);
+backdrop-filter: blur(1px) saturate(170%);
+    /* background:
+        rgba(255,255,255,.10);
+
+    backdrop-filter:
+        blur(2px)
+        saturate(180%); */
+
+    -webkit-backdrop-filter:
+        blur(2px)
+        saturate(180%);
+
+    /* SOFT GLASS SHADOW */
 
     box-shadow:
-        var(--shadow);
+
+        0 20px 50px
+        rgba(60,35,20,.12),
+
+        inset 0 1px 0
+        rgba(255,255,255,.65),
+
+        inset 0 -1px 0
+        rgba(255,255,255,.18);
 
     overflow:
         hidden;
+
+    isolation:
+        isolate;
 }
 
 
+/* =========================================================
+   GLASS LIGHT / REFLECTION
+========================================================= */
 .welcome-card::before {
 
     content:
@@ -1310,31 +1341,34 @@ img {
     position:
         absolute;
 
-    width:
-        220px;
-
-    height:
-        220px;
-
-    top:
-        -100px;
-
-    left:
-        -80px;
+    inset:
+        0;
 
     border-radius:
-        50%;
+        inherit;
 
     background:
-        rgba(212,176,93,.08);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.16),
+            rgba(255,255,255,.04) 45%,
+            rgba(255,255,255,.10)
+        );
 
-    filter:
-        blur(10px);
+    opacity:
+        .55;
 
     pointer-events:
         none;
+
+    z-index:
+        0;
 }
 
+
+/* =========================================================
+   SOFT GLASS GLOW
+========================================================= */
 
 .welcome-card::after {
 
@@ -1345,12 +1379,12 @@ img {
         absolute;
 
     width:
-        240px;
+        260px;
 
     height:
-        240px;
+        260px;
 
-    bottom:
+    top:
         -120px;
 
     right:
@@ -1360,13 +1394,30 @@ img {
         50%;
 
     background:
-        rgba(200,158,146,.08);
+        rgba(255,220,170,.12);
 
     filter:
-        blur(10px);
+        blur(35px);
 
     pointer-events:
         none;
+
+    z-index:
+        0;
+}
+
+
+/* =========================================================
+   KEEP CONTENT ABOVE GLASS
+========================================================= */
+
+.welcome-card > * {
+
+    position:
+        relative;
+
+    z-index:
+        2;
 }
 
 
@@ -1465,17 +1516,17 @@ img {
         italic;
 
     font-weight:
-        500;
+        600;
 
     line-height:
         .82;
 
     color:
-        var(--brown);
+         #3A2118;
 
     text-shadow:
-        0 4px 15px
-        rgba(75,44,28,.08);
+        0 2px 8px
+        rgba(255,248,232,.35);
 
     opacity:
         0;
@@ -1539,19 +1590,23 @@ img {
         var(--serif);
 
     font-size:
-        22px;
+        28px;
 
     font-style:
         italic;
 
     font-weight:
-        600;
+        900;
 
     letter-spacing:
         7px;
 
     color:
-        #c5a46b;
+        #FFF8E8;
+    
+    text-shadow:
+        0 2px 10px
+        rgba(58,33,24,.35);
 
     opacity:
         0;
@@ -1603,11 +1658,19 @@ img {
     font-style:
         italic;
 
+    font-weight:
+        900;
+
     line-height:
         1.45;
 
     color:
-        #b77d6c;
+        #6B4032;
+
+    text-shadow:
+        0 1px 5px
+        rgba(255,248,232,.25);
+
 
     opacity:
         0;
@@ -1658,13 +1721,18 @@ img {
         8px;
 
     color:
-        #c79d8e;
+        #6B4032;
+
+    text-shadow:
+        0 1px 5px
+        rgba(255,248,232,.25);
+
 
     font-size:
         10px;
 
     font-weight:
-        700;
+        900;
 
     letter-spacing:
         5px;
@@ -1711,7 +1779,24 @@ img {
         ease-in-out
         infinite;
 }
+@media(max-width:580px) {
 
+    .welcome-card {
+
+        padding:
+            48px 21px 55px;
+
+        border-radius:
+            28px;
+
+        backdrop-filter: blur(1px) saturate(170%);
+
+        -webkit-backdrop-filter:
+            blur(2px)
+            saturate(180%);
+    }
+
+}
 
 @keyframes welcomeArrow {
 
@@ -5047,9 +5132,9 @@ section:not(.cover) {
                 href="https://instagram.com/sai_kushal_1208"
                 target="_blank"
                 rel="noopener noreferrer">
-
+        
                 <strong>
-                    @SAI KUSHAL
+                    <span style="text-decoration: underline;">@SAI KUSHAL</span>
                 </strong>
 
             </a>
