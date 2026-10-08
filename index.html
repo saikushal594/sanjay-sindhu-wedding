@@ -2264,22 +2264,41 @@ section:not(.cover) {
 ========================================================= */
 
 .event-dot {
-    position: absolute;
-    width: 23px;
-    height: 23px;
-    left: -37px;
-    top: 25px;
 
-    border-radius: 50%;
-    background: var(--cream);
-    border: 2px solid var(--brown);
+    position:
+        absolute;
+
+    width:
+        23px;
+
+    height:
+        23px;
+
+    left:
+        -37px;
+
+    top:
+        25px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--cream);
+
+    border:
+        2px solid
+        var(--brown);
 
     box-shadow:
-        inset 0 0 0 5px var(--cream);
+        inset 0 0 0 5px
+        var(--cream);
 
-    z-index: 10;
+    z-index:
+        10;
 
-    transform: none !important;
+    transform:
+        none !important;
 
     transition:
         background .3s ease,
@@ -2287,9 +2306,9 @@ section:not(.cover) {
         box-shadow .3s ease;
 }
 
+
 /* =========================================================
    INNER DOT
-   HIDDEN UNTIL EVENT IS COMPLETE
 ========================================================= */
 
 .event-dot::after {
@@ -2337,7 +2356,8 @@ section:not(.cover) {
    COMPLETED EVENT CIRCLE
 ========================================================= */
 
-.event-item.event-active .event-dot {
+.event-item.event-active
+.event-dot {
 
     background:
         var(--gold);
@@ -2346,6 +2366,7 @@ section:not(.cover) {
         var(--gold);
 
     box-shadow:
+
         0 0 0 3px
         rgba(212,176,93,.14),
 
@@ -2368,7 +2389,7 @@ section:not(.cover) {
 
 /* =========================================================
    EVENT CARD
-   EACH CARD SLIDES LEFT → RIGHT
+   RIGHT → LEFT
    ONE-WAY REVEAL
 ========================================================= */
 
@@ -2382,8 +2403,6 @@ section:not(.cover) {
     box-shadow: 0 7px 20px rgba(80,45,25,.06);
 
     opacity: 0;
-
-    /* Starts from RIGHT */
     transform: translateX(70px);
 
     transition:
@@ -2395,26 +2414,7 @@ section:not(.cover) {
 
 .event.event-visible {
     opacity: 1;
-
-    /* Ends at normal position */
     transform: translateX(0);
-}
-
-
-/*
-   CARD COMPLETED / REVEALED
-
-   JavaScript adds this once.
-   It is NEVER removed.
-*/
-
-.event.event-visible {
-
-    opacity:
-        1;
-
-    transform:
-        translateX(0);
 }
 
 
@@ -3769,16 +3769,9 @@ section:not(.cover) {
         <div class="family-name">
 
             <span class="family-name-line lagna-pop">
-                Smt. Ambuja
+                Smt. Ambuja & Sri. Moogappa
             </span>
 
-            <span class="family-name-line lagna-pop">
-                &
-            </span>
-
-            <span class="family-name-line lagna-pop">
-                Sri. Moogappa
-            </span>
 
         </div>
 
@@ -3796,15 +3789,7 @@ section:not(.cover) {
         <div class="family-name">
 
             <span class="family-name-line lagna-pop">
-                Smt. N Gowramma
-            </span>
-
-            <span class="family-name-line lagna-pop">
-                &
-            </span>
-
-            <span class="family-name-line lagna-pop">
-                Sri. Late B M Mallesh
+                Smt. N Gowramma & Sri. Late B M Mallesh
             </span>
 
         </div>
@@ -3815,7 +3800,7 @@ section:not(.cover) {
 
         <div class="family-title lagna-pop">
 
-            WITH LOVE & BLESSINGS
+            GREETINGS & BLESSINGS:
 
         </div>
 
@@ -3866,21 +3851,15 @@ section:not(.cover) {
             </div>
 
 
-            <!-- =========================================
-                 EVENT 01
-            ========================================== -->
+            <!-- EVENT 01 -->
 
             <div class="event-item">
-
-                <!-- FIXED TIMELINE CIRCLE -->
 
                 <div
                     class="event-dot"
                     aria-hidden="true">
                 </div>
 
-
-                <!-- MOVING CARD -->
 
                 <div class="event">
 
@@ -3924,21 +3903,15 @@ section:not(.cover) {
             </div>
 
 
-            <!-- =========================================
-                 EVENT 02
-            ========================================== -->
+            <!-- EVENT 02 -->
 
             <div class="event-item">
-
-                <!-- FIXED TIMELINE CIRCLE -->
 
                 <div
                     class="event-dot"
                     aria-hidden="true">
                 </div>
 
-
-                <!-- MOVING CARD -->
 
                 <div class="event">
 
@@ -3993,21 +3966,15 @@ section:not(.cover) {
             </div>
 
 
-            <!-- =========================================
-                 EVENT 03
-            ========================================== -->
+            <!-- EVENT 03 -->
 
             <div class="event-item">
-
-                <!-- FIXED TIMELINE CIRCLE -->
 
                 <div
                     class="event-dot"
                     aria-hidden="true">
                 </div>
 
-
-                <!-- MOVING CARD -->
 
                 <div class="event">
 
@@ -4414,200 +4381,303 @@ section:not(.cover) {
    01 — PAGE LOADER
 ========================================================= */
 
-window.addEventListener(
-    "load",
-    function() {
+window.addEventListener("load", function () {
 
-        const loader =
-            document.getElementById(
-                "pageLoader"
-            );
+    const loader =
+        document.getElementById("pageLoader");
 
-        setTimeout(
-            function() {
+    if (!loader) return;
 
-                loader.classList.add(
-                    "hide"
-                );
+    setTimeout(function () {
 
-            },
-            1400
-        );
+        loader.classList.add("hide");
 
-    }
-);
+    }, 1400);
+
+});
 
 
 /* =========================================================
-   02 — ENTER CELEBRATION
+   02 — GLOBAL ELEMENTS
 ========================================================= */
 
-let celebrationEntered =
-    false;
+const cover =
+    document.getElementById("cover");
+
+const pageContent =
+    document.getElementById("pageContent");
+
+const welcomeCard =
+    document.getElementById("welcomeCard");
 
 
-function enterCelebration() {
+let celebrationEntered = false;
+
+
+/* =========================================================
+   03 — GENERAL REVEALS
+========================================================= */
+
+const reveals =
+    document.querySelectorAll(".reveal");
+
+
+/* =========================================================
+   04 — LAGNA
+========================================================= */
+
+const lagnaElements =
+    document.querySelectorAll(".lagna .lagna-pop");
+
+
+/* =========================================================
+   05 — EVENTS
+========================================================= */
+
+const timeline =
+    document.querySelector(".timeline");
+
+const timelineProgress =
+    document.getElementById("timelineProgress");
+
+const eventItems =
+    document.querySelectorAll(
+        ".events .event-item"
+    );
+
+const eventCards =
+    document.querySelectorAll(
+        ".events .event"
+    );
+
+
+/* =========================================================
+   06 — ENTER CELEBRATION
+========================================================= */
+
+function enterCelebration(addHistory = true) {
 
     if (celebrationEntered) {
         return;
     }
 
-
-    const cover =
-        document.getElementById(
-            "cover"
-        );
-
-
-    const pageContent =
-        document.getElementById(
-            "pageContent"
-        );
-
-
-    if (
-        !cover ||
-        !pageContent
-    ) {
+    if (!cover || !pageContent) {
         return;
     }
 
 
-    celebrationEntered =
-        true;
+    /* -----------------------------------------------------
+       IMPORTANT:
+       Start a completely fresh animation session.
+    ----------------------------------------------------- */
+
+    resetInvitationAnimations();
 
 
-    window.scrollTo(
-        0,
-        0
-    );
+    celebrationEntered = true;
 
+
+    /* -----------------------------------------------------
+       HISTORY
+    ----------------------------------------------------- */
+
+    if (
+        addHistory &&
+        window.location.hash !== "#invitation"
+    ) {
+
+        history.pushState(
+            {
+                invitation: true
+            },
+            "",
+            "#invitation"
+        );
+
+    }
+
+
+    /* -----------------------------------------------------
+       TOP OF PAGE
+    ----------------------------------------------------- */
+
+    window.scrollTo(0, 0);
+
+
+    /* -----------------------------------------------------
+       UNLOCK PAGE
+    ----------------------------------------------------- */
 
     document.body.classList.remove(
         "invitation-locked"
     );
 
 
-    pageContent.classList.add(
-        "show"
-    );
+    /* -----------------------------------------------------
+       SHOW CONTENT
+    ----------------------------------------------------- */
+
+    pageContent.classList.add("show");
 
 
-    requestAnimationFrame(
-        function() {
+    /* -----------------------------------------------------
+       COVER FADE
+    ----------------------------------------------------- */
 
-            cover.classList.add(
-                "fade-out"
+    requestAnimationFrame(function () {
+
+        cover.classList.add("fade-out");
+
+    });
+
+
+    /* -----------------------------------------------------
+       WELCOME
+       YOUR EXISTING ANIMATION — UNCHANGED
+    ----------------------------------------------------- */
+
+    setTimeout(function () {
+
+        if (welcomeCard) {
+
+            welcomeCard.classList.add(
+                "visible"
             );
 
         }
-    );
+
+        createCelebrationSparkles();
+
+    }, 250);
 
 
-    setTimeout(
-        function() {
+    /* -----------------------------------------------------
+       WAIT UNTIL PAGE IS FULLY VISIBLE
+       THEN START SCROLL SYSTEMS
+    ----------------------------------------------------- */
 
-            const welcomeCard =
-                document.getElementById(
-                    "welcomeCard"
-                );
+    setTimeout(function () {
 
+        /*
+         * Force browser to recognise the fresh
+         * hidden state of every animation.
+         */
 
-            if (welcomeCard) {
-
-                welcomeCard.classList.add(
-                    "visible"
-                );
-
-            }
+        forceAnimationReset();
 
 
-            createCelebrationSparkles();
+        /*
+         * Now calculate positions.
+         */
 
-        },
-        250
-    );
+        refreshGeneralReveals();
+
+        requestLagnaAnimation();
+
+        requestEventsAnimation();
+
+    }, 1450);
 
 
-    setTimeout(
-        function() {
+    /* -----------------------------------------------------
+       HIDE COVER AFTER TRANSITION
+    ----------------------------------------------------- */
 
-            cover.style.display =
-                "none";
+    setTimeout(function () {
 
+        cover.style.display = "none";
 
-            window.scrollTo(
-                0,
-                0
-            );
+        window.scrollTo(0, 0);
 
-        },
-        1400
-    );
+        requestLagnaAnimation();
+
+        requestEventsAnimation();
+
+    }, 1500);
 
 }
 
 
 /* =========================================================
-   03 — CELEBRATION SPARKLES
+   07 — RESET INVITATION ANIMATIONS
 ========================================================= */
 
-function createCelebrationSparkles() {
+function resetInvitationAnimations() {
 
-    const container =
-        document.querySelector(
-            ".wedding-particles"
+
+    /* -----------------------------------------------------
+       WELCOME
+    ----------------------------------------------------- */
+
+    if (welcomeCard) {
+
+        welcomeCard.classList.remove(
+            "visible"
         );
 
-
-    for (
-        let i = 0;
-        i < 12;
-        i++
-    ) {
-
-        const sparkle =
-            document.createElement(
-                "span"
-            );
+    }
 
 
-        sparkle.className =
-            "petal";
+    /* -----------------------------------------------------
+       GENERAL REVEALS
+    ----------------------------------------------------- */
 
+    reveals.forEach(function (element) {
 
-        sparkle.style.left =
-            (45 + Math.random() * 10)
-            + "%";
-
-
-        sparkle.style.top =
-            (45 + Math.random() * 10)
-            + "%";
-
-
-        sparkle.style.animationDuration =
-            (1.5 + Math.random() * 1.5)
-            + "s";
-
-
-        sparkle.style.background =
-            "rgba(212,176,93,.75)";
-
-
-        container.appendChild(
-            sparkle
+        element.classList.remove(
+            "visible"
         );
 
+    });
 
-        setTimeout(
-            function() {
 
-                sparkle.remove();
+    /* -----------------------------------------------------
+       LAGNA
+    ----------------------------------------------------- */
 
-            },
-            3500
+    lagnaElements.forEach(function (element) {
+
+        element.classList.remove(
+            "lagna-visible"
         );
+
+    });
+
+
+    /* -----------------------------------------------------
+       EVENT CARDS
+    ----------------------------------------------------- */
+
+    eventCards.forEach(function (card) {
+
+        card.classList.remove(
+            "event-visible"
+        );
+
+    });
+
+
+    /* -----------------------------------------------------
+       EVENT CIRCLES
+    ----------------------------------------------------- */
+
+    eventItems.forEach(function (item) {
+
+        item.classList.remove(
+            "event-active"
+        );
+
+    });
+
+
+    /* -----------------------------------------------------
+       TIMELINE
+    ----------------------------------------------------- */
+
+    if (timelineProgress) {
+
+        timelineProgress.style.height =
+            "0px";
 
     }
 
@@ -4615,180 +4685,356 @@ function createCelebrationSparkles() {
 
 
 /* =========================================================
-   04 — GENERAL SCROLL REVEAL
+   08 — FORCE ANIMATION RESET
 ========================================================= */
 
-const reveals =
-    document.querySelectorAll(
-        ".reveal"
-    );
+function forceAnimationReset() {
 
+    /*
+     * This is the important part.
+     *
+     * Removing a class and immediately adding it again
+     * in the same rendering cycle may not restart CSS
+     * transitions.
+     *
+     * Reading offsetHeight forces the browser to commit
+     * the reset state.
+     */
 
-const revealObserver =
-    new IntersectionObserver(
+    eventCards.forEach(function (card) {
 
-        function(entries) {
-
-            entries.forEach(
-                function(entry) {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-
-        {
-            threshold:
-                0.14,
-
-            rootMargin:
-                "0px 0px -50px 0px"
-        }
-
-    );
-
-
-reveals.forEach(
-    function(element) {
-
-        revealObserver.observe(
-            element
+        card.classList.remove(
+            "event-visible"
         );
+
+        void card.offsetHeight;
+
+    });
+
+
+    lagnaElements.forEach(function (element) {
+
+        element.classList.remove(
+            "lagna-visible"
+        );
+
+        void element.offsetHeight;
+
+    });
+
+
+    reveals.forEach(function (element) {
+
+        element.classList.remove(
+            "visible"
+        );
+
+        void element.offsetHeight;
+
+    });
+
+}
+
+
+/* =========================================================
+   09 — RETURN TO COVER
+========================================================= */
+
+function returnToCover() {
+
+    if (!cover || !pageContent) {
+        return;
+    }
+
+
+    /* -----------------------------------------------------
+       Mark invitation as closed
+    ----------------------------------------------------- */
+
+    celebrationEntered = false;
+
+
+    /* -----------------------------------------------------
+       RESET EVERYTHING
+    ----------------------------------------------------- */
+
+    resetInvitationAnimations();
+
+
+    /*
+     * Force the browser to commit the reset BEFORE
+     * the next invitation entry.
+     */
+
+    forceAnimationReset();
+
+
+    /* -----------------------------------------------------
+       LOCK SCROLL
+    ----------------------------------------------------- */
+
+    document.body.classList.add(
+        "invitation-locked"
+    );
+
+
+    /* -----------------------------------------------------
+       HIDE PAGE
+    ----------------------------------------------------- */
+
+    pageContent.classList.remove(
+        "show"
+    );
+
+
+    /* -----------------------------------------------------
+       SHOW COVER
+    ----------------------------------------------------- */
+
+    cover.style.display = "flex";
+
+
+    /*
+     * Force cover layout.
+     */
+
+    void cover.offsetWidth;
+
+
+    requestAnimationFrame(function () {
+
+        cover.classList.remove(
+            "fade-out"
+        );
+
+        window.scrollTo(0, 0);
+
+    });
+
+}
+
+
+/* =========================================================
+   10 — BROWSER / PHONE BACK + FORWARD
+========================================================= */
+
+window.addEventListener(
+    "popstate",
+    function () {
+
+        if (
+            window.location.hash ===
+            "#invitation"
+        ) {
+
+            /*
+             * Browser FORWARD
+             */
+
+            celebrationEntered = false;
+
+            enterCelebration(false);
+
+        }
+        else {
+
+            /*
+             * Browser BACK
+             */
+
+            returnToCover();
+
+        }
 
     }
 );
 
 
 /* =========================================================
-   05 — LAGNA PATRIKA
-       75% SCREEN TRIGGER
-       ONE-WAY POP ONLY
+   11 — DIRECT #invitation
 ========================================================= */
 
-const lagnaElements =
-    document.querySelectorAll(
-        ".lagna .lagna-pop"
+window.addEventListener(
+    "load",
+    function () {
+
+        if (
+            window.location.hash ===
+            "#invitation"
+        ) {
+
+            setTimeout(function () {
+
+                celebrationEntered = false;
+
+                enterCelebration(false);
+
+            }, 1600);
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   12 — GENERAL REVEAL OBSERVER
+========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.14,
+            rootMargin:
+                "0px 0px -50px 0px"
+        }
     );
 
 
-function getDocumentTop(element) {
+reveals.forEach(function (element) {
 
-    let top =
-        0;
+    revealObserver.observe(element);
 
-    let current =
-        element;
+});
 
 
-    while (current) {
+/* =========================================================
+   13 — GENERAL REVEAL REFRESH
+========================================================= */
 
-        top +=
-            current.offsetTop;
+function refreshGeneralReveals() {
 
-        current =
-            current.offsetParent;
+    reveals.forEach(function (element) {
 
-    }
+        const rect =
+            element.getBoundingClientRect();
 
 
-    return top;
+        if (
+            rect.top <
+            window.innerHeight &&
+            rect.bottom >
+            0
+        ) {
+
+            element.classList.add(
+                "visible"
+            );
+
+        }
+
+    });
+
 }
 
 
+/* =========================================================
+   14 — DOCUMENT POSITION
+========================================================= */
+
+function getDocumentTop(element) {
+
+    return (
+        element.getBoundingClientRect().top +
+        window.scrollY
+    );
+
+}
+
+
+/* =========================================================
+   15 — LAGNA PATRIKA
+       75% TRIGGER
+       ONE-WAY
+========================================================= */
+
 function updateLagnaAnimation() {
 
-    if (
-        !lagnaElements.length
-    ) {
+    if (!lagnaElements.length) {
         return;
     }
 
 
-    const triggerY =
+    const triggerPoint =
         window.scrollY +
-        (
-            window.innerHeight *
-            0.75
-        );
+        window.innerHeight * 0.75;
 
 
-    lagnaElements.forEach(
-        function(element) {
+    lagnaElements.forEach(function (element) {
 
-            if (
-                element.classList.contains(
-                    "lagna-visible"
-                )
-            ) {
-                return;
-            }
+        /*
+         * Once shown, never hide while
+         * this invitation session remains open.
+         */
 
+        if (
+            element.classList.contains(
+                "lagna-visible"
+            )
+        ) {
 
-            const elementTop =
-                getDocumentTop(
-                    element
-                );
-
-
-            if (
-                triggerY >=
-                elementTop
-            ) {
-
-                element.classList.add(
-                    "lagna-visible"
-                );
-
-            }
+            return;
 
         }
-    );
+
+
+        const elementTop =
+            getDocumentTop(element);
+
+
+        if (
+            triggerPoint >=
+            elementTop
+        ) {
+
+            element.classList.add(
+                "lagna-visible"
+            );
+
+        }
+
+    });
 
 }
 
 
-let lagnaAnimationFrame =
-    false;
+let lagnaAnimationFrame = false;
 
 
 function requestLagnaAnimation() {
 
-    if (
-        lagnaAnimationFrame
-    ) {
+    if (lagnaAnimationFrame) {
         return;
     }
 
 
-    lagnaAnimationFrame =
-        true;
+    lagnaAnimationFrame = true;
 
 
-    requestAnimationFrame(
-        function() {
+    requestAnimationFrame(function () {
 
-            updateLagnaAnimation();
+        updateLagnaAnimation();
 
-            lagnaAnimationFrame =
-                false;
+        lagnaAnimationFrame = false;
 
-        }
-    );
+    });
 
 }
 
@@ -4797,8 +5043,7 @@ window.addEventListener(
     "scroll",
     requestLagnaAnimation,
     {
-        passive:
-            true
+        passive: true
     }
 );
 
@@ -4809,74 +5054,86 @@ window.addEventListener(
 );
 
 
-window.addEventListener(
-    "load",
-    updateLagnaAnimation
-);
-
-
-setTimeout(
-    updateLagnaAnimation,
-    300
-);
-
 /* =========================================================
-   06 — EVENTS TIMELINE
-       75% SCREEN TRIGGER
-       CARD = ONE-WAY
-       CIRCLE = TWO-WAY
+   16 — EVENTS
+       CARD: RIGHT → LEFT
+       TRIGGER: 75%
+       CARD: ONE-WAY
+       CIRCLE: TWO-WAY
 ========================================================= */
 
-const timeline =
-    document.querySelector(
-        ".timeline"
-    );
+function updateEventCards() {
 
-
-const timelineProgress =
-    document.getElementById(
-        "timelineProgress"
-    );
-
-
-const eventItems =
-    document.querySelectorAll(
-        ".events .event-item"
-    );
-
-
-const eventCards =
-    document.querySelectorAll(
-        ".events .event"
-    );
-
-
-/* =========================================================
-   GET ORIGINAL DOCUMENT POSITION
-========================================================= */
-
-function getEventDocumentTop(element) {
-
-    let top = 0;
-
-    let current = element;
-
-
-    while (current) {
-
-        top += current.offsetTop;
-
-        current = current.offsetParent;
-
+    if (!eventCards.length) {
+        return;
     }
 
 
-    return top;
+    const triggerPoint =
+        window.scrollY +
+        window.innerHeight * 0.75;
+
+
+    eventCards.forEach(
+        function (eventCard, index) {
+
+            const eventTop =
+                getDocumentTop(eventCard);
+
+
+            /* =================================================
+               CARD
+               RIGHT → LEFT
+               ONCE ONLY
+            ================================================= */
+
+            if (
+                triggerPoint >= eventTop
+            ) {
+
+                eventCard.classList.add(
+                    "event-visible"
+                );
+
+            }
+
+
+            /* =================================================
+               CIRCLE
+               TWO-WAY
+            ================================================= */
+
+            if (
+                eventItems[index]
+            ) {
+
+                if (
+                    triggerPoint >= eventTop
+                ) {
+
+                    eventItems[index].classList.add(
+                        "event-active"
+                    );
+
+                }
+                else {
+
+                    eventItems[index].classList.remove(
+                        "event-active"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
 }
 
 
 /* =========================================================
-   TIMELINE LINE
+   17 — TIMELINE PROGRESS
 ========================================================= */
 
 function updateTimelineProgress() {
@@ -4885,7 +5142,9 @@ function updateTimelineProgress() {
         !timeline ||
         !timelineProgress
     ) {
+
         return;
+
     }
 
 
@@ -4902,7 +5161,8 @@ function updateTimelineProgress() {
 
 
     let progress =
-        triggerY - timelineStart;
+        triggerY -
+        timelineStart;
 
 
     const timelineHeight =
@@ -4921,126 +5181,36 @@ function updateTimelineProgress() {
 
     timelineProgress.style.height =
         progress + "px";
+
 }
 
 
 /* =========================================================
-   EVENT CARDS + CIRCLES
+   18 — EVENTS FRAME
 ========================================================= */
 
-function updateEventCards() {
-
-    if (!eventCards.length) {
-        return;
-    }
-
-
-    const triggerPoint =
-        window.scrollY +
-        (window.innerHeight * 0.75);
-
-
-    eventCards.forEach(
-        function(eventCard, index) {
-
-            const eventTop =
-                getEventDocumentTop(
-                    eventCard
-                );
-
-
-            /*
-             * CARD ANIMATION
-             *
-             * Once visible, it stays visible.
-             */
-
-            if (
-                triggerPoint >= eventTop
-            ) {
-
-                eventCard.classList.add(
-                    "event-visible"
-                );
-
-            }
-
-
-            /*
-             * CIRCLE STATE
-             *
-             * Above trigger:
-             * → hollow
-             *
-             * Reaches trigger:
-             * → gold + inner dot
-             *
-             * Scroll back:
-             * → hollow again
-             */
-
-            if (
-                eventItems[index]
-            ) {
-
-                if (
-                    triggerPoint >= eventTop
-                ) {
-
-                    eventItems[index].classList.add(
-                        "event-active"
-                    );
-
-                }
-
-                else {
-
-                    eventItems[index].classList.remove(
-                        "event-active"
-                    );
-
-                }
-
-            }
-
-        }
-    );
-}
-
-
-/* =========================================================
-   PERFORMANCE
-========================================================= */
-
-let eventAnimationFrame =
-    false;
+let eventAnimationFrame = false;
 
 
 function requestEventsAnimation() {
 
-    if (
-        eventAnimationFrame
-    ) {
+    if (eventAnimationFrame) {
         return;
     }
 
 
-    eventAnimationFrame =
-        true;
+    eventAnimationFrame = true;
 
 
-    requestAnimationFrame(
-        function() {
+    requestAnimationFrame(function () {
 
-            updateTimelineProgress();
+        updateTimelineProgress();
 
-            updateEventCards();
+        updateEventCards();
 
-            eventAnimationFrame =
-                false;
+        eventAnimationFrame = false;
 
-        }
-    );
+    });
 
 }
 
@@ -5060,20 +5230,100 @@ window.addEventListener(
 );
 
 
+/* =========================================================
+   19 — INITIAL EVENTS CALCULATION
+========================================================= */
+
 window.addEventListener(
     "load",
-    requestEventsAnimation
-);
+    function () {
 
+        setTimeout(function () {
 
-setTimeout(
-    requestEventsAnimation,
-    300
+            requestEventsAnimation();
+
+        }, 300);
+
+    }
 );
 
 
 /* =========================================================
-   07 — FLOATING PETALS
+   20 — CELEBRATION SPARKLES
+========================================================= */
+
+function createCelebrationSparkles() {
+
+    const container =
+        document.querySelector(
+            ".wedding-particles"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    for (
+        let i = 0;
+        i < 12;
+        i++
+    ) {
+
+        const sparkle =
+            document.createElement(
+                "span"
+            );
+
+
+        sparkle.className =
+            "petal";
+
+
+        sparkle.style.left =
+            (
+                45 +
+                Math.random() * 10
+            ) + "%";
+
+
+        sparkle.style.top =
+            (
+                45 +
+                Math.random() * 10
+            ) + "%";
+
+
+        sparkle.style.animationDuration =
+            (
+                1.5 +
+                Math.random() * 1.5
+            ) + "s";
+
+
+        sparkle.style.background =
+            "rgba(212,176,93,.75)";
+
+
+        container.appendChild(
+            sparkle
+        );
+
+
+        setTimeout(function () {
+
+            sparkle.remove();
+
+        }, 3500);
+
+    }
+
+}
+
+
+/* =========================================================
+   21 — FLOATING PETALS
 ========================================================= */
 
 const particleContainer =
@@ -5083,6 +5333,11 @@ const particleContainer =
 
 
 function createPetal() {
+
+    if (!particleContainer) {
+        return;
+    }
+
 
     const petal =
         document.createElement(
@@ -5095,31 +5350,23 @@ function createPetal() {
 
 
     petal.style.left =
-        Math.random() *
-        100 +
-        "%";
+        Math.random() * 100 + "%";
 
 
     petal.style.animationDuration =
         (
             9 +
-            Math.random() *
-            8
-        )
-        +
-        "s";
+            Math.random() * 8
+        ) + "s";
 
 
     petal.style.animationDelay =
-        Math.random() *
-        2 +
-        "s";
+        Math.random() * 2 + "s";
 
 
     petal.style.transform =
         "rotate(" +
-        Math.random() *
-        180 +
+        Math.random() * 180 +
         "deg)";
 
 
@@ -5128,44 +5375,32 @@ function createPetal() {
     );
 
 
-    setTimeout(
-        function() {
+    setTimeout(function () {
 
-            petal.remove();
+        petal.remove();
 
-        },
-        18000
-    );
+    }, 18000);
 
 }
 
 
-setInterval(
-    function() {
+setInterval(function () {
 
-        if (
-            document.visibilityState ===
-            "visible"
-        ) {
+    if (
+        document.visibilityState ===
+        "visible"
+    ) {
 
-            createPetal();
+        createPetal();
 
-        }
+    }
 
-    },
-    2800
-);
+}, 2800);
 
 
 /* =========================================================
-   08 — COVER PARALLAX
+   22 — COVER PARALLAX
 ========================================================= */
-
-const cover =
-    document.querySelector(
-        ".cover"
-    );
-
 
 const coverPhoto =
     document.querySelector(
@@ -5180,6 +5415,9 @@ const coverContent =
 
 
 if (
+    cover &&
+    coverPhoto &&
+    coverContent &&
     window.matchMedia(
         "(pointer:fine)"
     ).matches
@@ -5187,7 +5425,7 @@ if (
 
     cover.addEventListener(
         "mousemove",
-        function(event) {
+        function (event) {
 
             const rect =
                 cover.getBoundingClientRect();
@@ -5197,38 +5435,34 @@ if (
                 (
                     event.clientX -
                     rect.left
-                )
-                /
-                rect.width
-                -
-                .5;
+                ) /
+                rect.width -
+                0.5;
 
 
             const y =
                 (
                     event.clientY -
                     rect.top
-                )
-                /
-                rect.height
-                -
-                .5;
+                ) /
+                rect.height -
+                0.5;
 
 
             coverPhoto.style.transform =
                 "scale(1.075) " +
                 "translate(" +
-                (x * -8) +
+                x * -8 +
                 "px," +
-                (y * -6) +
+                y * -6 +
                 "px)";
 
 
             coverContent.style.transform =
                 "translate(" +
-                (x * 2) +
+                x * 2 +
                 "px," +
-                (y * 2) +
+                y * 2 +
                 "px)";
 
         }
@@ -5237,7 +5471,7 @@ if (
 
     cover.addEventListener(
         "mouseleave",
-        function() {
+        function () {
 
             coverPhoto.style.transform =
                 "";
@@ -5252,26 +5486,21 @@ if (
 
 
 /* =========================================================
-   09 — GALLERY
+   23 — GALLERY
 ========================================================= */
 
 const galleryImages = [
 
     "images/gallery1.jpg",
-
     "images/gallery2.jpg",
-
     "images/gallery3.jpg",
-
     "images/gallery4.jpg",
-
     "images/gallery5.jpg"
 
 ];
 
 
-let galleryIndex =
-    0;
+let galleryIndex = 0;
 
 
 const galleryImage =
@@ -5281,6 +5510,11 @@ const galleryImage =
 
 
 function showGalleryImage() {
+
+    if (!galleryImage) {
+        return;
+    }
+
 
     galleryImage.src =
         galleryImages[
@@ -5300,8 +5534,7 @@ function nextImage() {
         galleryImages.length
     ) {
 
-        galleryIndex =
-            0;
+        galleryIndex = 0;
 
     }
 
@@ -5321,8 +5554,7 @@ function previousImage() {
     ) {
 
         galleryIndex =
-            galleryImages.length -
-            1;
+            galleryImages.length - 1;
 
     }
 
@@ -5333,7 +5565,7 @@ function previousImage() {
 
 
 /* =========================================================
-   10 — GALLERY AUTOPLAY
+   24 — GALLERY AUTOPLAY
 ========================================================= */
 
 let galleryTimer =
@@ -5360,84 +5592,78 @@ function resetGalleryTimer() {
 
 
 /* =========================================================
-   11 — GALLERY SWIPE
+   25 — GALLERY SWIPE
 ========================================================= */
 
-let touchStartX =
-    0;
+let touchStartX = 0;
+let touchEndX = 0;
 
 
-let touchEndX =
-    0;
+if (galleryImage) {
 
+    galleryImage.addEventListener(
+        "touchstart",
+        function (event) {
 
-galleryImage.addEventListener(
-    "touchstart",
-    function(event) {
+            touchStartX =
+                event.changedTouches[0]
+                    .screenX;
 
-        touchStartX =
-            event.changedTouches[0]
-                .screenX;
-
-    },
-    {
-        passive:
-            true
-    }
-);
-
-
-galleryImage.addEventListener(
-    "touchend",
-    function(event) {
-
-        touchEndX =
-            event.changedTouches[0]
-                .screenX;
-
-
-        const difference =
-            touchStartX -
-            touchEndX;
-
-
-        if (
-            Math.abs(difference) <
-            40
-        ) {
-
-            return;
-
+        },
+        {
+            passive: true
         }
+    );
 
 
-        if (
-            difference > 0
-        ) {
+    galleryImage.addEventListener(
+        "touchend",
+        function (event) {
 
-            nextImage();
+            touchEndX =
+                event.changedTouches[0]
+                    .screenX;
 
+
+            const difference =
+                touchStartX -
+                touchEndX;
+
+
+            if (
+                Math.abs(difference) < 40
+            ) {
+
+                return;
+
+            }
+
+
+            if (difference > 0) {
+
+                nextImage();
+
+            }
+            else {
+
+                previousImage();
+
+            }
+
+
+            resetGalleryTimer();
+
+        },
+        {
+            passive: true
         }
+    );
 
-        else {
-
-            previousImage();
-
-        }
-
-
-        resetGalleryTimer();
-
-    },
-    {
-        passive:
-            true
-    }
-);
+}
 
 
 /* =========================================================
-   12 — CALENDAR
+   26 — CALENDAR
 ========================================================= */
 
 function addCalendar(
@@ -5451,18 +5677,12 @@ function addCalendar(
 
     const endDate =
         new Date(
-            startDate.getTime()
-            +
-            2 *
-            60 *
-            60 *
-            1000
+            startDate.getTime() +
+            2 * 60 * 60 * 1000
         );
 
 
-    function formatCalendarDate(
-        date
-    ) {
+    function formatCalendarDate(date) {
 
         const year =
             date.getFullYear();
@@ -5471,46 +5691,31 @@ function addCalendar(
         const month =
             String(
                 date.getMonth() + 1
-            ).padStart(
-                2,
-                "0"
-            );
+            ).padStart(2, "0");
 
 
         const day =
             String(
                 date.getDate()
-            ).padStart(
-                2,
-                "0"
-            );
+            ).padStart(2, "0");
 
 
         const hours =
             String(
                 date.getHours()
-            ).padStart(
-                2,
-                "0"
-            );
+            ).padStart(2, "0");
 
 
         const minutes =
             String(
                 date.getMinutes()
-            ).padStart(
-                2,
-                "0"
-            );
+            ).padStart(2, "0");
 
 
         const seconds =
             String(
                 date.getSeconds()
-            ).padStart(
-                2,
-                "0"
-            );
+            ).padStart(2, "0");
 
 
         return (
@@ -5527,33 +5732,16 @@ function addCalendar(
 
 
     const calendarURL =
-
         "https://calendar.google.com/calendar/render" +
-
         "?action=TEMPLATE" +
-
         "&text=" +
-
-        encodeURIComponent(
-            title
-        ) +
-
+        encodeURIComponent(title) +
         "&dates=" +
-
-        formatCalendarDate(
-            startDate
-        ) +
-
+        formatCalendarDate(startDate) +
         "/" +
-
-        formatCalendarDate(
-            endDate
-        ) +
-
+        formatCalendarDate(endDate) +
         "&ctz=Asia%2FKolkata" +
-
         "&details=" +
-
         encodeURIComponent(
             "Sanjay & Sindhu Wedding"
         );
@@ -5569,34 +5757,32 @@ function addCalendar(
 
 
 /* =========================================================
-   13 — PREVENT IMAGE DRAG
+   27 — PREVENT IMAGE DRAG
 ========================================================= */
 
 document
     .querySelectorAll("img")
-    .forEach(
-        function(img) {
+    .forEach(function (img) {
 
-            img.addEventListener(
-                "dragstart",
-                function(event) {
+        img.addEventListener(
+            "dragstart",
+            function (event) {
 
-                    event.preventDefault();
+                event.preventDefault();
 
-                }
-            );
+            }
+        );
 
-        }
-    );
+    });
 
 
 /* =========================================================
-   14 — VISIBILITY
+   28 — VISIBILITY
 ========================================================= */
 
 document.addEventListener(
     "visibilitychange",
-    function() {
+    function () {
 
         if (
             document.visibilityState ===
@@ -5608,10 +5794,13 @@ document.addEventListener(
             );
 
         }
-
         else {
 
             resetGalleryTimer();
+
+            requestLagnaAnimation();
+
+            requestEventsAnimation();
 
         }
 
