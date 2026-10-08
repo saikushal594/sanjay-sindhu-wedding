@@ -2838,6 +2838,74 @@ section:not(.cover) {
     }
 
 }
+/* =========================================================
+   COVER → INVITATION SMOOTH FADE TRANSITION
+========================================================= */
+
+.page-content {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(12px);
+}
+
+.page-content.show {
+    visibility: visible;
+    pointer-events: auto;
+
+    animation:
+        invitationFadeIn
+        1.4s
+        cubic-bezier(.22,.61,.36,1)
+        forwards;
+}
+
+
+/* Cover fades out smoothly */
+
+.cover.fade-out {
+
+    animation:
+        coverFadeOut
+        1.2s
+        cubic-bezier(.22,.61,.36,1)
+        forwards;
+
+    pointer-events:
+        none;
+}
+
+
+/* Cover fade */
+
+@keyframes coverFadeOut {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.015);
+    }
+}
+
+
+/* Invitation fade */
+
+@keyframes invitationFadeIn {
+
+    0% {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 </style>
 
@@ -3010,6 +3078,8 @@ section:not(.cover) {
 
 
 </section>
+
+<div class="page-content" id="pageContent">
 
 
 
@@ -3566,6 +3636,7 @@ section:not(.cover) {
 </section>
 
 
+</div>
 </div>
 
 
@@ -4327,6 +4398,64 @@ document.addEventListener(
 
     }
 );
+
+function enterCelebration() {
+
+    const cover =
+        document.getElementById("cover");
+
+    const pageContent =
+        document.getElementById("pageContent");
+
+
+    if (!cover || !pageContent) {
+        return;
+    }
+
+
+    /* Prevent multiple clicks */
+    if (cover.classList.contains("fade-out")) {
+        return;
+    }
+
+
+    /* Start cover fade-out */
+    cover.classList.add("fade-out");
+
+
+    /*
+       Begin invitation fade-in slightly before
+       the cover completely disappears.
+       This creates a smooth cross-fade.
+    */
+
+    setTimeout(function() {
+
+        pageContent.classList.add("show");
+
+    }, 450);
+
+
+    /*
+       After cover animation finishes,
+       remove it from the layout completely.
+    */
+
+    setTimeout(function() {
+
+        cover.style.display = "none";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+
+        createCelebrationSparkles();
+
+    }, 1250);
+
+}
 
 </script>
 
