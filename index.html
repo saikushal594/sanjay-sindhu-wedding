@@ -2373,46 +2373,31 @@ section:not(.cover) {
 ========================================================= */
 
 .event {
+    position: relative;
+    margin-bottom: 0;
+    background: #fcf7f4;
+    border: 1px solid rgba(135,61,32,.10);
+    border-radius: 25px;
+    padding: 25px 22px;
+    box-shadow: 0 7px 20px rgba(80,45,25,.06);
 
-    position:
-        relative;
+    opacity: 0;
 
-    margin-bottom:
-        0;
-
-    background:
-        #fcf7f4;
-
-    border:
-        1px solid
-        rgba(135,61,32,.10);
-
-    border-radius:
-        25px;
-
-    padding:
-        25px 22px;
-
-    box-shadow:
-        0 7px 20px
-        rgba(80,45,25,.06);
-
-    opacity:
-        0;
-
-    transform:
-        translateX(-70px);
+    /* Starts from RIGHT */
+    transform: translateX(70px);
 
     transition:
-        opacity .65s
-        cubic-bezier(.22,.61,.36,1),
+        opacity .65s cubic-bezier(.22,.61,.36,1),
+        transform .75s cubic-bezier(.16,1,.3,1);
 
-        transform .75s
-        cubic-bezier(.16,1,.3,1);
+    will-change: opacity, transform;
+}
 
-    will-change:
-        opacity,
-        transform;
+.event.event-visible {
+    opacity: 1;
+
+    /* Ends at normal position */
+    transform: translateX(0);
 }
 
 
