@@ -2200,10 +2200,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   MOVING TIMELINE LINE
-========================================================= */
-
 .timeline-progress {
 
     position:
@@ -2244,7 +2240,6 @@ section:not(.cover) {
 
 /* =========================================================
    EVENT ITEM
-   CIRCLE IS OUTSIDE THE MOVING CARD
 ========================================================= */
 
 .event-item {
@@ -2259,8 +2254,6 @@ section:not(.cover) {
 
 /* =========================================================
    EVENT CIRCLE
-   ALWAYS PRESENT
-   DOES NOT MOVE
 ========================================================= */
 
 .event-dot {
@@ -2307,10 +2300,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   INNER DOT
-========================================================= */
-
 .event-dot::after {
 
     content:
@@ -2352,10 +2341,6 @@ section:not(.cover) {
 }
 
 
-/* =========================================================
-   COMPLETED EVENT CIRCLE
-========================================================= */
-
 .event-item.event-active
 .event-dot {
 
@@ -2394,27 +2379,56 @@ section:not(.cover) {
 ========================================================= */
 
 .event {
-    position: relative;
-    margin-bottom: 0;
-    background: #fcf7f4;
-    border: 1px solid rgba(135,61,32,.10);
-    border-radius: 25px;
-    padding: 25px 22px;
-    box-shadow: 0 7px 20px rgba(80,45,25,.06);
 
-    opacity: 0;
-    transform: translateX(70px);
+    position:
+        relative;
+
+    margin-bottom:
+        0;
+
+    background:
+        #fcf7f4;
+
+    border:
+        1px solid
+        rgba(135,61,32,.10);
+
+    border-radius:
+        25px;
+
+    padding:
+        25px 22px;
+
+    box-shadow:
+        0 7px 20px
+        rgba(80,45,25,.06);
+
+    opacity:
+        0;
+
+    transform:
+        translateX(70px);
 
     transition:
-        opacity .65s cubic-bezier(.22,.61,.36,1),
-        transform .75s cubic-bezier(.16,1,.3,1);
+        opacity .65s
+        cubic-bezier(.22,.61,.36,1),
 
-    will-change: opacity, transform;
+        transform .75s
+        cubic-bezier(.16,1,.3,1);
+
+    will-change:
+        opacity,
+        transform;
 }
 
+
 .event.event-visible {
-    opacity: 1;
-    transform: translateX(0);
+
+    opacity:
+        1;
+
+    transform:
+        translateX(0);
 }
 
 
@@ -2571,16 +2585,149 @@ section:not(.cover) {
 
 
 /* =========================================================
-   17 — COUPLE
+   STORY — CINEMATIC LINE-BY-LINE REVEAL
 ========================================================= */
 
-.couple-frame {
+.cinematic-story {
+
+    overflow:
+        hidden;
+}
+
+
+.cinematic-story .story-line {
+
+    display:
+        block;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(18px);
+
+    filter:
+        blur(3px);
+
+    transition:
+
+        opacity .85s
+        cubic-bezier(.22,.61,.36,1),
+
+        transform .85s
+        cubic-bezier(.16,1,.3,1),
+
+        filter .85s ease;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+}
+
+
+.cinematic-story .story-space {
+
+    margin-top:
+        18px;
+}
+
+
+.cinematic-story .story-line:nth-child(1) {
+
+    transition-delay:
+        .05s;
+}
+
+
+.cinematic-story .story-line:nth-child(2) {
+
+    transition-delay:
+        .22s;
+}
+
+
+.cinematic-story .story-line:nth-child(3) {
+
+    transition-delay:
+        .39s;
+}
+
+
+.cinematic-story .story-line:nth-child(4) {
+
+    transition-delay:
+        .56s;
+}
+
+
+.cinematic-story .story-line:nth-child(5) {
+
+    transition-delay:
+        .73s;
+}
+
+
+/* =========================================================
+   STORY — ACTIVE STATE
+========================================================= */
+
+.story-card.story-card-active
+.cinematic-story .story-line {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   STORY HEADING
+========================================================= */
+
+.story-card.story-card-active
+.section-heading {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   COUPLE VIDEO
+========================================================= */
+/* =========================================================
+   COUPLE VIDEO
+========================================================= */
+
+.couple-video-frame {
 
     position:
         relative;
 
-    overflow:
-        hidden;
+    width:
+        min(100%, 430px);
+
+    margin:
+        0 auto;
+
+    padding:
+        10px;
+
+    border:
+        1px solid
+        #e5c487;
 
     border-radius:
         30px;
@@ -2588,78 +2735,44 @@ section:not(.cover) {
     background:
         #f8e7cf;
 
-    padding:
-        13px;
-
-    border:
-        1px solid
-        #e5c487;
-
     box-shadow:
         0 15px 30px
         rgba(100,60,30,.10);
-}
-
-
-.couple-photo {
-
-    position:
-        relative;
 
     overflow:
         hidden;
+}
+
+
+.couple-video {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    aspect-ratio:
+        9 / 16;
+
+    object-fit:
+        cover;
 
     border-radius:
         23px;
 
-    min-height:
-        480px;
-
     background:
+        #2b1a13;
 
-        url("images/couple.jpg")
-        center/
-        cover
-        no-repeat;
-}
-
-
-.couple-photo::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-
-        linear-gradient(
-            transparent 65%,
-            rgba(40,20,10,.35)
-        );
+    pointer-events:
+        none;
 }
 
 
 .couple-caption {
 
-    position:
-        absolute;
-
-    z-index:
-        2;
-
-    bottom:
-        25px;
-
-    left:
-        0;
-
-    right:
-        0;
+    margin:
+        25px 0 0;
 
     text-align:
         center;
@@ -2668,57 +2781,40 @@ section:not(.cover) {
         var(--serif);
 
     font-size:
-        28px;
+        30px;
 
-    color:
-        white;
-}
-
-
-.couple-tags {
-
-    margin-top:
-        25px;
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    justify-content:
-        center;
-
-    gap:
-        12px;
-}
-
-
-.tag {
-
-    background:
-        white;
-
-    border-radius:
-        25px;
-
-    padding:
-        10px 20px;
-
-    box-shadow:
-        0 5px 14px
-        rgba(50,30,20,.08);
-
-    font-size:
-        13px;
-
-    font-weight:
-        600;
+    font-style:
+        italic;
 
     color:
         var(--brown);
 }
 
+.couple-tags {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.tag {
+    width: 100%;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 25px;
+    padding: 10px 12px;
+    box-shadow: 0 5px 14px rgba(50,30,20,.08);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brown);
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+}
 
 /* =========================================================
    18 — SACRED MOMENT
@@ -3342,6 +3438,13 @@ section:not(.cover) {
     }
 
 
+    .cinematic-story .story-space {
+
+        margin-top:
+            15px;
+    }
+
+
     .couple-photo {
 
         min-height:
@@ -3769,9 +3872,12 @@ section:not(.cover) {
         <div class="family-name">
 
             <span class="family-name-line lagna-pop">
-                Smt. Ambuja & Sri. Moogappa
+                Smt. Ambuja <span style="font-family: 'Times new roman', sans-serif;">&</span>
             </span>
 
+            <span class="family-name-line lagna-pop">
+                Sri. Moogappa
+            </span>
 
         </div>
 
@@ -3780,16 +3886,18 @@ section:not(.cover) {
 
 
         <div class="family-title lagna-pop">
-
             GROOM'S PARENTS:
-
         </div>
 
 
         <div class="family-name">
 
             <span class="family-name-line lagna-pop">
-                Smt. N Gowramma & Sri. Late B M Mallesh
+                Smt. N Gowramma <span style="font-family: 'Times new roman', sans-serif;">&</span>
+            </span>
+
+            <span class="family-name-line lagna-pop">
+                Sri. Late B M Mallesh
             </span>
 
         </div>
@@ -3808,11 +3916,11 @@ section:not(.cover) {
         <div class="family-message">
 
             <span class="lagna-pop">
-                We warmly invite you to celebrate
+                We warmly invite you to celebrate the
             </span>
 
             <span class="lagna-pop">
-                the wedding of Sanjay B M & Sindhu H M.
+                wedding of Sanjay B M & Sindhu H M.
             </span>
 
         </div>
@@ -4044,12 +4152,11 @@ section:not(.cover) {
 <section class="section-bg">
 
     <div class="section-card
-                reveal">
+                reveal
+                story-card">
 
 
-        <div class="section-heading
-                    text-animate
-                    text-delay-1">
+        <div class="section-heading">
 
             <h2>
                 OUR STORY
@@ -4059,19 +4166,19 @@ section:not(.cover) {
 
 
         <p class="story-text
-                  text-animate
-                  text-delay-2">
+                  cinematic-story" style="text-align: justify;">
 
-            “Their story began at Cambridge Institute of Technology.
-            Over four beautiful years, friendship grew
-            into love, memories became a shared journey,
-            and one unforgettable moment began their
-            forever — the moment Sindhu said yes.
+            <span class="story-line">
+                Sanjay and Sindhu’s journey is a beautiful coming together of two lives and two families. Over time, a special bond grew between them, filled with understanding, care and countless cherished moments.
+            </span>
 
-            With love, understanding and the blessings
-            of their families, Sanjay and Sindhu now
-            begin a beautiful new chapter together.”
+            <span class="story-line">
+                    With the love and blessings of their families, their journey now takes a beautiful new turn as they come together to begin their life as one.
+            </span>
 
+            <span class="story-line">
+                    And so, with hearts full of happiness, <strong>Sanjay &amp; Sindhu</strong> begin their forever❤️
+            </span>
         </p>
 
 
@@ -4083,7 +4190,6 @@ section:not(.cover) {
 <!-- =====================================================
      06 — MEET THE COUPLE
 ====================================================== -->
-
 <section class="section-bg">
 
     <div class="section-card
@@ -4101,19 +4207,32 @@ section:not(.cover) {
         </div>
 
 
-        <div class="couple-frame">
+        <div class="couple-video-frame">
 
-            <div class="couple-photo">
+            <video
+                id="coupleVideo"
+                class="couple-video"
+                autoplay="false"
+                playsinline
+                muted
+                preload="auto"
+                disablePictureInPicture
+                controlsList="nodownload nofullscreen noremoteplayback">
 
-                <div class="couple-caption
-                            text-animate
-                            text-delay-2">
+                <source
+                    src="videos/couple-video.mp4"
+                    type="video/mp4">
 
-                    Sanjay & Sindhu
+            </video>
 
-                </div>
+        </div>
 
-            </div>
+
+        <div class="couple-caption
+                    text-animate
+                    text-delay-2">
+
+            Sanjay &amp; Sindhu
 
         </div>
 
@@ -4151,7 +4270,7 @@ section:not(.cover) {
                          text-animate
                          text-delay-6">
 
-                FOREVER & ALWAYS
+                FOREVER &amp; ALWAYS
 
             </span>
 
@@ -4161,7 +4280,6 @@ section:not(.cover) {
     </div>
 
 </section>
-
 
 <!-- =====================================================
      07 — SACRED MOMENT
@@ -4410,6 +4528,11 @@ const pageContent =
 const welcomeCard =
     document.getElementById("welcomeCard");
 
+const storyCard =
+    document.querySelector(
+        ".section-card.story-card"
+    );
+
 
 let celebrationEntered = false;
 
@@ -4467,8 +4590,7 @@ function enterCelebration(addHistory = true) {
 
 
     /* -----------------------------------------------------
-       IMPORTANT:
-       Start a completely fresh animation session.
+       START FRESH SESSION
     ----------------------------------------------------- */
 
     resetInvitationAnimations();
@@ -4505,7 +4627,7 @@ function enterCelebration(addHistory = true) {
 
 
     /* -----------------------------------------------------
-       UNLOCK PAGE
+       UNLOCK
     ----------------------------------------------------- */
 
     document.body.classList.remove(
@@ -4533,7 +4655,7 @@ function enterCelebration(addHistory = true) {
 
     /* -----------------------------------------------------
        WELCOME
-       YOUR EXISTING ANIMATION — UNCHANGED
+       UNCHANGED
     ----------------------------------------------------- */
 
     setTimeout(function () {
@@ -4552,23 +4674,12 @@ function enterCelebration(addHistory = true) {
 
 
     /* -----------------------------------------------------
-       WAIT UNTIL PAGE IS FULLY VISIBLE
-       THEN START SCROLL SYSTEMS
+       RESTART SCROLL ANIMATIONS
     ----------------------------------------------------- */
 
     setTimeout(function () {
 
-        /*
-         * Force browser to recognise the fresh
-         * hidden state of every animation.
-         */
-
         forceAnimationReset();
-
-
-        /*
-         * Now calculate positions.
-         */
 
         refreshGeneralReveals();
 
@@ -4576,11 +4687,13 @@ function enterCelebration(addHistory = true) {
 
         requestEventsAnimation();
 
+        requestStoryAnimation();
+
     }, 1450);
 
 
     /* -----------------------------------------------------
-       HIDE COVER AFTER TRANSITION
+       HIDE COVER
     ----------------------------------------------------- */
 
     setTimeout(function () {
@@ -4592,6 +4705,8 @@ function enterCelebration(addHistory = true) {
         requestLagnaAnimation();
 
         requestEventsAnimation();
+
+        requestStoryAnimation();
 
     }, 1500);
 
@@ -4645,7 +4760,7 @@ function resetInvitationAnimations() {
 
 
     /* -----------------------------------------------------
-       EVENT CARDS
+       EVENTS
     ----------------------------------------------------- */
 
     eventCards.forEach(function (card) {
@@ -4657,10 +4772,6 @@ function resetInvitationAnimations() {
     });
 
 
-    /* -----------------------------------------------------
-       EVENT CIRCLES
-    ----------------------------------------------------- */
-
     eventItems.forEach(function (item) {
 
         item.classList.remove(
@@ -4668,6 +4779,19 @@ function resetInvitationAnimations() {
         );
 
     });
+
+
+    /* -----------------------------------------------------
+       STORY
+    ----------------------------------------------------- */
+
+    if (storyCard) {
+
+        storyCard.classList.remove(
+            "story-card-active"
+        );
+
+    }
 
 
     /* -----------------------------------------------------
@@ -4690,16 +4814,10 @@ function resetInvitationAnimations() {
 
 function forceAnimationReset() {
 
-    /*
-     * This is the important part.
-     *
-     * Removing a class and immediately adding it again
-     * in the same rendering cycle may not restart CSS
-     * transitions.
-     *
-     * Reading offsetHeight forces the browser to commit
-     * the reset state.
-     */
+
+    /* -----------------------------------------------------
+       EVENTS
+    ----------------------------------------------------- */
 
     eventCards.forEach(function (card) {
 
@@ -4712,6 +4830,10 @@ function forceAnimationReset() {
     });
 
 
+    /* -----------------------------------------------------
+       LAGNA
+    ----------------------------------------------------- */
+
     lagnaElements.forEach(function (element) {
 
         element.classList.remove(
@@ -4723,6 +4845,10 @@ function forceAnimationReset() {
     });
 
 
+    /* -----------------------------------------------------
+       GENERAL REVEALS
+    ----------------------------------------------------- */
+
     reveals.forEach(function (element) {
 
         element.classList.remove(
@@ -4732,6 +4858,21 @@ function forceAnimationReset() {
         void element.offsetHeight;
 
     });
+
+
+    /* -----------------------------------------------------
+       STORY
+    ----------------------------------------------------- */
+
+    if (storyCard) {
+
+        storyCard.classList.remove(
+            "story-card-active"
+        );
+
+        void storyCard.offsetHeight;
+
+    }
 
 }
 
@@ -4747,10 +4888,6 @@ function returnToCover() {
     }
 
 
-    /* -----------------------------------------------------
-       Mark invitation as closed
-    ----------------------------------------------------- */
-
     celebrationEntered = false;
 
 
@@ -4760,17 +4897,11 @@ function returnToCover() {
 
     resetInvitationAnimations();
 
-
-    /*
-     * Force the browser to commit the reset BEFORE
-     * the next invitation entry.
-     */
-
     forceAnimationReset();
 
 
     /* -----------------------------------------------------
-       LOCK SCROLL
+       LOCK PAGE
     ----------------------------------------------------- */
 
     document.body.classList.add(
@@ -4779,7 +4910,7 @@ function returnToCover() {
 
 
     /* -----------------------------------------------------
-       HIDE PAGE
+       HIDE CONTENT
     ----------------------------------------------------- */
 
     pageContent.classList.remove(
@@ -4791,12 +4922,9 @@ function returnToCover() {
        SHOW COVER
     ----------------------------------------------------- */
 
-    cover.style.display = "flex";
+    cover.style.display =
+        "flex";
 
-
-    /*
-     * Force cover layout.
-     */
 
     void cover.offsetWidth;
 
@@ -4807,7 +4935,10 @@ function returnToCover() {
             "fade-out"
         );
 
-        window.scrollTo(0, 0);
+        window.scrollTo(
+            0,
+            0
+        );
 
     });
 
@@ -4827,20 +4958,12 @@ window.addEventListener(
             "#invitation"
         ) {
 
-            /*
-             * Browser FORWARD
-             */
-
             celebrationEntered = false;
 
             enterCelebration(false);
 
         }
         else {
-
-            /*
-             * Browser BACK
-             */
 
             returnToCover();
 
@@ -4902,6 +5025,7 @@ const revealObserver =
         },
         {
             threshold: 0.14,
+
             rootMargin:
                 "0px 0px -50px 0px"
         }
@@ -4934,6 +5058,22 @@ function refreshGeneralReveals() {
             0
         ) {
 
+            /*
+             * Do not reveal the Story card
+             * through the generic system.
+             *
+             * Story has its own animation.
+             */
+
+            if (
+                element === storyCard
+            ) {
+
+                return;
+
+            }
+
+
             element.classList.add(
                 "visible"
             );
@@ -4961,8 +5101,8 @@ function getDocumentTop(element) {
 
 /* =========================================================
    15 — LAGNA PATRIKA
-       75% TRIGGER
-       ONE-WAY
+   75% TRIGGER
+   ONE-WAY
 ========================================================= */
 
 function updateLagnaAnimation() {
@@ -4978,11 +5118,6 @@ function updateLagnaAnimation() {
 
 
     lagnaElements.forEach(function (element) {
-
-        /*
-         * Once shown, never hide while
-         * this invitation session remains open.
-         */
 
         if (
             element.classList.contains(
@@ -5015,7 +5150,8 @@ function updateLagnaAnimation() {
 }
 
 
-let lagnaAnimationFrame = false;
+let lagnaAnimationFrame =
+    false;
 
 
 function requestLagnaAnimation() {
@@ -5025,14 +5161,16 @@ function requestLagnaAnimation() {
     }
 
 
-    lagnaAnimationFrame = true;
+    lagnaAnimationFrame =
+        true;
 
 
     requestAnimationFrame(function () {
 
         updateLagnaAnimation();
 
-        lagnaAnimationFrame = false;
+        lagnaAnimationFrame =
+            false;
 
     });
 
@@ -5043,7 +5181,8 @@ window.addEventListener(
     "scroll",
     requestLagnaAnimation,
     {
-        passive: true
+        passive:
+            true
     }
 );
 
@@ -5056,10 +5195,10 @@ window.addEventListener(
 
 /* =========================================================
    16 — EVENTS
-       CARD: RIGHT → LEFT
-       TRIGGER: 75%
-       CARD: ONE-WAY
-       CIRCLE: TWO-WAY
+   CARD: RIGHT → LEFT
+   TRIGGER: 75%
+   CARD: ONE-WAY
+   CIRCLE: TWO-WAY
 ========================================================= */
 
 function updateEventCards() {
@@ -5075,20 +5214,27 @@ function updateEventCards() {
 
 
     eventCards.forEach(
-        function (eventCard, index) {
+        function (
+            eventCard,
+            index
+        ) {
+
 
             const eventTop =
-                getDocumentTop(eventCard);
+                getDocumentTop(
+                    eventCard
+                );
 
 
-            /* =================================================
+            /* -------------------------------------------------
                CARD
                RIGHT → LEFT
                ONCE ONLY
-            ================================================= */
+            ------------------------------------------------- */
 
             if (
-                triggerPoint >= eventTop
+                triggerPoint >=
+                eventTop
             ) {
 
                 eventCard.classList.add(
@@ -5098,17 +5244,18 @@ function updateEventCards() {
             }
 
 
-            /* =================================================
+            /* -------------------------------------------------
                CIRCLE
                TWO-WAY
-            ================================================= */
+            ------------------------------------------------- */
 
             if (
                 eventItems[index]
             ) {
 
                 if (
-                    triggerPoint >= eventTop
+                    triggerPoint >=
+                    eventTop
                 ) {
 
                     eventItems[index].classList.add(
@@ -5189,7 +5336,8 @@ function updateTimelineProgress() {
    18 — EVENTS FRAME
 ========================================================= */
 
-let eventAnimationFrame = false;
+let eventAnimationFrame =
+    false;
 
 
 function requestEventsAnimation() {
@@ -5199,7 +5347,8 @@ function requestEventsAnimation() {
     }
 
 
-    eventAnimationFrame = true;
+    eventAnimationFrame =
+        true;
 
 
     requestAnimationFrame(function () {
@@ -5208,7 +5357,8 @@ function requestEventsAnimation() {
 
         updateEventCards();
 
-        eventAnimationFrame = false;
+        eventAnimationFrame =
+            false;
 
     });
 
@@ -5219,7 +5369,8 @@ window.addEventListener(
     "scroll",
     requestEventsAnimation,
     {
-        passive: true
+        passive:
+            true
     }
 );
 
@@ -5231,7 +5382,103 @@ window.addEventListener(
 
 
 /* =========================================================
-   19 — INITIAL EVENTS CALCULATION
+   19 — STORY
+   CINEMATIC LINE-BY-LINE
+   75% TRIGGER
+   ONE-WAY
+========================================================= */
+
+function updateStoryAnimation() {
+
+    if (!storyCard) {
+        return;
+    }
+
+
+    /*
+     * Once the Story starts,
+     * it stays visible during this
+     * invitation session.
+     */
+
+    if (
+        storyCard.classList.contains(
+            "story-card-active"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const storyTop =
+        storyCard.getBoundingClientRect().top;
+
+
+    const triggerPoint =
+        window.innerHeight * 0.75;
+
+
+    if (
+        storyTop <=
+        triggerPoint
+    ) {
+
+        storyCard.classList.add(
+            "story-card-active"
+        );
+
+    }
+
+}
+
+
+let storyAnimationFrame =
+    false;
+
+
+function requestStoryAnimation() {
+
+    if (storyAnimationFrame) {
+        return;
+    }
+
+
+    storyAnimationFrame =
+        true;
+
+
+    requestAnimationFrame(function () {
+
+        updateStoryAnimation();
+
+        storyAnimationFrame =
+            false;
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    requestStoryAnimation,
+    {
+        passive:
+            true
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    requestStoryAnimation
+);
+
+
+/* =========================================================
+   20 — INITIAL EVENTS CALCULATION
 ========================================================= */
 
 window.addEventListener(
@@ -5242,6 +5489,8 @@ window.addEventListener(
 
             requestEventsAnimation();
 
+            requestStoryAnimation();
+
         }, 300);
 
     }
@@ -5249,7 +5498,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   20 — CELEBRATION SPARKLES
+   21 — CELEBRATION SPARKLES
 ========================================================= */
 
 function createCelebrationSparkles() {
@@ -5323,7 +5572,7 @@ function createCelebrationSparkles() {
 
 
 /* =========================================================
-   21 — FLOATING PETALS
+   22 — FLOATING PETALS
 ========================================================= */
 
 const particleContainer =
@@ -5399,7 +5648,7 @@ setInterval(function () {
 
 
 /* =========================================================
-   22 — COVER PARALLAX
+   23 — COVER PARALLAX
 ========================================================= */
 
 const coverPhoto =
@@ -5486,7 +5735,7 @@ if (
 
 
 /* =========================================================
-   23 — GALLERY
+   24 — GALLERY
 ========================================================= */
 
 const galleryImages = [
@@ -5565,7 +5814,7 @@ function previousImage() {
 
 
 /* =========================================================
-   24 — GALLERY AUTOPLAY
+   25 — GALLERY AUTOPLAY
 ========================================================= */
 
 let galleryTimer =
@@ -5592,7 +5841,7 @@ function resetGalleryTimer() {
 
 
 /* =========================================================
-   25 — GALLERY SWIPE
+   26 — GALLERY SWIPE
 ========================================================= */
 
 let touchStartX = 0;
@@ -5611,7 +5860,8 @@ if (galleryImage) {
 
         },
         {
-            passive: true
+            passive:
+                true
         }
     );
 
@@ -5631,7 +5881,8 @@ if (galleryImage) {
 
 
             if (
-                Math.abs(difference) < 40
+                Math.abs(difference) <
+                40
             ) {
 
                 return;
@@ -5639,7 +5890,9 @@ if (galleryImage) {
             }
 
 
-            if (difference > 0) {
+            if (
+                difference > 0
+            ) {
 
                 nextImage();
 
@@ -5655,7 +5908,8 @@ if (galleryImage) {
 
         },
         {
-            passive: true
+            passive:
+                true
         }
     );
 
@@ -5663,7 +5917,7 @@ if (galleryImage) {
 
 
 /* =========================================================
-   26 — CALENDAR
+   27 — CALENDAR
 ========================================================= */
 
 function addCalendar(
@@ -5682,7 +5936,9 @@ function addCalendar(
         );
 
 
-    function formatCalendarDate(date) {
+    function formatCalendarDate(
+        date
+    ) {
 
         const year =
             date.getFullYear();
@@ -5691,31 +5947,46 @@ function addCalendar(
         const month =
             String(
                 date.getMonth() + 1
-            ).padStart(2, "0");
+            ).padStart(
+                2,
+                "0"
+            );
 
 
         const day =
             String(
                 date.getDate()
-            ).padStart(2, "0");
+            ).padStart(
+                2,
+                "0"
+            );
 
 
         const hours =
             String(
                 date.getHours()
-            ).padStart(2, "0");
+            ).padStart(
+                2,
+                "0"
+            );
 
 
         const minutes =
             String(
                 date.getMinutes()
-            ).padStart(2, "0");
+            ).padStart(
+                2,
+                "0"
+            );
 
 
         const seconds =
             String(
                 date.getSeconds()
-            ).padStart(2, "0");
+            ).padStart(
+                2,
+                "0"
+            );
 
 
         return (
@@ -5757,7 +6028,7 @@ function addCalendar(
 
 
 /* =========================================================
-   27 — PREVENT IMAGE DRAG
+   28 — PREVENT IMAGE DRAG
 ========================================================= */
 
 document
@@ -5777,7 +6048,7 @@ document
 
 
 /* =========================================================
-   28 — VISIBILITY
+   29 — VISIBILITY
 ========================================================= */
 
 document.addEventListener(
@@ -5802,10 +6073,318 @@ document.addEventListener(
 
             requestEventsAnimation();
 
+            requestStoryAnimation();
+
         }
 
     }
 );
+
+/* =========================================================
+   COUPLE VIDEO — REPEATABLE FORWARD / REVERSE
+   ========================================================= */
+
+const coupleVideo = document.getElementById("coupleVideo");
+
+let videoLastScrollY = window.scrollY;
+let videoDirection = 0;
+
+let videoReverseRAF = null;
+let videoReverseLastTime = null;
+
+let videoForwardTriggered = false;
+let videoReverseTriggered = false;
+
+
+/* =========================================================
+   FORWARD
+   ========================================================= */
+
+function playVideoForward() {
+
+    if (!coupleVideo) return;
+
+    stopVideoReverse();
+
+    if (
+        !coupleVideo.duration ||
+        !isFinite(coupleVideo.duration)
+    ) {
+        return;
+    }
+
+    /*
+       If we are at the end, go back to the beginning
+       before playing forward again.
+    */
+    if (
+        coupleVideo.currentTime >=
+        coupleVideo.duration - 0.05
+    ) {
+        coupleVideo.currentTime = 0;
+    }
+
+    coupleVideo.play().catch(function(error) {
+        console.log("Video play:", error);
+    });
+}
+
+
+/* =========================================================
+   REVERSE
+   ========================================================= */
+
+function reverseVideo(timestamp) {
+
+    if (!coupleVideo) return;
+
+    if (videoReverseLastTime === null) {
+        videoReverseLastTime = timestamp;
+    }
+
+    const delta =
+        Math.min(
+            timestamp - videoReverseLastTime,
+            50
+        ) / 1000;
+
+    videoReverseLastTime = timestamp;
+
+    const reverseSpeed = 1.0;
+
+    const newTime =
+        coupleVideo.currentTime -
+        (delta * reverseSpeed);
+
+    if (newTime <= 0) {
+
+        coupleVideo.currentTime = 0;
+
+        videoReverseRAF = null;
+        videoReverseLastTime = null;
+
+        return;
+    }
+
+    coupleVideo.currentTime = newTime;
+
+    videoReverseRAF =
+        requestAnimationFrame(reverseVideo);
+}
+
+
+/* =========================================================
+   START REVERSE
+   ========================================================= */
+
+function playVideoReverse() {
+
+    if (!coupleVideo) return;
+
+    if (
+        !coupleVideo.duration ||
+        !isFinite(coupleVideo.duration)
+    ) {
+        return;
+    }
+
+    /*
+       Stop any forward playback.
+    */
+    coupleVideo.pause();
+
+    /*
+       If already at beginning, nothing to reverse.
+    */
+    if (coupleVideo.currentTime <= 0.001) {
+
+        coupleVideo.currentTime = 0;
+
+        return;
+    }
+
+    /*
+       Cancel previous reverse animation.
+    */
+    if (videoReverseRAF !== null) {
+
+        cancelAnimationFrame(videoReverseRAF);
+
+        videoReverseRAF = null;
+    }
+
+    videoReverseLastTime = null;
+
+    videoReverseRAF =
+        requestAnimationFrame(reverseVideo);
+}
+
+
+/* =========================================================
+   STOP REVERSE
+   ========================================================= */
+
+function stopVideoReverse() {
+
+    if (videoReverseRAF !== null) {
+
+        cancelAnimationFrame(videoReverseRAF);
+
+        videoReverseRAF = null;
+    }
+
+    videoReverseLastTime = null;
+}
+
+
+/* =========================================================
+   CHECK POSITION
+   ========================================================= */
+
+function checkCoupleVideoScroll() {
+
+    if (!coupleVideo) return;
+
+    const rect =
+        coupleVideo.getBoundingClientRect();
+
+    const viewportHeight =
+        window.innerHeight;
+
+
+    /* =====================================================
+       SCROLLING DOWN
+
+       VIDEO TOP → 60%
+       ===================================================== */
+
+    if (
+        videoDirection > 0 &&
+        !videoForwardTriggered &&
+        rect.top <= viewportHeight * 0.60
+    ) {
+
+        videoForwardTriggered = true;
+
+        /*
+           Reset reverse trigger so it can trigger
+           on the next upward crossing.
+        */
+        videoReverseTriggered = false;
+
+        playVideoForward();
+
+        return;
+    }
+
+
+    /* =====================================================
+       SCROLLING UP
+
+       VIDEO BOTTOM → 75%
+       ===================================================== */
+
+    if (
+        videoDirection < 0 &&
+        !videoReverseTriggered &&
+        rect.bottom >= viewportHeight * 0.65
+    ) {
+
+        videoReverseTriggered = true;
+
+        /*
+           Reset forward trigger so it can trigger
+           on the next downward crossing.
+        */
+        videoForwardTriggered = false;
+
+        playVideoReverse();
+
+        return;
+    }
+}
+
+
+/* =========================================================
+   SCROLL HANDLER
+   ========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const currentY = window.scrollY;
+
+
+        if (currentY > videoLastScrollY) {
+
+            videoDirection = 1;
+
+        } else if (currentY < videoLastScrollY) {
+
+            videoDirection = -1;
+
+        } else {
+
+            videoDirection = 0;
+        }
+
+
+        videoLastScrollY = currentY;
+
+
+        requestAnimationFrame(
+            checkCoupleVideoScroll
+        );
+
+    },
+    { passive: true }
+);
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+if (coupleVideo) {
+
+    coupleVideo.muted = true;
+    coupleVideo.playsInline = true;
+
+
+    coupleVideo.addEventListener(
+        "loadedmetadata",
+        function() {
+
+            coupleVideo.pause();
+
+            coupleVideo.currentTime = 0;
+
+            videoForwardTriggered = false;
+            videoReverseTriggered = false;
+
+            videoLastScrollY =
+                window.scrollY;
+        }
+    );
+
+
+    /*
+       Forward playback finishes.
+       Stay at END.
+    */
+    coupleVideo.addEventListener(
+        "ended",
+        function() {
+
+            coupleVideo.pause();
+
+            coupleVideo.currentTime =
+                coupleVideo.duration;
+        }
+    );
+}
+
 
 </script>
 
