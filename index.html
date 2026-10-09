@@ -4792,6 +4792,164 @@ section:not(.cover) {
 
 }
 
+
+/* Full-screen gallery viewer */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 55px;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.lightbox button {
+    position: absolute;
+    border: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.lightbox button:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.lightbox-close {
+    top: 18px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 32px;
+}
+
+.lightbox-nav {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    font-size: 23px;
+}
+
+.lightbox-prev {
+    left: 12px;
+}
+
+.lightbox-next {
+    right: 12px;
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+    .lightbox {
+        padding: 50px 42px;
+    }
+
+    .lightbox img {
+        max-height: 78vh;
+    }
+
+    .lightbox-prev {
+        left: 5px;
+    }
+
+    .lightbox-next {
+        right: 5px;
+    }
+}
+
+
+/* Floating Maps Button — Apple Glass Effect */
+.floating-maps {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 13px 19px;
+    border-radius: 50px;
+
+    /* Keep the original brown colour, but make it glass-like */
+    background: rgba(109, 73, 49, 0.38);
+    color: #fffaf2;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    /* Apple-style frosted glass */
+    -webkit-backdrop-filter: blur(0.1px) saturate(10%);
+    backdrop-filter: blur(0.1px) saturate(10%);
+
+    border: 1px solid rgba(255, 250, 242, 0.28);
+
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.28);
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Subtle interaction */
+.floating-maps:hover {
+    background: rgba(109, 73, 49, 0.52);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.16),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+
+.maps-icon {
+    font-size: 20px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .floating-maps {
+        bottom: 15px;
+        right: 12px;
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
+
 </style>
 
 </head>
@@ -7665,8 +7823,127 @@ if (coupleVideo) {
 
 }
 
+
+/* Full-screen gallery viewer */
+(() => {
+    const galleryImages = Array.from(
+        document.querySelectorAll('.gallery-track img')
+    );
+
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const counter = document.getElementById('lightboxCounter');
+
+    if (!galleryImages.length || !lightbox) return;
+
+    let currentIndex = 0;
+    let previousFocus = null;
+    let touchStartX = 0;
+
+    function showImage(index) {
+        currentIndex =
+            (index + galleryImages.length) % galleryImages.length;
+
+        const selectedImage = galleryImages[currentIndex];
+
+        lightboxImage.src =
+            selectedImage.currentSrc || selectedImage.src;
+
+        lightboxImage.alt =
+            selectedImage.alt || `Wedding gallery photo ${currentIndex + 1}`;
+
+        counter.textContent =
+            `${currentIndex + 1} / ${galleryImages.length}`;
+    }
+
+    function openLightbox(index) {
+        previousFocus = document.activeElement;
+        showImage(index);
+
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        document.getElementById('lightboxClose').focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        if (previousFocus) previousFocus.focus();
+    }
+
+    galleryImages.forEach((img, index) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => openLightbox(index));
+    });
+
+    document.getElementById('lightboxClose')
+        .addEventListener('click', closeLightbox);
+
+    document.getElementById('lightboxPrev')
+        .addEventListener('click', () => showImage(currentIndex - 1));
+
+    document.getElementById('lightboxNext')
+        .addEventListener('click', () => showImage(currentIndex + 1));
+
+    lightbox.addEventListener('click', event => {
+        if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', event => {
+        if (!lightbox.classList.contains('active')) return;
+
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+        if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+    });
+
+    lightbox.addEventListener('touchstart', event => {
+        touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', event => {
+        const touchEndX = event.changedTouches[0].screenX;
+        const difference = touchEndX - touchStartX;
+
+        if (Math.abs(difference) > 50) {
+            showImage(currentIndex + (difference < 0 ? 1 : -1));
+        }
+    }, { passive: true });
+})();
+
+
+
 </script>
 
+<!-- Full-Screen Gallery Viewer -->
+<div class="lightbox" id="galleryLightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"
+            aria-label="Previous photo">&#10094;</button>
+
+    <img src="" alt="Wedding gallery photo" id="lightboxImage">
+
+    <button class="lightbox-nav lightbox-next" id="lightboxNext"
+            aria-label="Next photo">&#10095;</button>
+
+    <div class="lightbox-counter" id="lightboxCounter">1 / 5</div>
+</div>
+<!-- Floating Google Maps Navigation -->
+<a
+    class="floating-maps"
+    href="https://www.google.com/maps/dir/?api=1&destination=Shathashrunga%20Police%20Bhavana%2C%20Gulpet%2C%20Gowripete%2C%20Kolar%2C%20Karnataka%20563101&travelmode=driving"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Get directions to the wedding venue"
+>
+    <span class="maps-icon">📍</span>
+    <span class="maps-label">Get Directions</span>
+</a>
 
 </body>
 
