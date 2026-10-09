@@ -1791,6 +1791,15 @@ backdrop-filter: blur(1px) saturate(170%);
 
 
     }
+    .welcome-intro {
+        background-size:
+            100% 100%,
+            auto 180%,
+            auto;
+        
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
 
 }
 
@@ -1838,6 +1847,37 @@ section:not(.cover) {
         55px 20px;
 }
 
+
+/* =========================================================
+   SOFT SCALLOPED WAVES — IVORY WEDDING BACKGROUND
+========================================================= */
+
+.section-bg {
+    position: relative;
+    isolation: isolate;
+    background: #F8F3E9;
+}
+
+/* Wave pattern layer */
+.section-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='30' viewBox='0 0 120 30'%3E%3Cpath d='M-30 15 Q-15 0 0 15 T30 15 T60 15 T90 15 T120 15 T150 15' fill='none' stroke='%23A98B75' stroke-opacity='0.28' stroke-width='1.5'/%3E%3C/svg%3E");
+
+    background-size: 120px 30px;
+    background-repeat: repeat;
+}
+
+/* Keep cards and their content above the waves */
+.section-bg > .section-card,
+.section-bg > .reveal {
+    position: relative;
+    z-index: 1;
+}
 
 /* =========================================================
    10 — SECTION CARD
@@ -5315,6 +5355,49 @@ section:not(.cover) {
     </div>
 
 </section>
+
+
+<!-- =====================================================
+     09 — VENUE
+====================================================== -->
+
+<section class="section-bg">
+
+    <div class="section-card venue reveal">
+
+        <div class="section-heading">
+
+            <h2>VENUE</h2>
+
+        </div>
+
+        <div class="location-icon">
+            <span><i class="fa-regular fa-location-dot"></i></span>
+        </div>
+
+        <div class="venue-name">
+            Shathashrunga Police Bhavana
+        </div>
+
+        <div class="venue-address">
+            Gulpet, Gowripete, Kolar,<br>
+            Karnataka – 563101
+        </div>
+
+        <a
+            href="https://maps.app.goo.gl/R5r4QzN5Gu3CftrY6?g_st=ic"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="maps-btn">
+
+            📍 OPEN IN GOOGLE MAPS
+
+        </a>
+
+    </div>
+
+</section>
+
 
 <!-- =====================================================
      10 — FINAL
