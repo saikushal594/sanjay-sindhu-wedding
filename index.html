@@ -4939,6 +4939,113 @@ section:not(.cover) {
 .maps-icon {
     font-size: 20px;
 }
+.floating-maps[hidden] {
+    display: none !important;
+}
+
+.floating-maps {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+}
+
+.floating-maps.maps-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Maps button visibility */
+#floatingMaps {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0s linear 0.8s;
+}
+
+#floatingMaps.maps-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0s;
+}
+
+/* FORCE THE FLOATING MAPS BUTTON TO DISPLAY */
+
+#floatingMaps,
+a#floatingMaps {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 22px !important;
+    z-index: 99999 !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 13px 19px;
+
+    background: rgba(109, 73, 49, 0.55);
+    color: #fffaf2 !important;
+
+    border: 1px solid rgba(255, 250, 242, 0.35);
+    border-radius: 50px;
+
+    -webkit-backdrop-filter: blur(0.1px) saturate(10%);
+    backdrop-filter: blur(0.1px) saturate(10%);
+
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(8px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0s linear 0.8s;
+}
+
+#floatingMaps.maps-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0s;
+}
+
+#floatingMaps .maps-icon {
+    font-size: 20px;
+}
+
+@media (max-width: 600px) {
+    #floatingMaps,
+    a#floatingMaps {
+        right: 12px !important;
+        bottom: 15px !important;
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
+
 
 /* Mobile */
 @media (max-width: 600px) {
@@ -6091,6 +6198,7 @@ function enterCelebration(addHistory = true) {
     resetInvitationAnimations();
 
     celebrationEntered = true;
+    showFloatingMaps();
 
     if (
         addHistory &&
@@ -6278,6 +6386,7 @@ function forceAnimationReset() {
 ========================================================= */
 
 function returnToCover() {
+    hideFloatingMaps();
 
     if (!cover || !pageContent) return;
 
@@ -7915,6 +8024,93 @@ if (coupleVideo) {
     }, { passive: true });
 })();
 
+/* Floating Maps Button — Show after entering celebration */
+/* Floating Maps Button — Cover Page Visibility */
+document.addEventListener("DOMContentLoaded", () => {
+    const mapsButton = document.getElementById("floatingMaps");
+
+    if (!mapsButton) return;
+
+    function showMapsButton() {
+        mapsButton.classList.remove("maps-visible");
+        mapsButton.hidden = false;
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                mapsButton.classList.add("maps-visible");
+            });
+        });
+    }
+
+    function hideMapsButton() {
+        mapsButton.classList.remove("maps-visible");
+        mapsButton.hidden = true;
+    }
+
+    // Initially hide the Maps button on the cover page.
+    hideMapsButton();
+
+    // Enter Celebration button
+    document.querySelectorAll("a, button").forEach(button => {
+        if (
+            button.textContent.trim()
+                .toLowerCase()
+                .includes("enter celebration")
+        ) {
+            button.addEventListener("click", showMapsButton);
+        }
+    });
+
+    /*
+     * Watch the cover page.
+     * Update ".cover" below if your cover uses a different selector.
+     */
+    const cover = document.querySelector(".cover");
+
+    if (cover) {
+        const observer = new MutationObserver(() => {
+            const coverVisible =
+                getComputedStyle(cover).display !== "none" &&
+                getComputedStyle(cover).visibility !== "hidden" &&
+                cover.getBoundingClientRect().height > 0;
+
+            if (coverVisible) {
+                hideMapsButton();
+            }
+        });
+
+        observer.observe(cover, {
+            attributes: true,
+            attributeFilter: ["class", "style", "hidden"]
+        });
+    }
+});
+
+
+// ============================================
+// FLOATING MAPS BUTTON VISIBILITY
+// ============================================
+
+function showFloatingMaps() {
+    const button = document.getElementById("floatingMaps");
+
+    if (!button) return;
+
+    button.classList.add("maps-visible");
+}
+
+function hideFloatingMaps() {
+    const button = document.getElementById("floatingMaps");
+
+    if (!button) return;
+
+    button.classList.remove("maps-visible");
+}
+
+// Keep the button hidden on the cover page.
+document.addEventListener("DOMContentLoaded", function () {
+    hideFloatingMaps();
+});
 
 
 </script>
@@ -7933,10 +8129,13 @@ if (coupleVideo) {
 
     <div class="lightbox-counter" id="lightboxCounter">1 / 5</div>
 </div>
-<!-- Floating Google Maps Navigation -->
+
+
+<!-- Floating Maps Button -->
 <a
+    id="floatingMaps"
     class="floating-maps"
-    href="https://www.google.com/maps/dir/?api=1&destination=Shathashrunga%20Police%20Bhavana%2C%20Gulpet%2C%20Gowripete%2C%20Kolar%2C%20Karnataka%20563101&travelmode=driving"
+    href="https://maps.app.goo.gl/R5r4QzN5Gu3CftrY6?g_st=ic"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Get directions to the wedding venue"
