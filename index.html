@@ -3522,9 +3522,12 @@ section:not(.cover) {
     overflow: hidden;
 }
 
+.gallery-slide {
+    cursor: zoom-in;
+}
+
 .gallery-slide img {
     display: block;
-
     width: 100%;
     height: 100%;
 
@@ -7933,96 +7936,261 @@ if (coupleVideo) {
 }
 
 
-/* Full-screen gallery viewer */
-(() => {
-    const galleryImages = Array.from(
-        document.querySelectorAll('.gallery-track img')
+/* =========================================================
+   OPEN GALLERY PHOTO — FULL-SCREEN LIGHTBOX
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const galleryTrack = document.getElementById("galleryTrack");
+    const lightbox = document.getElementById("galleryLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+
+    const closeButton = document.getElementById("lightboxClose");
+    const previousButton = document.getElementById("lightboxPrev");
+    const nextButton = document.getElementById("lightboxNext");
+    const counter = document.getElementById("lightboxCounter");
+
+    if (
+        !galleryTrack ||
+        !lightbox ||
+        !lightboxImage ||
+        !closeButton ||
+        !previousButton ||
+        !nextButton ||
+        !counter
+    ) {
+        console.error("Gallery lightbox: Required HTML elements not found.");
+        return;
+    }
+
+    const slides = Array.from(
+        galleryTrack.querySelectorAll(".gallery-slide")
     );
 
-    const lightbox = document.getElementById('galleryLightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const counter = document.getElementById('lightboxCounter');
+    const images = slides.map(function (slide) {
+        return slide.querySelector("img");
+    }).filter(Boolean);
 
-    if (!galleryImages.length || !lightbox) return;
+    if (!images.length) {
+        console.error("Gallery lightbox: No gallery images found.");
+        return;
+    }
 
     let currentIndex = 0;
     let previousFocus = null;
     let touchStartX = 0;
 
-    function showImage(index) {
-        currentIndex =
-            (index + galleryImages.length) % galleryImages.length;
+    /* -----------------------------------------
+       DISPLAY SELECTED IMAGE
+    ----------------------------------------- */
 
-        const selectedImage = galleryImages[currentIndex];
+    function showLightboxImage(index) {
+
+        currentIndex =
+            (index + images.length) % images.length;
+
+        const image = images[currentIndex];
 
         lightboxImage.src =
-            selectedImage.currentSrc || selectedImage.src;
+            image.currentSrc || image.src;
 
         lightboxImage.alt =
-            selectedImage.alt || `Wedding gallery photo ${currentIndex + 1}`;
+            image.alt || "Wedding gallery photo";
 
         counter.textContent =
-            `${currentIndex + 1} / ${galleryImages.length}`;
+            (currentIndex + 1) + " / " + images.length;
+
     }
+
+    /* -----------------------------------------
+       OPEN LIGHTBOX
+    ----------------------------------------- */
 
     function openLightbox(index) {
+
         previousFocus = document.activeElement;
-        showImage(index);
 
-        lightbox.classList.add('active');
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+        showLightboxImage(index);
 
-        document.getElementById('lightboxClose').focus();
+        lightbox.classList.add("active");
+
+        lightbox.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        closeButton.focus();
+
     }
+
+    /* -----------------------------------------
+       CLOSE LIGHTBOX
+    ----------------------------------------- */
 
     function closeLightbox() {
-        lightbox.classList.remove('active');
-        lightbox.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
 
-        if (previousFocus) previousFocus.focus();
+        lightbox.classList.remove("active");
+
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+
+        if (previousFocus && previousFocus.focus) {
+            previousFocus.focus();
+        }
+
     }
 
-    galleryImages.forEach((img, index) => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => openLightbox(index));
+    /* -----------------------------------------
+       CLICK GALLERY SLIDES TO OPEN
+    ----------------------------------------- */
+
+    slides.forEach(function (slide, index) {
+
+        slide.addEventListener("click", function (event) {
+
+            /*
+             * Ignore clicks while the carousel is being dragged.
+             */
+
+            if (galleryTrack.classList.contains("dragging")) {
+                return;
+            }
+
+            openLightbox(index);
+
+        });
+
     });
 
-    document.getElementById('lightboxClose')
-        .addEventListener('click', closeLightbox);
+    /* -----------------------------------------
+       CLOSE BUTTON
+    ----------------------------------------- */
 
-    document.getElementById('lightboxPrev')
-        .addEventListener('click', () => showImage(currentIndex - 1));
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
 
-    document.getElementById('lightboxNext')
-        .addEventListener('click', () => showImage(currentIndex + 1));
+    /* -----------------------------------------
+       PREVIOUS IMAGE
+    ----------------------------------------- */
 
-    lightbox.addEventListener('click', event => {
-        if (event.target === lightbox) closeLightbox();
-    });
+    previousButton.addEventListener(
+        "click",
+        function () {
 
-    document.addEventListener('keydown', event => {
-        if (!lightbox.classList.contains('active')) return;
+            showLightboxImage(currentIndex - 1);
 
-        if (event.key === 'Escape') closeLightbox();
-        if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
-        if (event.key === 'ArrowRight') showImage(currentIndex + 1);
-    });
-
-    lightbox.addEventListener('touchstart', event => {
-        touchStartX = event.changedTouches[0].screenX;
-    }, { passive: true });
-
-    lightbox.addEventListener('touchend', event => {
-        const touchEndX = event.changedTouches[0].screenX;
-        const difference = touchEndX - touchStartX;
-
-        if (Math.abs(difference) > 50) {
-            showImage(currentIndex + (difference < 0 ? 1 : -1));
         }
-    }, { passive: true });
-})();
+    );
+
+    /* -----------------------------------------
+       NEXT IMAGE
+    ----------------------------------------- */
+
+    nextButton.addEventListener(
+        "click",
+        function () {
+
+            showLightboxImage(currentIndex + 1);
+
+        }
+    );
+
+    /* -----------------------------------------
+       CLICK OUTSIDE IMAGE TO CLOSE
+    ----------------------------------------- */
+
+    lightbox.addEventListener(
+        "click",
+        function (event) {
+
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+    /* -----------------------------------------
+       KEYBOARD CONTROLS
+    ----------------------------------------- */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (!lightbox.classList.contains("active")) {
+                return;
+            }
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+            if (event.key === "ArrowLeft") {
+                showLightboxImage(currentIndex - 1);
+            }
+
+            if (event.key === "ArrowRight") {
+                showLightboxImage(currentIndex + 1);
+            }
+
+        }
+    );
+
+    /* -----------------------------------------
+       MOBILE SWIPE CONTROLS
+    ----------------------------------------- */
+
+    lightbox.addEventListener(
+        "touchstart",
+        function (event) {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        { passive: true }
+    );
+
+    lightbox.addEventListener(
+        "touchend",
+        function (event) {
+
+            const touchEndX =
+                event.changedTouches[0].screenX;
+
+            const difference =
+                touchEndX - touchStartX;
+
+            if (Math.abs(difference) < 50) {
+                return;
+            }
+
+            if (difference < 0) {
+
+                showLightboxImage(currentIndex + 1);
+
+            } else {
+
+                showLightboxImage(currentIndex - 1);
+
+            }
+
+        },
+        { passive: true }
+    );
+
+    console.log(
+        "Gallery lightbox ready:",
+        images.length,
+        "photos"
+    );
+
+});
+
 
 /* Floating Maps Button — Show after entering celebration */
 /* Floating Maps Button — Cover Page Visibility */
@@ -8116,18 +8284,52 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <!-- Full-Screen Gallery Viewer -->
-<div class="lightbox" id="galleryLightbox" aria-hidden="true">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
 
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"
-            aria-label="Previous photo">&#10094;</button>
+<div
+    class="lightbox"
+    id="galleryLightbox"
+    aria-hidden="true">
 
-    <img src="" alt="Wedding gallery photo" id="lightboxImage">
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Close">
 
-    <button class="lightbox-nav lightbox-next" id="lightboxNext"
-            aria-label="Next photo">&#10095;</button>
+        &times;
 
-    <div class="lightbox-counter" id="lightboxCounter">1 / 5</div>
+    </button>
+
+    <button
+        class="lightbox-nav lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Previous photo">
+
+        &#10094;
+
+    </button>
+
+    <img
+        src=""
+        alt="Wedding gallery photo"
+        id="lightboxImage">
+
+    <button
+        class="lightbox-nav lightbox-next"
+        id="lightboxNext"
+        aria-label="Next photo">
+
+        &#10095;
+
+    </button>
+
+    <div
+        class="lightbox-counter"
+        id="lightboxCounter">
+
+        1 / 5
+
+    </div>
+
 </div>
 
 
