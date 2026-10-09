@@ -3373,297 +3373,409 @@ section:not(.cover) {
 }
 
 /* =========================================================
-   19 — GALLERY
+   19 — INSTAGRAM-STYLE WEDDING GALLERY
 ========================================================= */
 
 .gallery {
     position: relative;
 }
 
+/* Instagram post container */
 
-/* =========================================================
-   GALLERY FRAME
-========================================================= */
-
-.gallery-frame {
-
-    position: relative;
-
+.instagram-post {
     width: 100%;
-
-    padding: 11px;
-
-    background: #ffffff;
-
-    border-radius: 30px;
-
-    border: 1px solid #ddc083;
-
+    max-width: 480px;
+    margin: 0 auto;
     overflow: hidden;
 
+    background: #fffdfa;
+    border: 1px solid rgba(135, 61, 32, .12);
+    border-radius: 18px;
+
     box-shadow:
-        0 12px 30px
-        rgba(80,45,25,.08);
+        0 12px 30px rgba(80, 45, 25, .08);
 }
 
+/* Post header */
 
-/* =========================================================
-   GALLERY TRACK
-========================================================= */
+.instagram-post-header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
 
-.gallery-track {
+    padding: 14px 15px;
+
+    background: #fffdfa;
+}
+
+.instagram-avatar {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
 
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
 
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg, #873d20, #d4b05d);
+
+    border: 2px solid #ead28b;
+
+    color: #fff;
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.instagram-avatar span {
+    font-size: 10px;
+    color: #fbe6a1;
+}
+
+.instagram-account {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    color: var(--brown);
+}
+
+.instagram-account strong {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.instagram-account span {
+    font-size: 10px;
+    color: #a98275;
+}
+
+.instagram-menu {
+    margin-left: auto;
+
+    color: var(--brown);
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+/* Image viewport */
+
+.instagram-media {
+    position: relative;
     width: 100%;
+    overflow: hidden;
+    background: #f4eee3;
 
-    transform: translate3d(0,0,0);
+    /*
+       Square format, similar to a classic
+       Instagram photo post.
+    */
+
+    aspect-ratio: 1 / 1;
+}
+
+/* Moving track */
+
+.gallery-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    transform: translate3d(0, 0, 0);
+    transition:
+        transform .32s cubic-bezier(.22, .61, .36, 1);
 
     will-change: transform;
 
     cursor: grab;
-
     user-select: none;
-
     -webkit-user-select: none;
+
+    /*
+       Allow vertical page scrolling while
+       handling horizontal swipes ourselves.
+    */
 
     touch-action: pan-y;
 }
 
-
 .gallery-track.dragging {
-
     cursor: grabbing;
-
     transition: none !important;
 }
 
-
-/* =========================================================
-   EACH PHOTO
-========================================================= */
+/* Individual slides */
 
 .gallery-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
 
-    flex:
-        0 0 100%;
-
-    width:
-        100%;
-
-    aspect-ratio:
-        4 / 5;
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    border-radius:
-        22px;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
 }
-
 
 .gallery-slide img {
+    display: block;
 
-    display:
-        block;
+    width: 100%;
+    height: 100%;
 
-    width:
-        100%;
+    object-fit: cover;
+    object-position: center;
 
-    height:
-        100%;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 
-    object-fit:
-        cover;
-
-    user-select:
-        none;
-
-    -webkit-user-select:
-        none;
-
-    -webkit-user-drag:
-        none;
-
-    pointer-events:
-        none;
+    pointer-events: none;
 }
 
-
-/* =========================================================
-   COUNTER
-========================================================= */
+/* Top-right photo counter */
 
 .gallery-counter {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    z-index: 5;
 
-    position:
-        absolute;
+    padding: 6px 10px;
 
-    left:
-        50%;
+    border-radius: 20px;
 
-    bottom:
-        24px;
+    background: rgba(25, 20, 17, .65);
+    color: #fff;
 
-    transform:
-        translateX(-50%);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .4px;
 
-    z-index:
-        10;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
-    padding:
-        7px 14px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.55);
-
-    border-radius:
-        30px;
-
-    background:
-        rgba(35,22,16,.42);
-
-    backdrop-filter:
-        blur(8px);
-
-    -webkit-backdrop-filter:
-        blur(8px);
-
-    color:
-        white;
-
-    font-size:
-        10px;
-
-    font-weight:
-        600;
-
-    letter-spacing:
-        3px;
-
-    pointer-events:
-        none;
+    pointer-events: none;
 }
 
-
-/* =========================================================
-   ARROWS
-========================================================= */
+/* Previous / next arrows */
 
 .gallery-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 4;
 
-    position:
-        absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    top:
-        50%;
+    padding: 0 10px;
 
-    left:
-        0;
+    transform: translateY(-50%);
 
-    right:
-        0;
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    padding:
-        0 15px;
-
-    transform:
-        translateY(-50%);
-
-    z-index:
-        10;
-
-    pointer-events:
-        none;
+    pointer-events: none;
 }
 
-
 .gallery-arrow {
+    width: 35px;
+    height: 35px;
 
-    width:
-        46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    height:
-        46px;
+    border: none;
+    border-radius: 50%;
 
-    border-radius:
-        50%;
+    background: rgba(255, 255, 255, .82);
+    color: #4a3024;
 
-    border:
-        1px solid
-        rgba(255,255,255,.7);
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    line-height: 1;
 
-    background:
-        rgba(255,255,255,.72);
+    cursor: pointer;
+    pointer-events: auto;
 
-    backdrop-filter:
-        blur(10px);
-
-    -webkit-backdrop-filter:
-        blur(10px);
-
-    color:
-        var(--brown);
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:
-        27px;
-
-    line-height:
-        1;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    cursor:
-        pointer;
-
-    pointer-events:
-        auto;
-
-    box-shadow:
-        0 6px 18px
-        rgba(50,30,20,.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
 
     transition:
+        opacity .2s ease,
         transform .2s ease,
         background .2s ease;
 }
 
-
 .gallery-arrow:hover {
-
-    transform:
-        scale(1.08);
-
-    background:
-        rgba(255,255,255,.92);
+    background: #fff;
+    transform: scale(1.08);
 }
 
-
 .gallery-arrow:active {
+    transform: scale(.92);
+}
 
-    transform:
-        scale(.92);
+/* Pagination dots */
+
+.instagram-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    min-height: 34px;
+    padding: 10px 12px 5px;
+
+    background: #fffdfa;
+}
+
+.gallery-dot {
+    width: 6px;
+    height: 6px;
+
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+
+    background: #d7c9bd;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.gallery-dot.active {
+    background: #873d20;
+    transform: scale(1.2);
+}
+
+/* Post action icons */
+
+.instagram-post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 7px 15px 3px;
+
+    color: var(--brown);
+}
+
+.instagram-action-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.instagram-heart {
+    font-family: Arial, sans-serif;
+    font-size: 31px;
+    line-height: 1;
+}
+
+.instagram-comment,
+.instagram-share,
+.instagram-save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+.instagram-save {
+    font-size: 22px;
+}
+
+/* Caption */
+
+.instagram-caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 5px;
+
+    padding: 8px 15px 12px;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: #684332;
+}
+
+.instagram-caption strong {
+    font-weight: 700;
+    color: var(--brown);
+}
+
+/* Footer */
+
+.instagram-post-footer {
+    padding: 0 15px 14px;
+
+    color: #b79b8b;
+
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 580px) {
+
+    .instagram-post {
+        border-radius: 15px;
+    }
+
+    .instagram-post-header {
+        padding: 12px;
+    }
+
+    .instagram-avatar {
+        width: 39px;
+        height: 39px;
+    }
+
+    .instagram-controls {
+        padding: 0 8px;
+    }
+
+    .gallery-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 23px;
+    }
+
+    .gallery-counter {
+        top: 10px;
+        right: 10px;
+        font-size: 10px;
+    }
+
+    .instagram-post-actions {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .instagram-caption {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .instagram-post-footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }
 
 
@@ -5409,100 +5521,161 @@ section:not(.cover) {
 </section>
 
 <!-- =====================================================
-     08 — GALLERY
+     08 — GALLERY — INSTAGRAM-STYLE CAROUSEL
 ====================================================== -->
 
 <section class="section-bg">
 
     <div class="section-card gallery reveal">
 
-        <div class="section-heading
-                    text-animate
-                    text-delay-1">
-
-            <h2>
-                OUR GALLERY
-            </h2>
-
+        <div class="section-heading text-animate text-delay-1">
+            <h2>OUR GALLERY</h2>
         </div>
 
+        <div class="instagram-post" id="galleryFrame">
 
-        <div class="gallery-frame"
-             id="galleryFrame">
+            <!-- POST HEADER -->
+            <div class="instagram-post-header">
+                <div class="instagram-avatar">S<span>♥</span>S</div>
 
-            <div class="gallery-track"
-                 id="galleryTrack">
-
-                <div class="gallery-slide">
-                    <img
-                        src="images/gallery1.jpg"
-                        alt="Sanjay and Sindhu"
-                        draggable="false">
+                <div class="instagram-account">
+                    <strong>Sanjay &amp; Sindhu</strong>
+                    <span>Our beautiful moments</span>
                 </div>
 
-                <div class="gallery-slide">
-                    <img
-                        src="images/gallery2.jpg"
-                        alt="Sanjay and Sindhu"
-                        draggable="false">
+                <span class="instagram-menu" aria-hidden="true">•••</span>
+            </div>
+
+            <!-- IMAGE CAROUSEL -->
+            <div class="instagram-media">
+
+                <div class="gallery-track" id="galleryTrack">
+
+                    <div class="gallery-slide">
+                        <img src="images/gallery1.jpg"
+                             alt="Sanjay and Sindhu — photo 1"
+                             draggable="false">
+                    </div>
+
+                    <div class="gallery-slide">
+                        <img src="images/gallery2.jpg"
+                             alt="Sanjay and Sindhu — photo 2"
+                             draggable="false">
+                    </div>
+
+                    <div class="gallery-slide">
+                        <img src="images/gallery3.jpg"
+                             alt="Sanjay and Sindhu — photo 3"
+                             draggable="false">
+                    </div>
+
+                    <div class="gallery-slide">
+                        <img src="images/gallery4.jpg"
+                             alt="Sanjay and Sindhu — photo 4"
+                             draggable="false">
+                    </div>
+
+                    <div class="gallery-slide">
+                        <img src="images/gallery5.jpg"
+                             alt="Sanjay and Sindhu — photo 5"
+                             draggable="false">
+                    </div>
+
                 </div>
 
-                <div class="gallery-slide">
-                    <img
-                        src="images/gallery3.jpg"
-                        alt="Sanjay and Sindhu"
-                        draggable="false">
-                </div>
+                
 
-                <div class="gallery-slide">
-                    <img
-                        src="images/gallery4.jpg"
-                        alt="Sanjay and Sindhu"
-                        draggable="false">
-                </div>
+                <!-- Previous / next controls -->
+                <div class="gallery-controls">
 
-                <div class="gallery-slide">
-                    <img
-                        src="images/gallery5.jpg"
-                        alt="Sanjay and Sindhu"
-                        draggable="false">
+                    <button class="gallery-arrow"
+                            type="button"
+                            onclick="previousImage()"
+                            aria-label="Previous photo">
+                        &#8249;
+                    </button>
+
+                    <button class="gallery-arrow"
+                            type="button"
+                            onclick="nextImage()"
+                            aria-label="Next photo">
+                        &#8250;
+                    </button>
+
                 </div>
 
             </div>
 
+            <!-- PAGINATION DOTS -->
+            <div class="instagram-pagination"
+                 id="galleryPagination"
+                 aria-label="Choose a gallery photo">
 
-            <div
-                class="gallery-counter"
-                id="galleryCounter">
+                <button class="gallery-dot active"
+                        type="button"
+                        aria-label="Photo 1"
+                        aria-current="true"
+                        onclick="goToGallerySlide(0)">
+                </button>
 
-                01 / 05
+                <button class="gallery-dot"
+                        type="button"
+                        aria-label="Photo 2"
+                        onclick="goToGallerySlide(1)">
+                </button>
+
+                <button class="gallery-dot"
+                        type="button"
+                        aria-label="Photo 3"
+                        onclick="goToGallerySlide(2)">
+                </button>
+
+                <button class="gallery-dot"
+                        type="button"
+                        aria-label="Photo 4"
+                        onclick="goToGallerySlide(3)">
+                </button>
+
+                <button class="gallery-dot"
+                        type="button"
+                        aria-label="Photo 5"
+                        onclick="goToGallerySlide(4)">
+                </button>
 
             </div>
 
+            <!-- POST ACTIONS -->
+            <div class="instagram-post-actions">
 
-            <div class="gallery-controls">
+                <div class="instagram-action-left">
+                    <span class="instagram-heart" aria-hidden="true">♡</span>
+                    <span class="instagram-comment" aria-hidden="true">
+                        <i class="bi bi-chat"></i>
+                    </span>
+                    <span class="instagram-share" aria-hidden="true">
+                        <i class="bi bi-send"></i>
+                    </span>
+                </div>
 
-                <button
-                    class="gallery-arrow"
-                    type="button"
-                    onclick="previousImage()"
-                    aria-label="Previous image">
+                <span class="instagram-save" aria-hidden="true">
+                    <i class="bi bi-bookmark"></i>
+                </span>
 
-                    ‹
+            </div>
 
-                </button>
+            <!-- CAPTION -->
+            <div class="instagram-caption">
 
+                <strong>Sanjay &amp; Sindhu</strong>
 
-                <button
-                    class="gallery-arrow"
-                    type="button"
-                    onclick="nextImage()"
-                    aria-label="Next image">
+                <span>
+                    Two hearts, one beautiful journey. ❤️
+                </span>
 
-                    ›
+            </div>
 
-                </button>
-
+            <div class="instagram-post-footer">
+                MADE WITH LOVE · FOREVER &amp; ALWAYS
             </div>
 
         </div>
@@ -5615,15 +5788,12 @@ section:not(.cover) {
 
 window.addEventListener("load", function () {
 
-    const loader =
-        document.getElementById("pageLoader");
+    const loader = document.getElementById("pageLoader");
 
     if (!loader) return;
 
     setTimeout(function () {
-
         loader.classList.add("hide");
-
     }, 1400);
 
 });
@@ -5633,24 +5803,17 @@ window.addEventListener("load", function () {
    02 — GLOBAL ELEMENTS
 ========================================================= */
 
-const cover =
-    document.getElementById("cover");
+const cover = document.getElementById("cover");
 
-const pageContent =
-    document.getElementById("pageContent");
+const pageContent = document.getElementById("pageContent");
 
-const welcomeCard =
-    document.getElementById("welcomeCard");
+const welcomeCard = document.getElementById("welcomeCard");
 
-const storyCard =
-    document.querySelector(
-        ".section-card.story-card"
-    );
+const storyCard = document.querySelector(
+    ".section-card.story-card"
+);
 
-const sacredPhoto =
-    document.getElementById(
-        "sacredPhoto"
-    );
+const sacredPhoto = document.getElementById("sacredPhoto");
 
 let celebrationEntered = false;
 
@@ -5659,80 +5822,63 @@ let celebrationEntered = false;
    03 — GENERAL REVEALS
 ========================================================= */
 
-const reveals =
-    document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(".reveal");
 
 
 /* =========================================================
-   04 — LAGNA
+   04 — LAGNA PATRIKA
 ========================================================= */
 
-const lagnaElements =
-    document.querySelectorAll(
-        ".lagna .lagna-pop"
-    );
+const lagnaElements = document.querySelectorAll(
+    ".lagna .lagna-pop"
+);
 
 
 /* =========================================================
    05 — EVENTS
 ========================================================= */
 
-const timeline =
-    document.querySelector(".timeline");
+const timeline = document.querySelector(".timeline");
 
-const timelineProgress =
-    document.getElementById(
-        "timelineProgress"
-    );
+const timelineProgress = document.getElementById(
+    "timelineProgress"
+);
 
-const eventItems =
-    document.querySelectorAll(
-        ".events .event-item"
-    );
+const eventItems = document.querySelectorAll(
+    ".events .event-item"
+);
 
-const eventCards =
-    document.querySelectorAll(
-        ".events .event"
-    );
+const eventCards = document.querySelectorAll(
+    ".events .event"
+);
 
 
 /* =========================================================
    06 — ENTER CELEBRATION
 ========================================================= */
 
-function enterCelebration(
-    addHistory = true
-) {
+function enterCelebration(addHistory = true) {
 
-    if (celebrationEntered) {
-        return;
-    }
+    if (celebrationEntered) return;
 
-    if (!cover || !pageContent) {
-        return;
-    }
+    if (!cover || !pageContent) return;
 
     resetInvitationAnimations();
 
     celebrationEntered = true;
 
-
     if (
         addHistory &&
-        window.location.hash !==
-        "#invitation"
+        window.location.hash !== "#invitation"
     ) {
 
         history.pushState(
-            {
-                invitation: true
-            },
+            { invitation: true },
             "",
             "#invitation"
         );
 
     }
-
 
     window.scrollTo(0, 0);
 
@@ -5740,34 +5886,23 @@ function enterCelebration(
         "invitation-locked"
     );
 
-    pageContent.classList.add(
-        "show"
-    );
-
+    pageContent.classList.add("show");
 
     requestAnimationFrame(function () {
 
-        cover.classList.add(
-            "fade-out"
-        );
+        cover.classList.add("fade-out");
 
     });
-
 
     setTimeout(function () {
 
         if (welcomeCard) {
-
-            welcomeCard.classList.add(
-                "visible"
-            );
-
+            welcomeCard.classList.add("visible");
         }
 
         createCelebrationSparkles();
 
     }, 250);
-
 
     setTimeout(function () {
 
@@ -5785,16 +5920,11 @@ function enterCelebration(
 
     }, 1450);
 
-
     setTimeout(function () {
 
-        cover.style.display =
-            "none";
+        cover.style.display = "none";
 
-        window.scrollTo(
-            0,
-            0
-        );
+        window.scrollTo(0, 0);
 
         requestLagnaAnimation();
 
@@ -5816,70 +5946,34 @@ function enterCelebration(
 function resetInvitationAnimations() {
 
     if (welcomeCard) {
-
-        welcomeCard.classList.remove(
-            "visible"
-        );
-
+        welcomeCard.classList.remove("visible");
     }
-
 
     reveals.forEach(function (element) {
-
-        element.classList.remove(
-            "visible"
-        );
-
+        element.classList.remove("visible");
     });
-
 
     lagnaElements.forEach(function (element) {
-
-        element.classList.remove(
-            "lagna-visible"
-        );
-
+        element.classList.remove("lagna-visible");
     });
-
 
     eventCards.forEach(function (card) {
-
-        card.classList.remove(
-            "event-visible"
-        );
-
+        card.classList.remove("event-visible");
     });
-
 
     eventItems.forEach(function (item) {
-
-        item.classList.remove(
-            "event-active"
-        );
-
+        item.classList.remove("event-active");
     });
 
-
     if (storyCard) {
-
-        storyCard.classList.remove(
-            "story-card-active"
-        );
-
+        storyCard.classList.remove("story-card-active");
     }
-
 
     if (timelineProgress) {
-
-        timelineProgress.style.height =
-            "0px";
-
+        timelineProgress.style.height = "0px";
     }
 
-
-    /* =====================================================
-       RESET SACRED PHOTO + CAPTION
-    ===================================================== */
+    /* Reset sacred photo and caption */
 
     if (sacredPhoto) {
 
@@ -5921,42 +6015,31 @@ function forceAnimationReset() {
 
     eventCards.forEach(function (card) {
 
-        card.classList.remove(
-            "event-visible"
-        );
+        card.classList.remove("event-visible");
 
         void card.offsetHeight;
 
     });
 
-
     lagnaElements.forEach(function (element) {
 
-        element.classList.remove(
-            "lagna-visible"
-        );
+        element.classList.remove("lagna-visible");
 
         void element.offsetHeight;
 
     });
-
 
     reveals.forEach(function (element) {
 
-        element.classList.remove(
-            "visible"
-        );
+        element.classList.remove("visible");
 
         void element.offsetHeight;
 
     });
 
-
     if (storyCard) {
 
-        storyCard.classList.remove(
-            "story-card-active"
-        );
+        storyCard.classList.remove("story-card-active");
 
         void storyCard.offsetHeight;
 
@@ -5971,9 +6054,7 @@ function forceAnimationReset() {
 
 function returnToCover() {
 
-    if (!cover || !pageContent) {
-        return;
-    }
+    if (!cover || !pageContent) return;
 
     celebrationEntered = false;
 
@@ -5981,32 +6062,19 @@ function returnToCover() {
 
     forceAnimationReset();
 
+    document.body.classList.add("invitation-locked");
 
-    document.body.classList.add(
-        "invitation-locked"
-    );
+    pageContent.classList.remove("show");
 
-    pageContent.classList.remove(
-        "show"
-    );
-
-
-    cover.style.display =
-        "flex";
+    cover.style.display = "flex";
 
     void cover.offsetWidth;
 
-
     requestAnimationFrame(function () {
 
-        cover.classList.remove(
-            "fade-out"
-        );
+        cover.classList.remove("fade-out");
 
-        window.scrollTo(
-            0,
-            0
-        );
+        window.scrollTo(0, 0);
 
     });
 
@@ -6017,90 +6085,67 @@ function returnToCover() {
    10 — BROWSER / PHONE BACK + FORWARD
 ========================================================= */
 
-window.addEventListener(
-    "popstate",
-    function () {
+window.addEventListener("popstate", function () {
 
-        if (
-            window.location.hash ===
-            "#invitation"
-        ) {
+    if (window.location.hash === "#invitation") {
 
-            celebrationEntered =
-                false;
+        celebrationEntered = false;
 
-            enterCelebration(false);
+        enterCelebration(false);
 
-        }
-        else {
+    } else {
 
-            returnToCover();
-
-        }
+        returnToCover();
 
     }
-);
+
+});
 
 
 /* =========================================================
    11 — DIRECT #invitation
 ========================================================= */
 
-window.addEventListener(
-    "load",
-    function () {
+window.addEventListener("load", function () {
 
-        if (
-            window.location.hash ===
-            "#invitation"
-        ) {
+    if (window.location.hash === "#invitation") {
 
-            setTimeout(function () {
+        setTimeout(function () {
 
-                celebrationEntered =
-                    false;
+            celebrationEntered = false;
 
-                enterCelebration(false);
+            enterCelebration(false);
 
-            }, 1600);
-
-        }
+        }, 1600);
 
     }
-);
+
+});
 
 
 /* =========================================================
    12 — GENERAL REVEAL OBSERVER
 ========================================================= */
 
-const revealObserver =
-    new IntersectionObserver(
-        function (entries) {
+const revealObserver = new IntersectionObserver(
+    function (entries) {
 
-            entries.forEach(function (entry) {
+        entries.forEach(function (entry) {
 
-                if (
-                    entry.isIntersecting
-                ) {
+            if (entry.isIntersecting) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                entry.target.classList.add("visible");
 
-                }
+            }
 
-            });
+        });
 
-        },
-        {
-            threshold:
-                0.14,
-
-            rootMargin:
-                "0px 0px -50px 0px"
-        }
-    );
+    },
+    {
+        threshold: 0.14,
+        rootMargin: "0px 0px -50px 0px"
+    }
+);
 
 
 reveals.forEach(function (element) {
@@ -6118,27 +6163,16 @@ function refreshGeneralReveals() {
 
     reveals.forEach(function (element) {
 
-        const rect =
-            element.getBoundingClientRect();
+        const rect = element.getBoundingClientRect();
 
         if (
-            rect.top <
-            window.innerHeight &&
-            rect.bottom >
-            0
+            rect.top < window.innerHeight &&
+            rect.bottom > 0
         ) {
 
-            if (
-                element === storyCard
-            ) {
+            if (element === storyCard) return;
 
-                return;
-
-            }
-
-            element.classList.add(
-                "visible"
-            );
+            element.classList.add("visible");
 
         }
 
@@ -6162,47 +6196,30 @@ function getDocumentTop(element) {
 
 
 /* =========================================================
-   15 — LAGNA PATRIKA
+   15 — LAGNA PATRIKA ANIMATION
 ========================================================= */
 
 function updateLagnaAnimation() {
 
-    if (!lagnaElements.length) {
-        return;
-    }
-
+    if (!lagnaElements.length) return;
 
     const triggerPoint =
         window.scrollY +
-        window.innerHeight *
-        0.75;
-
+        window.innerHeight * 0.75;
 
     lagnaElements.forEach(function (element) {
 
         if (
-            element.classList.contains(
-                "lagna-visible"
-            )
+            element.classList.contains("lagna-visible")
         ) {
-
             return;
-
         }
 
+        const elementTop = getDocumentTop(element);
 
-        const elementTop =
-            getDocumentTop(element);
+        if (triggerPoint >= elementTop) {
 
-
-        if (
-            triggerPoint >=
-            elementTop
-        ) {
-
-            element.classList.add(
-                "lagna-visible"
-            );
+            element.classList.add("lagna-visible");
 
         }
 
@@ -6211,27 +6228,20 @@ function updateLagnaAnimation() {
 }
 
 
-let lagnaAnimationFrame =
-    false;
+let lagnaAnimationFrame = false;
 
 
 function requestLagnaAnimation() {
 
-    if (lagnaAnimationFrame) {
-        return;
-    }
+    if (lagnaAnimationFrame) return;
 
-
-    lagnaAnimationFrame =
-        true;
-
+    lagnaAnimationFrame = true;
 
     requestAnimationFrame(function () {
 
         updateLagnaAnimation();
 
-        lagnaAnimationFrame =
-            false;
+        lagnaAnimationFrame = false;
 
     });
 
@@ -6241,12 +6251,8 @@ function requestLagnaAnimation() {
 window.addEventListener(
     "scroll",
     requestLagnaAnimation,
-    {
-        passive:
-            true
-    }
+    { passive: true }
 );
-
 
 window.addEventListener(
     "resize",
@@ -6255,72 +6261,42 @@ window.addEventListener(
 
 
 /* =========================================================
-   16 — EVENTS
+   16 — EVENTS ANIMATION
 ========================================================= */
 
 function updateEventCards() {
 
-    if (!eventCards.length) {
-        return;
-    }
-
+    if (!eventCards.length) return;
 
     const triggerPoint =
         window.scrollY +
-        window.innerHeight *
-        0.75;
+        window.innerHeight * 0.75;
 
+    eventCards.forEach(function (eventCard, index) {
 
-    eventCards.forEach(
-        function (
-            eventCard,
-            index
-        ) {
+        const eventTop = getDocumentTop(eventCard);
 
-            const eventTop =
-                getDocumentTop(
-                    eventCard
-                );
+        if (triggerPoint >= eventTop) {
 
+            eventCard.classList.add("event-visible");
 
-            if (
-                triggerPoint >=
-                eventTop
-            ) {
+        }
 
-                eventCard.classList.add(
-                    "event-visible"
-                );
+        if (eventItems[index]) {
 
-            }
+            if (triggerPoint >= eventTop) {
 
+                eventItems[index].classList.add("event-active");
 
-            if (
-                eventItems[index]
-            ) {
+            } else {
 
-                if (
-                    triggerPoint >=
-                    eventTop
-                ) {
-
-                    eventItems[index].classList.add(
-                        "event-active"
-                    );
-
-                }
-                else {
-
-                    eventItems[index].classList.remove(
-                        "event-active"
-                    );
-
-                }
+                eventItems[index].classList.remove("event-active");
 
             }
 
         }
-    );
+
+    });
 
 }
 
@@ -6331,70 +6307,36 @@ function updateEventCards() {
 
 function updateTimelineProgress() {
 
-    if (
-        !timeline ||
-        !timelineProgress
-    ) {
+    if (!timeline || !timelineProgress) return;
 
-        return;
+    const triggerY = window.innerHeight * 0.75;
 
-    }
+    const timelineRect = timeline.getBoundingClientRect();
 
+    const timelineStart = timelineRect.top + 10;
 
-    const triggerY =
-        window.innerHeight *
-        0.75;
+    let progress = triggerY - timelineStart;
 
+    const timelineHeight = timelineRect.height - 20;
 
-    const timelineRect =
-        timeline.getBoundingClientRect();
+    progress = Math.max(
+        0,
+        Math.min(progress, timelineHeight)
+    );
 
-
-    const timelineStart =
-        timelineRect.top +
-        10;
-
-
-    let progress =
-        triggerY -
-        timelineStart;
-
-
-    const timelineHeight =
-        timelineRect.height -
-        20;
-
-
-    progress =
-        Math.max(
-            0,
-            Math.min(
-                progress,
-                timelineHeight
-            )
-        );
-
-
-    timelineProgress.style.height =
-        progress + "px";
+    timelineProgress.style.height = progress + "px";
 
 }
 
 
-let eventAnimationFrame =
-    false;
+let eventAnimationFrame = false;
 
 
 function requestEventsAnimation() {
 
-    if (eventAnimationFrame) {
-        return;
-    }
+    if (eventAnimationFrame) return;
 
-
-    eventAnimationFrame =
-        true;
-
+    eventAnimationFrame = true;
 
     requestAnimationFrame(function () {
 
@@ -6402,8 +6344,7 @@ function requestEventsAnimation() {
 
         updateEventCards();
 
-        eventAnimationFrame =
-            false;
+        eventAnimationFrame = false;
 
     });
 
@@ -6413,12 +6354,8 @@ function requestEventsAnimation() {
 window.addEventListener(
     "scroll",
     requestEventsAnimation,
-    {
-        passive:
-            true
-    }
+    { passive: true }
 );
-
 
 window.addEventListener(
     "resize",
@@ -6427,71 +6364,48 @@ window.addEventListener(
 
 
 /* =========================================================
-   18 — STORY
+   18 — STORY ANIMATION
 ========================================================= */
 
 function updateStoryAnimation() {
 
-    if (!storyCard) {
-        return;
-    }
-
+    if (!storyCard) return;
 
     if (
-        storyCard.classList.contains(
-            "story-card-active"
-        )
+        storyCard.classList.contains("story-card-active")
     ) {
-
         return;
-
     }
-
 
     const storyTop =
         storyCard.getBoundingClientRect().top;
 
-
     const triggerPoint =
-        window.innerHeight *
-        0.75;
+        window.innerHeight * 0.75;
 
+    if (storyTop <= triggerPoint) {
 
-    if (
-        storyTop <=
-        triggerPoint
-    ) {
-
-        storyCard.classList.add(
-            "story-card-active"
-        );
+        storyCard.classList.add("story-card-active");
 
     }
 
 }
 
 
-let storyAnimationFrame =
-    false;
+let storyAnimationFrame = false;
 
 
 function requestStoryAnimation() {
 
-    if (storyAnimationFrame) {
-        return;
-    }
+    if (storyAnimationFrame) return;
 
-
-    storyAnimationFrame =
-        true;
-
+    storyAnimationFrame = true;
 
     requestAnimationFrame(function () {
 
         updateStoryAnimation();
 
-        storyAnimationFrame =
-            false;
+        storyAnimationFrame = false;
 
     });
 
@@ -6501,12 +6415,8 @@ function requestStoryAnimation() {
 window.addEventListener(
     "scroll",
     requestStoryAnimation,
-    {
-        passive:
-            true
-    }
+    { passive: true }
 );
-
 
 window.addEventListener(
     "resize",
@@ -6516,192 +6426,70 @@ window.addEventListener(
 
 /* =========================================================
    19 — SACRED MOMENT
-       PHOTO + ATTACHED CAPTION
-=========================================================
-
-   SCROLL DOWN
-
-   PHOTO TOP AT 80%
-          ↓
-       START
-          ↓
-      80% → 20%
-          ↓
-     PHOTO MOVES
-     PHOTO ZOOMS
-     PHOTO ROTATES
-          +
-     TEXT MOVES
-     TEXT ZOOMS
-     TEXT ROTATES
-     TOGETHER
-          ↓
-   PHOTO TOP AT 20%
-          ↓
-        MAX
-
-
-   SCROLL UP
-
-   Everything reverses together.
-
+   PHOTO + CAPTION SCROLL ANIMATION
 ========================================================= */
 
-let sacredZoomFrame =
-    false;
+let sacredZoomFrame = false;
 
 
 function updateSacredZoom() {
 
-    if (!sacredPhoto) {
-        return;
-    }
+    if (!sacredPhoto) return;
 
+    const rect = sacredPhoto.getBoundingClientRect();
 
-    const rect =
-        sacredPhoto.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
 
+    const startPoint = viewportHeight * 0.75;
 
-    const viewportHeight =
-        window.innerHeight;
-
-
-    /*
-       ANIMATION RANGE
-
-       START:
-       PHOTO TOP = 80%
-
-       END:
-       PHOTO TOP = 20%
-    */
-
-    const startPoint =
-        viewportHeight *
-        0.75;
-
-
-    const endPoint =
-        viewportHeight *
-        0.25;
-
-
-    /*
-       0 = original position
-
-       1 = maximum animation
-    */
+    const endPoint = viewportHeight * 0.25;
 
     let progress =
-        (
-            startPoint -
-            rect.top
-        ) /
-        (
-            startPoint -
-            endPoint
-        );
+        (startPoint - rect.top) /
+        (startPoint - endPoint);
 
+    progress = Math.max(
+        0,
+        Math.min(1, progress)
+    );
 
-    progress =
-        Math.max(
-            0,
-            Math.min(
-                1,
-                progress
-            )
-        );
+    /* Photo movement */
 
+    const translateY = -15 * progress;
 
-    /* =====================================================
-       PHOTO MOVEMENT
-    ===================================================== */
+    const scale = 0.82 + (0.235 * progress);
 
-    /*
-       Slight upward movement.
-    */
-
-    const translateY =
-        -15 *
-        progress;
-
-
-    /*
-       Subtle zoom.
-    */
-
-    const scale =
-        0.82 +
-        (
-            0.235 *
-            progress
-        );
-
-
-    /*
-       Very subtle rotation.
-    */
-
-    const rotate =
-        -0.35 *
-        progress;
-
+    const rotate = -0.35 * progress;
 
     sacredPhoto.style.setProperty(
         "--sacred-y",
-        translateY.toFixed(2) +
-        "px"
+        translateY.toFixed(2) + "px"
     );
-
 
     sacredPhoto.style.setProperty(
         "--sacred-scale",
         scale.toFixed(4)
     );
 
-
     sacredPhoto.style.setProperty(
         "--sacred-rotate",
-        rotate.toFixed(3) +
-        "deg"
+        rotate.toFixed(3) + "deg"
     );
 
+    /* Caption */
 
-    /* =====================================================
-       TEXT — ATTACHED TO PHOTO
-    ===================================================== */
+    const textOpacity = progress;
 
-    /*
-       The text follows the exact same
-       transform as the photo.
-
-       Only opacity and blur are
-       independent so it can softly
-       appear/disappear.
-    */
-
-    const textOpacity =
-        progress;
-
-
-    const textBlur =
-        4 -
-        (
-            4 *
-            progress
-        );
-
+    const textBlur = 4 - (4 * progress);
 
     sacredPhoto.style.setProperty(
         "--sacred-text-opacity",
         textOpacity.toFixed(4)
     );
 
-
     sacredPhoto.style.setProperty(
         "--sacred-text-blur",
-        textBlur.toFixed(2) +
-        "px"
+        textBlur.toFixed(2) + "px"
     );
 
 }
@@ -6709,21 +6497,15 @@ function updateSacredZoom() {
 
 function requestSacredZoom() {
 
-    if (sacredZoomFrame) {
-        return;
-    }
+    if (sacredZoomFrame) return;
 
-
-    sacredZoomFrame =
-        true;
-
+    sacredZoomFrame = true;
 
     requestAnimationFrame(function () {
 
         updateSacredZoom();
 
-        sacredZoomFrame =
-            false;
+        sacredZoomFrame = false;
 
     });
 
@@ -6733,12 +6515,8 @@ function requestSacredZoom() {
 window.addEventListener(
     "scroll",
     requestSacredZoom,
-    {
-        passive:
-            true
-    }
+    { passive: true }
 );
-
 
 window.addEventListener(
     "resize",
@@ -6750,22 +6528,19 @@ window.addEventListener(
    20 — INITIAL EVENTS CALCULATION
 ========================================================= */
 
-window.addEventListener(
-    "load",
-    function () {
+window.addEventListener("load", function () {
 
-        setTimeout(function () {
+    setTimeout(function () {
 
-            requestEventsAnimation();
+        requestEventsAnimation();
 
-            requestStoryAnimation();
+        requestStoryAnimation();
 
-            requestSacredZoom();
+        requestSacredZoom();
 
-        }, 300);
+    }, 300);
 
-    }
-);
+});
 
 
 /* =========================================================
@@ -6774,65 +6549,31 @@ window.addEventListener(
 
 function createCelebrationSparkles() {
 
-    const container =
-        document.querySelector(
-            ".wedding-particles"
-        );
+    const container = document.querySelector(
+        ".wedding-particles"
+    );
 
+    if (!container) return;
 
-    if (!container) {
-        return;
-    }
+    for (let i = 0; i < 12; i++) {
 
+        const sparkle = document.createElement("span");
 
-    for (
-        let i = 0;
-        i < 12;
-        i++
-    ) {
-
-        const sparkle =
-            document.createElement(
-                "span"
-            );
-
-
-        sparkle.className =
-            "petal";
-
+        sparkle.className = "petal";
 
         sparkle.style.left =
-            (
-                45 +
-                Math.random() *
-                10
-            ) + "%";
-
+            (45 + Math.random() * 10) + "%";
 
         sparkle.style.top =
-            (
-                45 +
-                Math.random() *
-                10
-            ) + "%";
-
+            (45 + Math.random() * 10) + "%";
 
         sparkle.style.animationDuration =
-            (
-                1.5 +
-                Math.random() *
-                1.5
-            ) + "s";
-
+            (1.5 + Math.random() * 1.5) + "s";
 
         sparkle.style.background =
             "rgba(212,176,93,.75)";
 
-
-        container.appendChild(
-            sparkle
-        );
-
+        container.appendChild(sparkle);
 
         setTimeout(function () {
 
@@ -6849,60 +6590,32 @@ function createCelebrationSparkles() {
    22 — FLOATING PETALS
 ========================================================= */
 
-const particleContainer =
-    document.querySelector(
-        ".wedding-particles"
-    );
+const particleContainer = document.querySelector(
+    ".wedding-particles"
+);
 
 
 function createPetal() {
 
-    if (!particleContainer) {
-        return;
-    }
+    if (!particleContainer) return;
 
+    const petal = document.createElement("span");
 
-    const petal =
-        document.createElement(
-            "span"
-        );
-
-
-    petal.className =
-        "petal";
-
+    petal.className = "petal";
 
     petal.style.left =
-        Math.random() *
-        100 +
-        "%";
-
+        Math.random() * 100 + "%";
 
     petal.style.animationDuration =
-        (
-            9 +
-            Math.random() *
-            8
-        ) + "s";
-
+        (9 + Math.random() * 8) + "s";
 
     petal.style.animationDelay =
-        Math.random() *
-        2 +
-        "s";
-
+        Math.random() * 2 + "s";
 
     petal.style.transform =
-        "rotate(" +
-        Math.random() *
-        180 +
-        "deg)";
+        "rotate(" + Math.random() * 180 + "deg)";
 
-
-    particleContainer.appendChild(
-        petal
-    );
-
+    particleContainer.appendChild(petal);
 
     setTimeout(function () {
 
@@ -6915,10 +6628,7 @@ function createPetal() {
 
 setInterval(function () {
 
-    if (
-        document.visibilityState ===
-        "visible"
-    ) {
+    if (document.visibilityState === "visible") {
 
         createPetal();
 
@@ -6931,980 +6641,595 @@ setInterval(function () {
    23 — COVER PARALLAX
 ========================================================= */
 
-const coverPhoto =
-    document.querySelector(
-        ".cover-photo"
-    );
+const coverPhoto = document.querySelector(".cover-photo");
 
-
-const coverContent =
-    document.querySelector(
-        ".cover-content"
-    );
+const coverContent = document.querySelector(".cover-content");
 
 
 if (
     cover &&
     coverPhoto &&
     coverContent &&
-    window.matchMedia(
-        "(pointer:fine)"
-    ).matches
+    window.matchMedia("(pointer:fine)").matches
 ) {
 
-    cover.addEventListener(
-        "mousemove",
-        function (event) {
+    cover.addEventListener("mousemove", function (event) {
 
-            const rect =
-                cover.getBoundingClientRect();
+        const rect = cover.getBoundingClientRect();
 
+        const x =
+            (event.clientX - rect.left) /
+            rect.width - 0.5;
 
-            const x =
-                (
-                    event.clientX -
-                    rect.left
-                ) /
-                rect.width -
-                0.5;
+        const y =
+            (event.clientY - rect.top) /
+            rect.height - 0.5;
 
+        coverPhoto.style.transform =
+            "scale(1.075) translate(" +
+            x * -8 +
+            "px," +
+            y * -6 +
+            "px)";
 
-            const y =
-                (
-                    event.clientY -
-                    rect.top
-                ) /
-                rect.height -
-                0.5;
+        coverContent.style.transform =
+            "translate(" +
+            x * 2 +
+            "px," +
+            y * 2 +
+            "px)";
 
+    });
 
-            coverPhoto.style.transform =
-                "scale(1.075) " +
-                "translate(" +
-                x * -8 +
-                "px," +
-                y * -6 +
-                "px)";
+    cover.addEventListener("mouseleave", function () {
 
+        coverPhoto.style.transform = "";
 
-            coverContent.style.transform =
-                "translate(" +
-                x * 2 +
-                "px," +
-                y * 2 +
-                "px)";
+        coverContent.style.transform = "";
 
-        }
-    );
-
-
-    cover.addEventListener(
-        "mouseleave",
-        function () {
-
-            coverPhoto.style.transform =
-                "";
-
-            coverContent.style.transform =
-                "";
-
-        }
-    );
-
-}
-
-/* =========================================================
-   24 — GALLERY
-       INSTAGRAM-STYLE CAROUSEL
-========================================================= */
-
-const galleryImages = [
-
-    "images/gallery1.jpg",
-    "images/gallery2.jpg",
-    "images/gallery3.jpg",
-    "images/gallery4.jpg",
-    "images/gallery5.jpg"
-
-];
-
-
-const galleryFrame =
-    document.getElementById(
-        "galleryFrame"
-    );
-
-
-const galleryTrack =
-    document.getElementById(
-        "galleryTrack"
-    );
-
-
-const galleryCounter =
-    document.getElementById(
-        "galleryCounter"
-    );
-
-
-const gallerySlides =
-    document.querySelectorAll(
-        ".gallery-slide"
-    );
-
-
-let galleryIndex =
-    0;
-
-
-let galleryStartX =
-    0;
-
-
-let galleryCurrentX =
-    0;
-
-
-let galleryStartTime =
-    0;
-
-
-let galleryDragging =
-    false;
-
-
-let galleryAnimating =
-    false;
-
-
-let galleryTimer =
-    null;
-
-
-/* =========================================================
-   UPDATE COUNTER
-========================================================= */
-
-function updateGalleryCounter() {
-
-    if (!galleryCounter) {
-        return;
-    }
-
-
-    const current =
-        String(
-            galleryIndex + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const total =
-        String(
-            gallerySlides.length
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    galleryCounter.textContent =
-        current +
-        " / " +
-        total;
+    });
 
 }
 
 
 /* =========================================================
+   24 — INSTAGRAM-STYLE GALLERY CAROUSEL
+========================================================= */
+
+const galleryFrame = document.getElementById("galleryFrame");
+
+const galleryTrack = document.getElementById("galleryTrack");
+
+const galleryCounter = document.getElementById("galleryCounter");
+
+const galleryPagination = document.getElementById(
+    "galleryPagination"
+);
+
+const gallerySlides = galleryTrack
+    ? Array.from(
+        galleryTrack.querySelectorAll(".gallery-slide")
+    )
+    : [];
+
+const galleryDots = galleryPagination
+    ? Array.from(
+        galleryPagination.querySelectorAll(".gallery-dot")
+    )
+    : [];
+
+let galleryIndex = 0;
+
+let galleryDragging = false;
+
+let galleryDragAxis = null;
+
+let galleryStartX = 0;
+
+let galleryStartY = 0;
+
+let galleryCurrentX = 0;
+
+let galleryStartTime = 0;
+
+let galleryStartTranslate = 0;
+
+let galleryPointerId = null;
+
+
+/* ---------------------------------------------------------
    GET SLIDE WIDTH
-========================================================= */
+--------------------------------------------------------- */
 
 function getGalleryWidth() {
 
-    if (!galleryFrame) {
-        return 0;
-    }
+    if (!galleryFrame) return 0;
 
-
-    return galleryFrame.clientWidth -
-           (
-               galleryFrame.offsetWidth -
-               galleryFrame.clientWidth
-           );
-
-}
-
-
-/* =========================================================
-   MOVE TRACK
-========================================================= */
-
-function setGalleryPosition(
-    position,
-    animate = true
-) {
-
-    if (!galleryTrack) {
-        return;
-    }
-
-
-    galleryTrack.style.transition =
-        animate
-            ? "transform .48s cubic-bezier(.22,.61,.36,1)"
-            : "none";
-
-
-    galleryTrack.style.transform =
-        "translate3d(" +
-        position +
-        "px,0,0)";
-
-}
-
-
-/* =========================================================
-   GO TO SLIDE
-========================================================= */
-
-function goToGallerySlide(
-    index,
-    animate = true
-) {
-
-    if (!galleryTrack) {
-        return;
-    }
-
-
-    galleryIndex =
-        Math.max(
-            0,
-            Math.min(
-                index,
-                gallerySlides.length - 1
-            )
-        );
-
-
-    const width =
-        galleryFrame.clientWidth;
-
-
-    const position =
-        -galleryIndex *
-        width;
-
-
-    setGalleryPosition(
-        position,
-        animate
+    const media = galleryFrame.querySelector(
+        ".instagram-media"
     );
 
-
-    updateGalleryCounter();
+    return media ? media.clientWidth : 0;
 
 }
 
 
-/* =========================================================
-   NEXT
-========================================================= */
+/* ---------------------------------------------------------
+   UPDATE COUNTER + PAGINATION DOTS
+--------------------------------------------------------- */
+
+function updateGalleryIndicators() {
+
+    if (galleryCounter) {
+
+        galleryCounter.textContent =
+            (galleryIndex + 1) +
+            "/" +
+            gallerySlides.length;
+
+    }
+
+    galleryDots.forEach(function (dot, index) {
+
+        const isActive = index === galleryIndex;
+
+        dot.classList.toggle("active", isActive);
+
+        if (isActive) {
+
+            dot.setAttribute("aria-current", "true");
+
+        } else {
+
+            dot.removeAttribute("aria-current");
+
+        }
+
+    });
+
+}
+
+
+/* ---------------------------------------------------------
+   SET TRACK POSITION
+--------------------------------------------------------- */
+
+function setGalleryPosition(position, animate = true) {
+
+    if (!galleryTrack) return;
+
+    galleryTrack.style.transition = animate
+        ? "transform .32s cubic-bezier(.22,.61,.36,1)"
+        : "none";
+
+    galleryTrack.style.transform =
+        "translate3d(" + position + "px,0,0)";
+
+}
+
+
+/* ---------------------------------------------------------
+   GO TO A PARTICULAR SLIDE
+--------------------------------------------------------- */
+
+function goToGallerySlide(index, animate = true) {
+
+    if (!gallerySlides.length) return;
+
+    galleryIndex = Math.max(
+        0,
+        Math.min(index, gallerySlides.length - 1)
+    );
+
+    const position =
+        -galleryIndex * getGalleryWidth();
+
+    setGalleryPosition(position, animate);
+
+    updateGalleryIndicators();
+
+}
+
+
+/* ---------------------------------------------------------
+   NEXT PHOTO
+--------------------------------------------------------- */
 
 function nextImage() {
 
-    if (galleryDragging) {
-        return;
-    }
+    if (galleryDragging || !gallerySlides.length) return;
 
+    const nextIndex =
+        galleryIndex >= gallerySlides.length - 1
+            ? 0
+            : galleryIndex + 1;
 
-    if (
-        galleryIndex >=
-        gallerySlides.length - 1
-    ) {
-
-        /*
-           Smoothly return to first.
-        */
-
-        goToGallerySlide(
-            0,
-            true
-        );
-
-    }
-    else {
-
-        goToGallerySlide(
-            galleryIndex + 1,
-            true
-        );
-
-    }
-
-
-    resetGalleryTimer();
+    goToGallerySlide(nextIndex);
 
 }
 
 
-/* =========================================================
-   PREVIOUS
-========================================================= */
+/* ---------------------------------------------------------
+   PREVIOUS PHOTO
+--------------------------------------------------------- */
 
 function previousImage() {
 
-    if (galleryDragging) {
-        return;
-    }
+    if (galleryDragging || !gallerySlides.length) return;
 
-
-    if (
+    const previousIndex =
         galleryIndex <= 0
-    ) {
+            ? gallerySlides.length - 1
+            : galleryIndex - 1;
 
-        /*
-           Smoothly go to last photo.
-        */
-
-        goToGallerySlide(
-            gallerySlides.length - 1,
-            true
-        );
-
-    }
-    else {
-
-        goToGallerySlide(
-            galleryIndex - 1,
-            true
-        );
-
-    }
-
-
-    resetGalleryTimer();
+    goToGallerySlide(previousIndex);
 
 }
 
 
-/* =========================================================
-   TOUCH START
-========================================================= */
+/* ---------------------------------------------------------
+   START SWIPE / DRAG
+--------------------------------------------------------- */
 
-function galleryTouchStart(
-    event
+function startGalleryDrag(
+    clientX,
+    clientY,
+    pointerId = null
 ) {
 
-    if (!galleryFrame) {
-        return;
-    }
+    if (!galleryTrack || galleryDragging) return;
 
+    galleryDragging = true;
 
-    const touch =
-        event.touches[0];
+    galleryDragAxis = null;
 
+    galleryPointerId = pointerId;
 
-    galleryStartX =
-        touch.clientX;
+    galleryStartX = clientX;
 
+    galleryStartY = clientY;
 
-    galleryCurrentX =
-        touch.clientX;
+    galleryCurrentX = clientX;
 
+    galleryStartTime = Date.now();
 
-    galleryStartTime =
-        Date.now();
+    galleryStartTranslate =
+        -galleryIndex * getGalleryWidth();
 
+    galleryTrack.classList.add("dragging");
 
-    galleryDragging =
-        true;
-
-
-    galleryAnimating =
-        false;
-
-
-    galleryTrack.classList.add(
-        "dragging"
-    );
-
-
-    galleryTrack.style.transition =
-        "none";
-
-
-    resetGalleryTimer();
+    galleryTrack.style.transition = "none";
 
 }
 
 
-/* =========================================================
-   TOUCH MOVE
-========================================================= */
+/* ---------------------------------------------------------
+   MOVE SWIPE / DRAG
+--------------------------------------------------------- */
 
-function galleryTouchMove(
-    event
-) {
+function moveGalleryDrag(clientX, clientY) {
 
-    if (
-        !galleryDragging
-    ) {
+    if (!galleryDragging) return;
 
-        return;
+    const deltaX = clientX - galleryStartX;
 
-    }
+    const deltaY = clientY - galleryStartY;
 
-
-    const touch =
-        event.touches[0];
-
-
-    galleryCurrentX =
-        touch.clientX;
-
-
-    const delta =
-        galleryCurrentX -
-        galleryStartX;
-
-
-    const width =
-        galleryFrame.clientWidth;
-
+    galleryCurrentX = clientX;
 
     /*
-       Current slide position.
+       Determine the gesture direction.
+       Vertical gestures remain available for page scrolling.
     */
+
+    if (!galleryDragAxis) {
+
+        if (
+            Math.abs(deltaX) < 5 &&
+            Math.abs(deltaY) < 5
+        ) {
+            return;
+        }
+
+        galleryDragAxis =
+            Math.abs(deltaX) > Math.abs(deltaY)
+                ? "horizontal"
+                : "vertical";
+
+    }
+
+    if (galleryDragAxis === "vertical") return;
 
     let position =
-        -galleryIndex *
-        width;
-
+        galleryStartTranslate + deltaX;
 
     /*
-       Add finger movement.
-    */
-
-    position +=
-        delta;
-
-
-    /*
-       Small resistance at edges.
-       This gives a natural Instagram-like
-       rubber-band feeling.
+       Rubber-band resistance at the first and last images.
     */
 
     if (
         galleryIndex === 0 &&
-        delta > 0
+        deltaX > 0
     ) {
 
         position =
-            -galleryIndex *
-            width +
-            delta *
-            0.35;
+            galleryStartTranslate + deltaX * 0.25;
 
     }
-
 
     if (
-        galleryIndex ===
-        gallerySlides.length - 1 &&
-        delta < 0
+        galleryIndex === gallerySlides.length - 1 &&
+        deltaX < 0
     ) {
 
         position =
-            -galleryIndex *
-            width +
-            delta *
-            0.35;
+            galleryStartTranslate + deltaX * 0.25;
 
     }
 
-
     galleryTrack.style.transform =
-        "translate3d(" +
-        position +
-        "px,0,0)";
+        "translate3d(" + position + "px,0,0)";
 
 }
 
 
-/* =========================================================
-   TOUCH END
-========================================================= */
+/* ---------------------------------------------------------
+   FINISH SWIPE / DRAG
+--------------------------------------------------------- */
 
-function galleryTouchEnd() {
+function endGalleryDrag() {
 
-    if (
-        !galleryDragging
-    ) {
+    if (!galleryDragging) return;
 
-        return;
-
-    }
-
-
-    galleryDragging =
-        false;
-
-
-    galleryTrack.classList.remove(
-        "dragging"
-    );
-
-
-    const delta =
-        galleryCurrentX -
-        galleryStartX;
-
+    const deltaX =
+        galleryCurrentX - galleryStartX;
 
     const elapsed =
-        Date.now() -
-        galleryStartTime;
-
-
-    const width =
-        galleryFrame.clientWidth;
-
-
-    /*
-       Swipe velocity.
-    */
+        Math.max(Date.now() - galleryStartTime, 1);
 
     const velocity =
-        Math.abs(delta) /
-        Math.max(
-            elapsed,
-            1
-        );
+        Math.abs(deltaX) / elapsed;
 
+    const width = getGalleryWidth();
+
+    galleryDragging = false;
+
+    galleryTrack.classList.remove("dragging");
+
+    if (galleryDragAxis === "horizontal") {
+
+        const distanceThreshold =
+            Math.min(width * 0.20, 75);
+
+        const isFastSwipe =
+            Math.abs(deltaX) > 25 &&
+            velocity > 0.45;
+
+        if (
+            deltaX < -distanceThreshold ||
+            (deltaX < 0 && isFastSwipe)
+        ) {
+
+            galleryIndex = Math.min(
+                galleryIndex + 1,
+                gallerySlides.length - 1
+            );
+
+        } else if (
+            deltaX > distanceThreshold ||
+            (deltaX > 0 && isFastSwipe)
+        ) {
+
+            galleryIndex = Math.max(
+                galleryIndex - 1,
+                0
+            );
+
+        }
+
+    }
+
+    galleryDragAxis = null;
+
+    galleryPointerId = null;
 
     /*
-       Distance needed to change slide.
-       Fast swipes need less distance.
+       Snap to the selected photo.
+       No automatic slide timer is used.
     */
 
-    const threshold =
-        Math.min(
-            width * 0.25,
-            80
-        );
-
-
-    let newIndex =
-        galleryIndex;
-
-
-    if (
-        delta <
-        -threshold ||
-        (
-            delta < -35 &&
-            velocity > 0.45
-        )
-    ) {
-
-        newIndex =
-            galleryIndex + 1;
-
-    }
-    else if (
-        delta >
-        threshold ||
-        (
-            delta > 35 &&
-            velocity > 0.45
-        )
-    ) {
-
-        newIndex =
-            galleryIndex - 1;
-
-    }
-
-
-    /*
-       Loop around.
-    */
-
-    if (
-        newIndex < 0
-    ) {
-
-        newIndex =
-            gallerySlides.length - 1;
-
-    }
-
-
-    if (
-        newIndex >=
-        gallerySlides.length
-    ) {
-
-        newIndex =
-            0;
-
-    }
-
-
-    goToGallerySlide(
-        newIndex,
-        true
-    );
-
-
-    resetGalleryTimer();
+    goToGallerySlide(galleryIndex, true);
 
 }
 
 
-/* =========================================================
-   MOUSE DRAG — DESKTOP
-========================================================= */
+/* ---------------------------------------------------------
+   TOUCH EVENTS — MOBILE
+--------------------------------------------------------- */
 
-function galleryMouseDown(
-    event
-) {
-
-    if (
-        event.button !== 0
-    ) {
-
-        return;
-
-    }
-
-
-    galleryStartX =
-        event.clientX;
-
-
-    galleryCurrentX =
-        event.clientX;
-
-
-    galleryStartTime =
-        Date.now();
-
-
-    galleryDragging =
-        true;
-
-
-    galleryTrack.classList.add(
-        "dragging"
-    );
-
-
-    galleryTrack.style.transition =
-        "none";
-
-
-    resetGalleryTimer();
-
-}
-
-
-function galleryMouseMove(
-    event
-) {
-
-    if (
-        !galleryDragging
-    ) {
-
-        return;
-
-    }
-
-
-    galleryCurrentX =
-        event.clientX;
-
-
-    const delta =
-        galleryCurrentX -
-        galleryStartX;
-
-
-    const width =
-        galleryFrame.clientWidth;
-
-
-    let position =
-        -galleryIndex *
-        width;
-
-
-    position +=
-        delta;
-
-
-    if (
-        galleryIndex === 0 &&
-        delta > 0
-    ) {
-
-        position =
-            delta *
-            0.35;
-
-    }
-
-
-    if (
-        galleryIndex ===
-        gallerySlides.length - 1 &&
-        delta < 0
-    ) {
-
-        position =
-            -galleryIndex *
-            width +
-            delta *
-            0.35;
-
-    }
-
-
-    galleryTrack.style.transform =
-        "translate3d(" +
-        position +
-        "px,0,0)";
-
-}
-
-
-function galleryMouseUp() {
-
-    if (
-        !galleryDragging
-    ) {
-
-        return;
-
-    }
-
-
-    galleryTouchEnd();
-
-}
-
-
-/* =========================================================
-   TOUCH EVENTS
-========================================================= */
-
-if (
-    galleryFrame &&
-    galleryTrack
-) {
+if (galleryFrame) {
 
     galleryFrame.addEventListener(
         "touchstart",
-        galleryTouchStart,
-        {
-            passive: true
-        }
-    );
+        function (event) {
 
+            if (!event.touches.length) return;
+
+            const touch = event.touches[0];
+
+            startGalleryDrag(
+                touch.clientX,
+                touch.clientY
+            );
+
+        },
+        { passive: true }
+    );
 
     galleryFrame.addEventListener(
         "touchmove",
-        galleryTouchMove,
-        {
-            passive: true
-        }
-    );
+        function (event) {
 
+            if (
+                !galleryDragging ||
+                !event.touches.length
+            ) {
+                return;
+            }
+
+            const touch = event.touches[0];
+
+            moveGalleryDrag(
+                touch.clientX,
+                touch.clientY
+            );
+
+        },
+        { passive: true }
+    );
 
     galleryFrame.addEventListener(
         "touchend",
-        galleryTouchEnd,
-        {
-            passive: true
+        endGalleryDrag,
+        { passive: true }
+    );
+
+    galleryFrame.addEventListener(
+        "touchcancel",
+        endGalleryDrag,
+        { passive: true }
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   POINTER EVENTS — DESKTOP MOUSE
+--------------------------------------------------------- */
+
+if (galleryTrack) {
+
+    galleryTrack.addEventListener(
+        "pointerdown",
+        function (event) {
+
+            if (event.pointerType !== "mouse") return;
+
+            if (event.button !== 0) return;
+
+            startGalleryDrag(
+                event.clientX,
+                event.clientY,
+                event.pointerId
+            );
+
         }
     );
 
+    window.addEventListener(
+        "pointermove",
+        function (event) {
 
-    /*
-       Desktop drag.
-    */
+            if (!galleryDragging) return;
 
-    galleryFrame.addEventListener(
-        "mousedown",
-        galleryMouseDown
+            if (
+                galleryPointerId !== null &&
+                event.pointerId !== galleryPointerId
+            ) {
+                return;
+            }
+
+            moveGalleryDrag(
+                event.clientX,
+                event.clientY
+            );
+
+        }
     );
 
-
     window.addEventListener(
-        "mousemove",
-        galleryMouseMove
+        "pointerup",
+        function (event) {
+
+            if (
+                galleryPointerId !== null &&
+                event.pointerId !== galleryPointerId
+            ) {
+                return;
+            }
+
+            endGalleryDrag();
+
+        }
     );
 
-
     window.addEventListener(
-        "mouseup",
-        galleryMouseUp
+        "pointercancel",
+        endGalleryDrag
     );
 
 }
 
 
-/* =========================================================
-   25 — AUTO CHANGE EVERY 4 SECONDS
-========================================================= */
+/* ---------------------------------------------------------
+   INITIALISE GALLERY
+--------------------------------------------------------- */
 
-function resetGalleryTimer() {
+window.addEventListener("load", function () {
 
-    clearInterval(
-        galleryTimer
-    );
+    goToGallerySlide(0, false);
 
-
-    galleryTimer =
-        setInterval(
-            function () {
-
-                nextImage();
-
-            },
-            4000
-        );
-
-}
+});
 
 
-/* =========================================================
-   INITIALISE
-========================================================= */
-
-window.addEventListener(
-    "load",
-    function () {
-
-        setTimeout(
-            function () {
-
-                goToGallerySlide(
-                    0,
-                    false
-                );
-
-
-                updateGalleryCounter();
-
-
-                resetGalleryTimer();
-
-            },
-            100
-        );
-
-    }
-);
-
-
-/* =========================================================
+/* ---------------------------------------------------------
    RESIZE
-========================================================= */
+--------------------------------------------------------- */
 
-window.addEventListener(
-    "resize",
-    function () {
+window.addEventListener("resize", function () {
 
-        goToGallerySlide(
-            galleryIndex,
-            false
-        );
+    goToGallerySlide(galleryIndex, false);
 
-    }
-);
+});
+
 
 /* =========================================================
-   27 — CALENDAR
+   25 — GOOGLE CALENDAR
 ========================================================= */
 
-function addCalendar(
-    title,
-    start
-) {
+function addCalendar(title, start) {
 
-    const startDate =
-        new Date(start);
+    const startDate = new Date(start);
 
-
-    const endDate =
-        new Date(
-            startDate.getTime() +
-            2 *
-            60 *
-            60 *
-            1000
-        );
+    const endDate = new Date(
+        startDate.getTime() +
+        2 * 60 * 60 * 1000
+    );
 
 
-    function formatCalendarDate(
-        date
-    ) {
+    function formatCalendarDate(date) {
 
-        const year =
-            date.getFullYear();
+        const year = date.getFullYear();
 
+        const month = String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
 
-        const month =
-            String(
-                date.getMonth() +
-                1
-            ).padStart(
-                2,
-                "0"
-            );
+        const day = String(
+            date.getDate()
+        ).padStart(2, "0");
 
+        const hours = String(
+            date.getHours()
+        ).padStart(2, "0");
 
-        const day =
-            String(
-                date.getDate()
-            ).padStart(
-                2,
-                "0"
-            );
+        const minutes = String(
+            date.getMinutes()
+        ).padStart(2, "0");
 
-
-        const hours =
-            String(
-                date.getHours()
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        const minutes =
-            String(
-                date.getMinutes()
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        const seconds =
-            String(
-                date.getSeconds()
-            ).padStart(
-                2,
-                "0"
-            );
-
+        const seconds = String(
+            date.getSeconds()
+        ).padStart(2, "0");
 
         return (
             year +
@@ -7945,27 +7270,22 @@ function addCalendar(
 
 
 /* =========================================================
-   28 — PREVENT IMAGE DRAG
+   26 — PREVENT IMAGE DRAG
 ========================================================= */
 
-document
-    .querySelectorAll("img")
-    .forEach(function (img) {
+document.querySelectorAll("img").forEach(function (img) {
 
-        img.addEventListener(
-            "dragstart",
-            function (event) {
+    img.addEventListener("dragstart", function (event) {
 
-                event.preventDefault();
-
-            }
-        );
+        event.preventDefault();
 
     });
 
+});
+
 
 /* =========================================================
-   29 — VISIBILITY
+   27 — VISIBILITY CHANGE
 ========================================================= */
 
 document.addEventListener(
@@ -7973,18 +7293,8 @@ document.addEventListener(
     function () {
 
         if (
-            document.visibilityState ===
-            "hidden"
+            document.visibilityState === "visible"
         ) {
-
-            clearInterval(
-                galleryTimer
-            );
-
-        }
-        else {
-
-            resetGalleryTimer();
 
             requestLagnaAnimation();
 
@@ -8001,261 +7311,190 @@ document.addEventListener(
 
 
 /* =========================================================
-   30 — COUPLE VIDEO
-       REPEATABLE FORWARD / REVERSE
+   28 — COUPLE VIDEO
+   REPEATABLE FORWARD / REVERSE
 ========================================================= */
 
-const coupleVideo =
-    document.getElementById(
-        "coupleVideo"
-    );
+const coupleVideo = document.getElementById("coupleVideo");
+
+let videoLastScrollY = window.scrollY;
+
+let videoDirection = 0;
+
+let videoReverseRAF = null;
+
+let videoReverseLastTime = null;
+
+let videoForwardTriggered = false;
+
+let videoReverseTriggered = false;
 
 
-let videoLastScrollY =
-    window.scrollY;
-
-let videoDirection =
-    0;
-
-let videoReverseRAF =
-    null;
-
-let videoReverseLastTime =
-    null;
-
-let videoForwardTriggered =
-    false;
-
-let videoReverseTriggered =
-    false;
-
+/* ---------------------------------------------------------
+   PLAY VIDEO FORWARD
+--------------------------------------------------------- */
 
 function playVideoForward() {
 
     if (!coupleVideo) return;
 
-
     stopVideoReverse();
-
 
     if (
         !coupleVideo.duration ||
         !isFinite(coupleVideo.duration)
     ) {
-
         return;
-
     }
-
 
     if (
         coupleVideo.currentTime >=
-        coupleVideo.duration -
-        0.05
+        coupleVideo.duration - 0.05
     ) {
 
-        coupleVideo.currentTime =
-            0;
+        coupleVideo.currentTime = 0;
 
     }
 
+    coupleVideo.play().catch(function (error) {
 
-    coupleVideo.play().catch(
-        function(error) {
+        console.log("Video play:", error);
 
-            console.log(
-                "Video play:",
-                error
-            );
-
-        }
-    );
+    });
 
 }
 
 
-function reverseVideo(
-    timestamp
-) {
+/* ---------------------------------------------------------
+   REVERSE VIDEO FRAME
+--------------------------------------------------------- */
+
+function reverseVideo(timestamp) {
 
     if (!coupleVideo) return;
 
+    if (videoReverseLastTime === null) {
 
-    if (
-        videoReverseLastTime ===
-        null
-    ) {
-
-        videoReverseLastTime =
-            timestamp;
+        videoReverseLastTime = timestamp;
 
     }
 
-
     const delta =
         Math.min(
-            timestamp -
-            videoReverseLastTime,
+            timestamp - videoReverseLastTime,
             50
-        ) /
-        1000;
+        ) / 1000;
 
+    videoReverseLastTime = timestamp;
 
-    videoReverseLastTime =
-        timestamp;
-
-
-    const reverseSpeed =
-        1.0;
-
+    const reverseSpeed = 1.0;
 
     const newTime =
         coupleVideo.currentTime -
-        (
-            delta *
-            reverseSpeed
-        );
+        delta * reverseSpeed;
 
+    if (newTime <= 0) {
 
-    if (
-        newTime <= 0
-    ) {
+        coupleVideo.currentTime = 0;
 
-        coupleVideo.currentTime =
-            0;
+        videoReverseRAF = null;
 
-        videoReverseRAF =
-            null;
-
-        videoReverseLastTime =
-            null;
+        videoReverseLastTime = null;
 
         return;
 
     }
 
+    coupleVideo.currentTime = newTime;
 
-    coupleVideo.currentTime =
-        newTime;
-
-
-    videoReverseRAF =
-        requestAnimationFrame(
-            reverseVideo
-        );
+    videoReverseRAF = requestAnimationFrame(reverseVideo);
 
 }
 
+
+/* ---------------------------------------------------------
+   PLAY VIDEO IN REVERSE
+--------------------------------------------------------- */
 
 function playVideoReverse() {
 
     if (!coupleVideo) return;
 
-
     if (
         !coupleVideo.duration ||
         !isFinite(coupleVideo.duration)
     ) {
-
         return;
-
     }
-
 
     coupleVideo.pause();
 
+    if (coupleVideo.currentTime <= 0.001) {
 
-    if (
-        coupleVideo.currentTime <=
-        0.001
-    ) {
-
-        coupleVideo.currentTime =
-            0;
+        coupleVideo.currentTime = 0;
 
         return;
 
     }
 
+    if (videoReverseRAF !== null) {
 
-    if (
-        videoReverseRAF !==
-        null
-    ) {
+        cancelAnimationFrame(videoReverseRAF);
 
-        cancelAnimationFrame(
-            videoReverseRAF
-        );
-
-        videoReverseRAF =
-            null;
+        videoReverseRAF = null;
 
     }
 
+    videoReverseLastTime = null;
 
-    videoReverseLastTime =
-        null;
-
-
-    videoReverseRAF =
-        requestAnimationFrame(
-            reverseVideo
-        );
+    videoReverseRAF = requestAnimationFrame(reverseVideo);
 
 }
 
+
+/* ---------------------------------------------------------
+   STOP REVERSE
+--------------------------------------------------------- */
 
 function stopVideoReverse() {
 
-    if (
-        videoReverseRAF !==
-        null
-    ) {
+    if (videoReverseRAF !== null) {
 
-        cancelAnimationFrame(
-            videoReverseRAF
-        );
+        cancelAnimationFrame(videoReverseRAF);
 
-        videoReverseRAF =
-            null;
+        videoReverseRAF = null;
 
     }
 
-
-    videoReverseLastTime =
-        null;
+    videoReverseLastTime = null;
 
 }
 
+
+/* ---------------------------------------------------------
+   CHECK VIDEO SCROLL POSITION
+--------------------------------------------------------- */
 
 function checkCoupleVideoScroll() {
 
     if (!coupleVideo) return;
 
+    const rect = coupleVideo.getBoundingClientRect();
 
-    const rect =
-        coupleVideo.getBoundingClientRect();
-
-
-    const viewportHeight =
-        window.innerHeight;
+    const viewportHeight = window.innerHeight;
 
 
-    /* SCROLL DOWN — TOP 60% */
+    /* Scroll down — video top reaches 60% */
 
     if (
         videoDirection > 0 &&
         !videoForwardTriggered &&
-        rect.top <=
-        viewportHeight *
-        0.60
+        rect.top <= viewportHeight * 0.60
     ) {
 
-        videoForwardTriggered =
-            true;
+        videoForwardTriggered = true;
 
-        videoReverseTriggered =
-            false;
+        videoReverseTriggered = false;
 
         playVideoForward();
 
@@ -8264,21 +7503,17 @@ function checkCoupleVideoScroll() {
     }
 
 
-    /* SCROLL UP — BOTTOM 65% */
+    /* Scroll up — video bottom reaches 65% */
 
     if (
         videoDirection < 0 &&
         !videoReverseTriggered &&
-        rect.bottom >=
-        viewportHeight *
-        0.65
+        rect.bottom >= viewportHeight * 0.65
     ) {
 
-        videoReverseTriggered =
-            true;
+        videoReverseTriggered = true;
 
-        videoForwardTriggered =
-            false;
+        videoForwardTriggered = false;
 
         playVideoReverse();
 
@@ -8289,90 +7524,69 @@ function checkCoupleVideoScroll() {
 }
 
 
+/* ---------------------------------------------------------
+   VIDEO SCROLL LISTENER
+--------------------------------------------------------- */
+
 window.addEventListener(
     "scroll",
-    function() {
+    function () {
 
-        const currentY =
-            window.scrollY;
+        const currentY = window.scrollY;
 
+        if (currentY > videoLastScrollY) {
 
-        if (
-            currentY >
-            videoLastScrollY
-        ) {
+            videoDirection = 1;
 
-            videoDirection =
-                1;
+        } else if (currentY < videoLastScrollY) {
 
-        }
-        else if (
-            currentY <
-            videoLastScrollY
-        ) {
+            videoDirection = -1;
 
-            videoDirection =
-                -1;
+        } else {
 
-        }
-        else {
-
-            videoDirection =
-                0;
+            videoDirection = 0;
 
         }
 
+        videoLastScrollY = currentY;
 
-        videoLastScrollY =
-            currentY;
-
-
-        requestAnimationFrame(
-            checkCoupleVideoScroll
-        );
+        requestAnimationFrame(checkCoupleVideoScroll);
 
     },
-    {
-        passive:
-            true
-    }
+    { passive: true }
 );
 
 
+/* ---------------------------------------------------------
+   VIDEO INITIALISATION
+--------------------------------------------------------- */
+
 if (coupleVideo) {
 
-    coupleVideo.muted =
-        true;
+    coupleVideo.muted = true;
 
-    coupleVideo.playsInline =
-        true;
-
+    coupleVideo.playsInline = true;
 
     coupleVideo.addEventListener(
         "loadedmetadata",
-        function() {
+        function () {
 
             coupleVideo.pause();
 
-            coupleVideo.currentTime =
-                0;
+            coupleVideo.currentTime = 0;
 
-            videoForwardTriggered =
-                false;
+            videoForwardTriggered = false;
 
-            videoReverseTriggered =
-                false;
+            videoReverseTriggered = false;
 
-            videoLastScrollY =
-                window.scrollY;
+            videoLastScrollY = window.scrollY;
 
         }
     );
 
-
     coupleVideo.addEventListener(
         "ended",
-        function() {
+        function () {
 
             coupleVideo.pause();
 
